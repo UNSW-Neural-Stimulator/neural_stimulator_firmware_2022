@@ -42,13 +42,19 @@
 #include "project.h"
 #include "ctdac/cy_ctdac.h"
 
+// Note there is kind of not a maximum for each of these phases, it is limited only by 
+// uint overflow (each phase cannot be more than 4294s)
 #define INTERPULSE_GAP 100
 #define CATHODIC_PHASE 40
 #define INTERPHASE_GAP 60
 #define ANODIC_PHASE 40
 
+// Stage indicates where we are in a pulse, 0 is interpulse, 1 is cathodic, 2 is interphase
+// 3 is anodic
 uint32_t stage = 0u;
+// Counter indicates how far through a phase we are 
 uint32_t counter = 0u;
+// Current code is what the voltage is going to be set as 
 uint32_t currentCode = 0u;
 
 
@@ -120,19 +126,30 @@ void userIsr(void)
         VDAC_1_SetValueBuffered(currentCode);
 
         counter++;
-        if (stage == 0u && counter >= (INTERPULSE_GAP / 2)) {
+        // Interpulse
+        if (stage == 0u && counter >= (INTERPULSE_GAP / 2)) 
+        {
             currentCode = CY_CTDAC_UNSIGNED_MAX_CODE_VALUE;
             stage = 1u;
             counter = 0u;
-        } else if (stage == 1u && counter >= (CATHODIC_PHASE / 2)) {
+        } 
+        // Cathodic
+        else if (stage == 1u && counter >= (CATHODIC_PHASE / 2)) 
+        {
             currentCode = CY_CTDAC_UNSIGNED_MID_CODE_VALUE;
             stage = 2u;
             counter = 0u;
-        } else if (stage == 2u && counter >= (INTERPHASE_GAP / 2)) {
+        } 
+        // Interphase
+        else if (stage == 2u && counter >= (INTERPHASE_GAP / 2))
+        {
             currentCode = 0u;
             stage = 3u;
             counter = 0u;
-        } else if (stage == 3u && counter >= (ANODIC_PHASE / 2)) {
+        }
+        // Anodic
+        else if (stage == 3u && counter >= (ANODIC_PHASE / 2)) 
+        {
             currentCode = CY_CTDAC_UNSIGNED_MID_CODE_VALUE;
             stage = 0u;
             counter = 0u;
