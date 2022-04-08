@@ -108,14 +108,6 @@
 <v>blinking_leds\led\CM4 (Core 1)\Source Files\ARM GCC Generic\startup_psoc6_01_cm4.S</v>
 <v>blinking_leds\led\CM4 (Core 1)\Source Files\ARM IAR Generic</v>
 <v>blinking_leds\led\CM4 (Core 1)\Source Files\ARM IAR Generic\startup_psoc6_01_cm4.s</v>
-<v>blinking_leds\led\CM4 (Core 1)\Source Files\ARM MDK Generic</v>
-<v>blinking_leds\led\CM4 (Core 1)\Source Files\ARM MDK Generic\startup_psoc6_01_cm4.s</v>
-<v>blinking_leds\led\CM4 (Core 1)\Source Files\main_cm4.c</v>
-<v>blinking_leds\led\CM4 (Core 1)\Source Files\system_psoc6_cm4.c</v>
-<v>blinking_leds\led\Shared Files</v>
-<v>blinking_leds\led\Shared Files\cyapicallbacks.h</v>
-<v>blinking_leds\led\Shared Files\system_psoc6.h</v>
-<v>blinking_leds\led\Generated_Source</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -247,14 +239,6 @@
 <v>blinking_leds\led\CortexM4\ARM_GCC_541\Debug\Listing Files</v>
 <v>blinking_leds\led\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_clk.lst</v>
 <v>blinking_leds\led\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_device.lst</v>
-<v>blinking_leds\led\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_efuse.lst</v>
-<v>blinking_leds\led\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_flash.lst</v>
-<v>blinking_leds\led\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_gpio.lst</v>
-<v>blinking_leds\led\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ipc_drv.lst</v>
-<v>blinking_leds\led\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ipc_pipe.lst</v>
-<v>blinking_leds\led\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ipc_sema.lst</v>
-<v>blinking_leds\led\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_lvd.lst</v>
-<v>blinking_leds\led\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_profile.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -301,7 +285,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1332, 645" SelectedTabbedMdiWindow="ad85dc8a-572f-4113-99c9-624312ffb012"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="0a47db2b-26f5-4515-a591-6ef09cef1cd7" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\blinking_leds\led.cydsn\led.cydwr" Guid="98e319a2-c051-4327-8619-23ce3bfe6a57" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\blinking_leds\led.cydsn\main_cm0p.c" Guid="d745240a-3f0c-4e43-964e-79a0baaff41f" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\blinking_leds\led.cydsn\main_cm4.c" Guid="ad85dc8a-572f-4113-99c9-624312ffb012" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="624, 509" SelectedTabbedMdiWindow="ad85dc8a-572f-4113-99c9-624312ffb012"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="0a47db2b-26f5-4515-a591-6ef09cef1cd7" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\blinking_leds\led.cydsn\led.cydwr" Guid="98e319a2-c051-4327-8619-23ce3bfe6a57" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\blinking_leds\led.cydsn\main_cm0p.c" Guid="d745240a-3f0c-4e43-964e-79a0baaff41f" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\blinking_leds\led.cydsn\main_cm4.c" Guid="ad85dc8a-572f-4113-99c9-624312ffb012" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
