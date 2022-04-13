@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Switches\Switches\TopDesign">
+<ExpandedNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\TopDesign</v>
+<v>Switches\Switches\Switches.cydwr</v>
+<v>Switches\Switches\Switches.cydwr\Pins</v>
+<v>Switches\Switches\Switches.cydwr\Analog</v>
+<v>Switches\Switches\Switches.cydwr\DMA</v>
+<v>Switches\Switches\Switches.cydwr\Clocks</v>
+<v>Switches\Switches\Switches.cydwr\Interrupts</v>
+<v>Switches\Switches\Switches.cydwr\System</v>
+<v>Switches\Switches\Switches.cydwr\Directives</v>
+<v>Switches\Switches\CM0p (Core 0)</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM GCC Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM GCC Generic\cy8c6xx7_cm0plus.ld</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM IAR Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM IAR Generic\cy8c6xx7_cm0plus.icf</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM MDK Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM MDK Generic\cy8c6xx7_cm0plus.scat</v>
+<v>Switches\Switches\CM0p (Core 0)\Header Files</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM GCC Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM GCC Generic\startup_psoc6_01_cm0plus.S</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM IAR Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM IAR Generic\startup_psoc6_01_cm0plus.s</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM MDK Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM MDK Generic\startup_psoc6_01_cm0plus.s</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\main_cm0p.c</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\system_psoc6_cm0plus.c</v>
+<v>Switches\Switches\CM4 (Core 1)</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM GCC Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM GCC Generic\cy8c6xx7_cm4_dual.ld</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM IAR Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM IAR Generic\cy8c6xx7_cm4_dual.icf</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM MDK Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM MDK Generic\cy8c6xx7_cm4_dual.scat</v>
+<v>Switches\Switches\CM4 (Core 1)\Header Files</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM GCC Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM GCC Generic\startup_psoc6_01_cm4.S</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM IAR Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM IAR Generic\startup_psoc6_01_cm4.s</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM MDK Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM MDK Generic\startup_psoc6_01_cm4.s</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\main_cm4.c</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\system_psoc6_cm4.c</v>
+<v>Switches\Switches\Shared Files</v>
+<v>Switches\Switches\Shared Files\cyapicallbacks.h</v>
+<v>Switches\Switches\Shared Files\system_psoc6.h</v>
+<v>Switches\Switches\Generated_Source</v>
+<v>Switches\Switches\Generated_Source\PSoC6</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\TopDesign</v>
+<v>Switches\Switches\Switches.cydwr</v>
+<v>Switches\Switches\Switches.cydwr\Pins</v>
+<v>Switches\Switches\Switches.cydwr\Analog</v>
+<v>Switches\Switches\Switches.cydwr\DMA</v>
+<v>Switches\Switches\Switches.cydwr\Clocks</v>
+<v>Switches\Switches\Switches.cydwr\Interrupts</v>
+<v>Switches\Switches\Switches.cydwr\System</v>
+<v>Switches\Switches\Switches.cydwr\Directives</v>
+<v>Switches\Switches\CM0p (Core 0)</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM GCC Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM GCC Generic\cy8c6xx7_cm0plus.ld</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM IAR Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM IAR Generic\cy8c6xx7_cm0plus.icf</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM MDK Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM MDK Generic\cy8c6xx7_cm0plus.scat</v>
+<v>Switches\Switches\CM0p (Core 0)\Header Files</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM GCC Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM GCC Generic\startup_psoc6_01_cm0plus.S</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM IAR Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM IAR Generic\startup_psoc6_01_cm0plus.s</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM MDK Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM MDK Generic\startup_psoc6_01_cm0plus.s</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\main_cm0p.c</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\system_psoc6_cm0plus.c</v>
+<v>Switches\Switches\CM4 (Core 1)</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM GCC Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM GCC Generic\cy8c6xx7_cm4_dual.ld</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM IAR Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM IAR Generic\cy8c6xx7_cm4_dual.icf</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM MDK Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM MDK Generic\cy8c6xx7_cm4_dual.scat</v>
+<v>Switches\Switches\CM4 (Core 1)\Header Files</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM GCC Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM GCC Generic\startup_psoc6_01_cm4.S</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM IAR Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM IAR Generic\startup_psoc6_01_cm4.s</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\TopDesign</v>
+<v>Switches\Switches\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\TopDesign</v>
+<v>Switches\Switches\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\CortexM0p</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_clk.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ctb.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ctdac.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_device.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_efuse.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_flash.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_gpio.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_drv.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_pipe.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_sema.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_lvd.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_profile.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_prot.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysanalog.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysclk.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysint.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syslib.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syslib_gcc.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syspm.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_systick.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_trigmux.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_wdt.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyfitter_sysint_cfg.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\main_cm0p.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\startup_psoc6_01_cm0plus.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\system_psoc6_cm0plus.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\VDAC.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Switches.elf</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Switches.hex</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Switches.map</v>
+<v>Switches\Switches\CortexM4</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_clk.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ctb.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ctdac.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_device.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_efuse.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_flash.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_gpio.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ipc_drv.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ipc_pipe.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ipc_sema.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_lvd.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_profile.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_prot.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_sysanalog.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_sysclk.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_sysint.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_syslib.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_syslib_gcc.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_syspm.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_systick.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_trigmux.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_wdt.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cyfitter_sysint_cfg.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\main_cm4.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\startup_psoc6_01_cm4.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\system_psoc6_cm4.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\VDAC.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Switches.elf</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Switches.hex</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Switches.map</v>
+<v>Switches\Switches\Switches.gpdsc</v>
+<v>Switches\Switches\Switches.rpt</v>
+<v>Switches\Switches\Switches_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\PSoC 6 Architecture TRM</v>
+<v>Switches\Switches\PSoC 63 Family Datasheet</v>
+<v>Switches\Switches\Peripheral Driver Library</v>
+<v>Switches\Switches\System Reference Guides</v>
+<v>Switches\Switches\cy_gsref_v2_10.pdf</v>
+<v>Switches\Switches\GPIO_PDL_v1_0</v>
+<v>Switches\Switches\GPIO_PDL_v1_0\GPIO_PDL_v1_0.pdf</v>
+<v>Switches\Switches\SysClk_PDL_v1_0.pdf</v>
+<v>Switches\Switches\SysInt_PDL_v1_0.pdf</v>
+<v>Switches\Switches\VDAC12_PDL_v2_0.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\PSoC 6 Architecture TRM</v>
+<v>Switches\Switches\PSoC 63 Family Datasheet</v>
+<v>Switches\Switches\Peripheral Driver Library</v>
+<v>Switches\Switches\System Reference Guides</v>
+<v>Switches\Switches\cy_gsref_v2_10.pdf</v>
+<v>Switches\Switches\GPIO_PDL_v1_0</v>
+<v>Switches\Switches\GPIO_PDL_v1_0\GPIO_PDL_v1_0.pdf</v>
+<v>Switches\Switches\SysClk_PDL_v1_0.pdf</v>
+<v>Switches\Switches\SysInt_PDL_v1_0.pdf</v>
+<v>Switches\Switches\VDAC12_PDL_v2_0.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\Switches.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\Switches.cydsn\main_cm0p.c" />
+<name v=".\Switches.cydsn\main_cm4.c" />
+<name v=".\Switches.cydsn\Switches.cydwr" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="835, 509" SelectedTabbedMdiWindow="647eca86-37b5-49bd-a708-ec09e0fdc7e8"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="0a47db2b-26f5-4515-a591-6ef09cef1cd7" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\TopDesign\TopDesign.cysch" Guid="647eca86-37b5-49bd-a708-ec09e0fdc7e8" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\main_cm0p.c" Guid="06cf53de-1030-4b0b-a8a3-e5c44bb7b0c4" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\main_cm4.c" Guid="ccdaf96b-5469-413c-a92f-fc17c54e5705" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\Switches.cydwr" Guid="d0eaa097-ed72-4de6-ad22-99df2c78cc87" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

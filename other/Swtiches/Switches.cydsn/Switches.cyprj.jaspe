@@ -11,7 +11,7 @@
 <CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256 type_name="CyDesigner.Common.ProjMgmt.Model.CyConfigDependencies" version="1">
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0p" xml_contents_version="2">
 <CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
-<file name=".\CortexM0p\ARM_GCC_541\Debug\VDAC_1.o">
+<file name=".\CortexM0p\ARM_GCC_541\Debug\VDAC.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_compiler.h" />
@@ -76,8 +76,8 @@
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysclk\cy_sysclk.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syslib\cy_syslib.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syspm\cy_syspm.h" />
-<dep name=".\Generated_Source\PSoC6\VDAC_1.c" />
-<dep name=".\Generated_Source\PSoC6\VDAC_1.h" />
+<dep name=".\Generated_Source\PSoC6\VDAC.c" />
+<dep name=".\Generated_Source\PSoC6\VDAC.h" />
 <dep name=".\Generated_Source\PSoC6\cyfitter.h" />
 <dep name=".\Generated_Source\PSoC6\cyfitter_gpio.h" />
 <dep name=".\Generated_Source\PSoC6\cyfitter_sysint.h" />
@@ -147,8 +147,8 @@
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysclk\cy_sysclk.h" />
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syslib\cy_syslib.h" />
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syspm\cy_syspm.h" />
-<file name=".\Generated_Source\PSoC6\VDAC_1.c" />
-<file name=".\Generated_Source\PSoC6\VDAC_1.h" />
+<file name=".\Generated_Source\PSoC6\VDAC.c" />
+<file name=".\Generated_Source\PSoC6\VDAC.h" />
 <file name=".\Generated_Source\PSoC6\cyfitter.h" />
 <file name=".\Generated_Source\PSoC6\cyfitter_gpio.h" />
 <file name=".\Generated_Source\PSoC6\cyfitter_sysint.h" />
@@ -1704,7 +1704,7 @@
 <file name=".\Generated_Source\PSoC6\pdl\middleware\ble\cy_ble_clk.c" />
 <file name=".\Generated_Source\PSoC6\pdl\middleware\ble\cy_ble_clk.h" />
 <file name=".\CortexM0p\ARM_GCC_541\Debug\main_cm0p.o">
-<dep name=".\Generated_Source\PSoC6\Clock_1.h" />
+<dep name=".\Generated_Source\PSoC6\Clock.h" />
 <dep name=".\Generated_Source\PSoC6\cydisabledsheets.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -1779,7 +1779,7 @@
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syspm\cy_syspm.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\middleware\ble\cy_ble_clk.h" />
 <dep name=".\Generated_Source\PSoC6\project.h" />
-<dep name=".\Generated_Source\PSoC6\VDAC_1.h" />
+<dep name=".\Generated_Source\PSoC6\VDAC.h" />
 <dep name=".\Generated_Source\PSoC6\cydevice_trm.h" />
 <dep name=".\Generated_Source\PSoC6\cyfitter.h" />
 <dep name=".\Generated_Source\PSoC6\cyfitter_cfg.h" />
@@ -1800,7 +1800,7 @@
 <dep name=".\main_cm0p.c" />
 <dep name=".\system_psoc6.h" />
 </file>
-<file name=".\Generated_Source\PSoC6\Clock_1.h" />
+<file name=".\Generated_Source\PSoC6\Clock.h" />
 <file name=".\Generated_Source\PSoC6\cydisabledsheets.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_crypto_v2.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_fault_v2.h" />
@@ -1930,16 +1930,7 @@
 </dependency_info>
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM4" xml_contents_version="2">
 <CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
-<file name=".\CortexM4\ARM_GCC_541\Debug\main_cm4.o">
-<dep name=".\Generated_Source\PSoC6\Clock_1.h" />
-<dep name=".\Generated_Source\PSoC6\VDAC_1.h" />
-<dep name=".\Generated_Source\PSoC6\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC6\cydisabledsheets.h" />
-<dep name=".\Generated_Source\PSoC6\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC6\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC6\cyfitter_gpio.h" />
-<dep name=".\Generated_Source\PSoC6\cyfitter_sysint.h" />
-<dep name=".\Generated_Source\PSoC6\cyfitter_sysint_cfg.h" />
+<file name=".\CortexM4\ARM_GCC_541\Debug\VDAC.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_compiler.h" />
@@ -1957,7 +1948,6 @@
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_cpuss.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_cpuss_v2.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_crypto.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_crypto_v2.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_csd.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ctbm.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ctdac.h" />
@@ -1967,7 +1957,6 @@
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_efuse.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_efuse_data_psoc6_01.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_fault.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_fault_v2.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_flashc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_flashc_v2.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_gpio.h" />
@@ -1993,7 +1982,6 @@
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_sdhc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_sflash.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_smartio.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_smartio_v2.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_smif.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_srss.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_tcpwm.h" />
@@ -2003,37 +1991,17 @@
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ctb\cy_ctb.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ctdac\cy_ctdac.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\device\cy_device.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\efuse\cy_efuse.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\flash\cy_flash.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\gpio\cy_gpio.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ipc\cy_ipc_drv.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ipc\cy_ipc_pipe.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ipc\cy_ipc_sema.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\lvd\cy_lvd.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\profile\cy_profile.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\prot\cy_prot.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysanalog\cy_sysanalog.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysclk\cy_sysclk.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysint\cy_sysint.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syslib\cy_syslib.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syspm\cy_syspm.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\systick\cy_systick.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux\cy_trigmux.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\wdt\cy_wdt.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\middleware\ble\cy_ble_clk.h" />
-<dep name=".\Generated_Source\PSoC6\project.h" />
-<dep name=".\main_cm4.c" />
+<dep name=".\Generated_Source\PSoC6\VDAC.c" />
+<dep name=".\Generated_Source\PSoC6\VDAC.h" />
+<dep name=".\Generated_Source\PSoC6\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC6\cyfitter_gpio.h" />
+<dep name=".\Generated_Source\PSoC6\cyfitter_sysint.h" />
 <dep name=".\system_psoc6.h" />
 </file>
-<file name=".\Generated_Source\PSoC6\Clock_1.h" />
-<file name=".\Generated_Source\PSoC6\VDAC_1.h" />
-<file name=".\Generated_Source\PSoC6\cydevice_trm.h" />
-<file name=".\Generated_Source\PSoC6\cydisabledsheets.h" />
-<file name=".\Generated_Source\PSoC6\cyfitter.h" />
-<file name=".\Generated_Source\PSoC6\cyfitter_cfg.h" />
-<file name=".\Generated_Source\PSoC6\cyfitter_gpio.h" />
-<file name=".\Generated_Source\PSoC6\cyfitter_sysint.h" />
-<file name=".\Generated_Source\PSoC6\cyfitter_sysint_cfg.h" />
 <file name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <file name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
 <file name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_compiler.h" />
@@ -2051,7 +2019,6 @@
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_cpuss.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_cpuss_v2.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_crypto.h" />
-<file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_crypto_v2.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_csd.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ctbm.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ctdac.h" />
@@ -2061,7 +2028,6 @@
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_efuse.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_efuse_data_psoc6_01.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_fault.h" />
-<file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_fault_v2.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_flashc.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_flashc_v2.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_gpio.h" />
@@ -2087,7 +2053,6 @@
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_sdhc.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_sflash.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_smartio.h" />
-<file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_smartio_v2.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_smif.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_srss.h" />
 <file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_tcpwm.h" />
@@ -2097,100 +2062,16 @@
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ctb\cy_ctb.h" />
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ctdac\cy_ctdac.h" />
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\device\cy_device.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\efuse\cy_efuse.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\flash\cy_flash.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\gpio\cy_gpio.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ipc\cy_ipc_drv.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ipc\cy_ipc_pipe.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ipc\cy_ipc_sema.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\lvd\cy_lvd.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\profile\cy_profile.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\prot\cy_prot.h" />
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysanalog\cy_sysanalog.h" />
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysclk\cy_sysclk.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysint\cy_sysint.h" />
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syslib\cy_syslib.h" />
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syspm\cy_syspm.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\systick\cy_systick.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux\cy_trigmux.h" />
-<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\wdt\cy_wdt.h" />
-<file name=".\Generated_Source\PSoC6\pdl\middleware\ble\cy_ble_clk.h" />
-<file name=".\Generated_Source\PSoC6\project.h" />
-<file name=".\main_cm4.c" />
+<file name=".\Generated_Source\PSoC6\VDAC.c" />
+<file name=".\Generated_Source\PSoC6\VDAC.h" />
+<file name=".\Generated_Source\PSoC6\cyfitter.h" />
+<file name=".\Generated_Source\PSoC6\cyfitter_gpio.h" />
+<file name=".\Generated_Source\PSoC6\cyfitter_sysint.h" />
 <file name=".\system_psoc6.h" />
-<file name=".\CortexM4\ARM_GCC_541\Debug\VDAC_1.o">
-<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_compiler.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_gcc.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_iccarm.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_version.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\core_cm0plus.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\core_cm4.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\mpu_armv7.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\cy_device_headers.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\cyble_416045_02.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\gpio_psoc6_01_43_smt.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_backup.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ble.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_cpuss.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_cpuss_v2.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_crypto.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_csd.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ctbm.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ctdac.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_dmac_v2.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_dw.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_dw_v2.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_efuse.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_efuse_data_psoc6_01.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_fault.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_flashc.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_flashc_v2.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_gpio.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_gpio_v2.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_headers.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_hsiom.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_hsiom_v2.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_i2s.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ipc.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ipc_v2.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_lcd.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_lpcomp.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_pass.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_pdm.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_peri.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_peri_ms_v2.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_peri_v2.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_profile.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_prot.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_prot_v2.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_sar.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_scb.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_sdhc.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_sflash.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_smartio.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_smif.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_srss.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_tcpwm.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_udb.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_usbfs.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\psoc6_01_config.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ctb\cy_ctb.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ctdac\cy_ctdac.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\device\cy_device.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysanalog\cy_sysanalog.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysclk\cy_sysclk.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syslib\cy_syslib.h" />
-<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syspm\cy_syspm.h" />
-<dep name=".\Generated_Source\PSoC6\VDAC_1.c" />
-<dep name=".\Generated_Source\PSoC6\VDAC_1.h" />
-<dep name=".\Generated_Source\PSoC6\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC6\cyfitter_gpio.h" />
-<dep name=".\Generated_Source\PSoC6\cyfitter_sysint.h" />
-<dep name=".\system_psoc6.h" />
-</file>
-<file name=".\Generated_Source\PSoC6\VDAC_1.c" />
 <file name=".\CortexM4\ARM_GCC_541\Debug\cyfitter_sysint_cfg.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -2259,7 +2140,9 @@
 <dep name=".\Generated_Source\PSoC6\cyfitter_sysint_cfg.h" />
 <dep name=".\system_psoc6.h" />
 </file>
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysint\cy_sysint.h" />
 <file name=".\Generated_Source\PSoC6\cyfitter_sysint_cfg.c" />
+<file name=".\Generated_Source\PSoC6\cyfitter_sysint_cfg.h" />
 <file name=".\CortexM4\ARM_GCC_541\Debug\cy_ctb.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -2468,7 +2351,9 @@
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\efuse\cy_efuse.h" />
 <dep name=".\system_psoc6.h" />
 </file>
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ipc\cy_ipc_drv.h" />
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\efuse\cy_efuse.c" />
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\efuse\cy_efuse.h" />
 <file name=".\CortexM4\ARM_GCC_541\Debug\cy_flash.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -2542,7 +2427,10 @@
 <dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\flash\cy_flash.h" />
 <dep name=".\system_psoc6.h" />
 </file>
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ipc\cy_ipc_pipe.h" />
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ipc\cy_ipc_sema.h" />
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\flash\cy_flash.c" />
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\flash\cy_flash.h" />
 <file name=".\CortexM4\ARM_GCC_541\Debug\cy_gpio.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -2611,6 +2499,7 @@
 <dep name=".\system_psoc6.h" />
 </file>
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\gpio\cy_gpio.c" />
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\gpio\cy_gpio.h" />
 <file name=".\CortexM4\ARM_GCC_541\Debug\cy_ipc_drv.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -2887,6 +2776,7 @@
 <dep name=".\system_psoc6.h" />
 </file>
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\lvd\cy_lvd.c" />
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\lvd\cy_lvd.h" />
 <file name=".\CortexM4\ARM_GCC_541\Debug\cy_profile.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -2955,6 +2845,7 @@
 <dep name=".\system_psoc6.h" />
 </file>
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\profile\cy_profile.c" />
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\profile\cy_profile.h" />
 <file name=".\CortexM4\ARM_GCC_541\Debug\cy_prot.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -3023,6 +2914,7 @@
 <dep name=".\system_psoc6.h" />
 </file>
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\prot\cy_prot.c" />
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\prot\cy_prot.h" />
 <file name=".\CortexM4\ARM_GCC_541\Debug\cy_sysanalog.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -3442,6 +3334,7 @@
 <dep name=".\system_psoc6.h" />
 </file>
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\systick\cy_systick.c" />
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\systick\cy_systick.h" />
 <file name=".\CortexM4\ARM_GCC_541\Debug\cy_trigmux.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -3510,6 +3403,7 @@
 <dep name=".\system_psoc6.h" />
 </file>
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux\cy_trigmux.c" />
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux\cy_trigmux.h" />
 <file name=".\CortexM4\ARM_GCC_541\Debug\cy_wdt.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -3578,6 +3472,7 @@
 <dep name=".\system_psoc6.h" />
 </file>
 <file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\wdt\cy_wdt.c" />
+<file name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\wdt\cy_wdt.h" />
 <file name=".\CortexM4\ARM_GCC_541\Debug\cy_ble_clk.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -3649,6 +3544,113 @@
 <dep name=".\system_psoc6.h" />
 </file>
 <file name=".\Generated_Source\PSoC6\pdl\middleware\ble\cy_ble_clk.c" />
+<file name=".\Generated_Source\PSoC6\pdl\middleware\ble\cy_ble_clk.h" />
+<file name=".\CortexM4\ARM_GCC_541\Debug\main_cm4.o">
+<dep name=".\Generated_Source\PSoC6\Clock.h" />
+<dep name=".\Generated_Source\PSoC6\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC6\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC6\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_compiler.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_iccarm.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_version.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\core_cm0plus.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\core_cm4.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\mpu_armv7.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\cy_device_headers.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\cyble_416045_02.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\gpio_psoc6_01_43_smt.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_backup.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ble.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_cpuss.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_cpuss_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_crypto.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_crypto_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_csd.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ctbm.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ctdac.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_dmac_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_dw.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_dw_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_efuse.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_efuse_data_psoc6_01.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_fault.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_fault_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_flashc.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_flashc_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_gpio.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_gpio_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_headers.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_hsiom.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_hsiom_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_i2s.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ipc.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_ipc_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_lcd.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_lpcomp.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_pass.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_pdm.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_peri.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_peri_ms_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_peri_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_profile.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_prot.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_prot_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_sar.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_scb.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_sdhc.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_sflash.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_smartio.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_smartio_v2.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_smif.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_srss.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_tcpwm.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_udb.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_usbfs.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\psoc6_01_config.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ctb\cy_ctb.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ctdac\cy_ctdac.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\device\cy_device.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ipc\cy_ipc_drv.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ipc\cy_ipc_pipe.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ipc\cy_ipc_sema.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysanalog\cy_sysanalog.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysclk\cy_sysclk.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\sysint\cy_sysint.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syslib\cy_syslib.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\syspm\cy_syspm.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\middleware\ble\cy_ble_clk.h" />
+<dep name=".\Generated_Source\PSoC6\project.h" />
+<dep name=".\Generated_Source\PSoC6\VDAC.h" />
+<dep name=".\Generated_Source\PSoC6\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC6\cyfitter_gpio.h" />
+<dep name=".\Generated_Source\PSoC6\cyfitter_sysint.h" />
+<dep name=".\Generated_Source\PSoC6\cyfitter_sysint_cfg.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ctb\cy_ctb.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\ctdac\cy_ctdac.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\efuse\cy_efuse.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\flash\cy_flash.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\gpio\cy_gpio.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\lvd\cy_lvd.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\profile\cy_profile.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\prot\cy_prot.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\systick\cy_systick.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux\cy_trigmux.h" />
+<dep name=".\Generated_Source\PSoC6\pdl\drivers\peripheral\wdt\cy_wdt.h" />
+<dep name=".\main_cm4.c" />
+<dep name=".\system_psoc6.h" />
+</file>
+<file name=".\Generated_Source\PSoC6\Clock.h" />
+<file name=".\Generated_Source\PSoC6\cydevice_trm.h" />
+<file name=".\Generated_Source\PSoC6\cydisabledsheets.h" />
+<file name=".\Generated_Source\PSoC6\cyfitter_cfg.h" />
+<file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_crypto_v2.h" />
+<file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_fault_v2.h" />
+<file name=".\Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_smartio_v2.h" />
+<file name=".\Generated_Source\PSoC6\project.h" />
+<file name=".\main_cm4.c" />
 <file name=".\CortexM4\ARM_GCC_541\Debug\system_psoc6_cm4.o">
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC6\pdl\cmsis\include\cmsis_armclang.h" />
@@ -3776,14 +3778,13 @@
 <CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256 type_name="CyDesigner.Common.ProjMgmt.Model.CyConfigDependencies" version="1">
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0p" xml_contents_version="2">
 <CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
-<file name=".\CortexM0p\ARM_GCC_541\Debug\BiphasicWave.hex">
+<file name=".\CortexM0p\ARM_GCC_541\Debug\Switches.hex">
 <dep name=".\CortexM0p\ARM_GCC_541\Debug\startup_psoc6_01_cm0plus.o" />
 <dep name=".\CortexM0p\ARM_GCC_541\Debug\main_cm0p.o" />
 <dep name=".\CortexM0p\ARM_GCC_541\Debug\system_psoc6_cm0plus.o" />
 <dep name=".\CortexM0p\ARM_GCC_541\Debug\cyfitter_sysint_cfg.o" />
 <dep name=".\CortexM0p\ARM_GCC_541\Debug\cyfitter_cfg.o" />
 <dep name=".\CortexM0p\ARM_GCC_541\Debug\cymetadata.o" />
-<dep name=".\CortexM0p\ARM_GCC_541\Debug\VDAC_1.o" />
 <dep name=".\CortexM0p\ARM_GCC_541\Debug\cy_ctb.o" />
 <dep name=".\CortexM0p\ARM_GCC_541\Debug\cy_ctdac.o" />
 <dep name=".\CortexM0p\ARM_GCC_541\Debug\cy_efuse.o" />
@@ -3806,19 +3807,19 @@
 <dep name=".\CortexM0p\ARM_GCC_541\Debug\cy_wdt.o" />
 <dep name=".\CortexM0p\ARM_GCC_541\Debug\cy_device.o" />
 <dep name=".\CortexM0p\ARM_GCC_541\Debug\cy_ble_clk.o" />
-<dep name=".\CortexM0p\ARM_GCC_541\Debug\BiphasicWave.a" />
+<dep name=".\CortexM0p\ARM_GCC_541\Debug\VDAC.o" />
+<dep name=".\CortexM0p\ARM_GCC_541\Debug\Switches.a" />
 </file>
 </CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021>
 </dependency_info>
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM4" xml_contents_version="2">
 <CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
-<file name=".\CortexM4\ARM_GCC_541\Debug\BiphasicWave.hex">
+<file name=".\CortexM4\ARM_GCC_541\Debug\Switches.hex">
 <dep name=".\CortexM4\ARM_GCC_541\Debug\startup_psoc6_01_cm4.o" />
 <dep name=".\CortexM4\ARM_GCC_541\Debug\main_cm4.o" />
 <dep name=".\CortexM4\ARM_GCC_541\Debug\system_psoc6_cm4.o" />
 <dep name=".\CortexM4\ARM_GCC_541\Debug\cyfitter_sysint_cfg.o" />
 <dep name=".\CortexM4\ARM_GCC_541\Debug\cymetadata.o" />
-<dep name=".\CortexM4\ARM_GCC_541\Debug\VDAC_1.o" />
 <dep name=".\CortexM4\ARM_GCC_541\Debug\cy_ctb.o" />
 <dep name=".\CortexM4\ARM_GCC_541\Debug\cy_ctdac.o" />
 <dep name=".\CortexM4\ARM_GCC_541\Debug\cy_efuse.o" />
@@ -3841,7 +3842,8 @@
 <dep name=".\CortexM4\ARM_GCC_541\Debug\cy_wdt.o" />
 <dep name=".\CortexM4\ARM_GCC_541\Debug\cy_device.o" />
 <dep name=".\CortexM4\ARM_GCC_541\Debug\cy_ble_clk.o" />
-<dep name=".\CortexM4\ARM_GCC_541\Debug\BiphasicWave.a" />
+<dep name=".\CortexM4\ARM_GCC_541\Debug\VDAC.o" />
+<dep name=".\CortexM4\ARM_GCC_541\Debug\Switches.a" />
 </file>
 </CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021>
 </dependency_info>
@@ -3859,7 +3861,6 @@
 <name_val_pair name="Generated_Source\PSoC6\cyfitter_sysint_cfg.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\cyfitter_cfg.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\cymetadata.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
-<name_val_pair name="Generated_Source\PSoC6\VDAC_1.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\pdl\drivers\peripheral\ctb\cy_ctb.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\pdl\drivers\peripheral\ctdac\cy_ctdac.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\pdl\drivers\peripheral\efuse\cy_efuse.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
@@ -3882,7 +3883,8 @@
 <name_val_pair name="Generated_Source\PSoC6\pdl\drivers\peripheral\wdt\cy_wdt.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\pdl\drivers\peripheral\device\cy_device.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\pdl\middleware\ble\cy_ble_clk.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
-<name_val_pair name="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\BiphasicWave\BiphasicWave.cydsn\CortexM0p\ARM_GCC_541\Debug\BiphasicWave.hex" v="-mcpu=cortex-m0plus -mthumb -L Generated_Source\PSoC6 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T cy8c6xx7_cm0plus.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name="Generated_Source\PSoC6\VDAC.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
+<name_val_pair name="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\CortexM0p\ARM_GCC_541\Debug\Switches.hex" v="-mcpu=cortex-m0plus -mthumb -L Generated_Source\PSoC6 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T cy8c6xx7_cm0plus.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects" />
 </name>
 <name v="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM4">
 <name_val_pair name="gcc\startup_psoc6_01_cm4.S" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
@@ -3890,7 +3892,6 @@
 <name_val_pair name="system_psoc6_cm4.c" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\cyfitter_sysint_cfg.c" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\cymetadata.c" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
-<name_val_pair name="Generated_Source\PSoC6\VDAC_1.c" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\pdl\drivers\peripheral\ctb\cy_ctb.c" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\pdl\drivers\peripheral\ctdac\cy_ctdac.c" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\pdl\drivers\peripheral\efuse\cy_efuse.c" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
@@ -3913,10 +3914,11 @@
 <name_val_pair name="Generated_Source\PSoC6\pdl\drivers\peripheral\wdt\cy_wdt.c" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\pdl\drivers\peripheral\device\cy_device.c" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC6\pdl\middleware\ble\cy_ble_clk.c" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
-<name_val_pair name="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\BiphasicWave\BiphasicWave.cydsn\CortexM4\ARM_GCC_541\Debug\BiphasicWave.hex" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -L Generated_Source\PSoC6 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T cy8c6xx7_cm4_dual.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name="Generated_Source\PSoC6\VDAC.c" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og" />
+<name_val_pair name="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\CortexM4\ARM_GCC_541\Debug\Switches.hex" v="-mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -L Generated_Source\PSoC6 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T cy8c6xx7_cm4_dual.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects" />
 </name>
 </genericCmdLineData>
-<codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\jaspe\AppData\Local\Cypress Semiconductor\PSoC Creator\4.4&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\BiphasicWave\BiphasicWave.cydsn\BiphasicWave.cyprj -d CYBLE-416045-02 -s C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\BiphasicWave\BiphasicWave.cydsn\Generated_Source\PSoC6 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
+<codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\jaspe\AppData\Local\Cypress Semiconductor\PSoC Creator\4.4&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\Switches.cyprj -d CYBLE-416045-02 -s C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\Generated_Source\PSoC6 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
 </CyGuid_b0374e30-ce3a-47f2-ad85-821643292c68>
 </dataGuid>
 <dataGuid v="597c5b74-0c46-4204-8b7f-96f3570671dc">
@@ -3931,35 +3933,52 @@
 <v>Off-Chip</v>
 </tree_states_tab_names>
 <tree_states>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Cypress Component Catalog\System\Clock [v1.0]">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Cypress Component Catalog\System\Global Signal Reference [v2.10]">
 <ExpandedNodeIds>
 <v>Cypress Component Catalog</v>
-<v>Cypress Component Catalog\Digital</v>
-<v>Cypress Component Catalog\System</v>
-</ExpandedNodeIds>
-<VisibleNodeIds>
-<v>Cypress Component Catalog</v>
 <v>Cypress Component Catalog\Analog</v>
+<v>Cypress Component Catalog\Analog\DAC</v>
 <v>Cypress Component Catalog\CapSense</v>
 <v>Cypress Component Catalog\Communications</v>
 <v>Cypress Component Catalog\Digital</v>
-<v>Cypress Component Catalog\Digital\Functions</v>
-<v>Cypress Component Catalog\Digital\Logic</v>
 <v>Cypress Component Catalog\Digital\Registers</v>
 <v>Cypress Component Catalog\Digital\Utility</v>
 <v>Cypress Component Catalog\Display</v>
 <v>Cypress Component Catalog\Ports and Pins</v>
 <v>Cypress Component Catalog\System</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Cypress Component Catalog\Communications\PDM to PCM (fixed function) [v2.0]</v>
+<v>Cypress Component Catalog\Communications\SPI</v>
+<v>Cypress Component Catalog\Communications\UART</v>
+<v>Cypress Component Catalog\Digital</v>
+<v>Cypress Component Catalog\Digital\Functions</v>
+<v>Cypress Component Catalog\Digital\Logic</v>
+<v>Cypress Component Catalog\Digital\Registers</v>
+<v>Cypress Component Catalog\Digital\Registers\Control Register [v1.80]</v>
+<v>Cypress Component Catalog\Digital\Registers\Status Register [v1.90]</v>
+<v>Cypress Component Catalog\Digital\Utility</v>
+<v>Cypress Component Catalog\Digital\Utility\Down Counter (7-bit) [v1.0]</v>
+<v>Cypress Component Catalog\Digital\Utility\Sync [v1.0]</v>
+<v>Cypress Component Catalog\Digital\Utility\UDB Clock Enable [v1.0]</v>
+<v>Cypress Component Catalog\Display</v>
+<v>Cypress Component Catalog\Display\Graphic LCD 8-bit Parallel Interface Macro [v1.80]</v>
+<v>Cypress Component Catalog\Display\Graphic LCD 16-bit Parallel Interface Macro [v1.80]</v>
+<v>Cypress Component Catalog\Display\Graphic LCD Controller [v1.80]</v>
+<v>Cypress Component Catalog\Display\Graphic LCD Controller Macro [v1.80]</v>
+<v>Cypress Component Catalog\Display\Graphic LCD Parallel Interface [v1.80]</v>
+<v>Cypress Component Catalog\Ports and Pins</v>
+<v>Cypress Component Catalog\Ports and Pins\Analog Pin [v1.0]</v>
+<v>Cypress Component Catalog\Ports and Pins\Digital Bidirectional Pin [v1.0]</v>
+<v>Cypress Component Catalog\Ports and Pins\Digital Input Pin [v1.0]</v>
+<v>Cypress Component Catalog\Ports and Pins\Digital Output Pin [v1.0]</v>
+<v>Cypress Component Catalog\System</v>
 <v>Cypress Component Catalog\System\Clock [v1.0]</v>
 <v>Cypress Component Catalog\System\DMA [v2.0]</v>
 <v>Cypress Component Catalog\System\Emulated EEPROM [v2.20]</v>
-<v>Cypress Component Catalog\System\Global Signal Reference [v2.10]</v>
-<v>Cypress Component Catalog\System\Interrupt [v1.0]</v>
-<v>Cypress Component Catalog\System\MCWDT [v1.10]</v>
-<v>Cypress Component Catalog\System\Real-time clock (RTC) [v2.0]</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Off-Chip Component Catalog">
 <ExpandedNodeIds>
 <v>Off-Chip Component Catalog</v>
 </ExpandedNodeIds>
@@ -4027,25 +4046,6 @@
 <v>${CyRoot}\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\bIncludeDriverToComponent_v1_0\bIncludeDriverToComponent_v1_0.cysch</v>
 <v>${CyRoot}\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\bIncludeDriverToComponent_v1_0\bIncludeDriverToComponent_v1_0.cysym</v>
 <v>${CyRoot}\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\bIncludeDriverToComponent_v1_0\version.cypatch</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\cy_gsref_v2_10.cysym</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\cy_gsref_v2_10.cystate</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\cy_gsref_v2_10.cyprimitive</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\cy_gsref_v2_10.pdf</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\version.cypatch</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\custom.cs</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\cycenteredtextcontrol.cs</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\cycenteredtextcontrol.designer.cs</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\cygsrefidcontrol.cs</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\cygsrefidcontrol.designer.cs</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\cycenteredtextcontrol.resx</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\cygsrefidcontrol.resx</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysInt_PDL_v1_0\SysInt_PDL_v1_0.cysym</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysInt_PDL_v1_0\SysInt_PDL_v1_0.pdf</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysInt_PDL_v1_0\SysInt_PDL_v1_0.primitive</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysInt_PDL_v1_0\SysInt_PDL_v1_0.cystate</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysInt_PDL_v1_0\version.cypatch</v>
-<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysInt_PDL_v1_0\Custom\custom.cs</v>
 <v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\GPIO_PDL_v1_0\GPIO_PDL_v1_0.cysym</v>
 <v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\GPIO_PDL_v1_0\GPIO_PDL_v1_0.cystate</v>
 <v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\GPIO_PDL_v1_0\GPIO_PDL_v1_0.cyprimitive</v>
@@ -4085,7 +4085,26 @@
 <v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysClk_PDL_v1_0\version.cypatch</v>
 <v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysClk_PDL_v1_0\API\Clock.h</v>
 <v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysClk_PDL_v1_0\Custom\custom.cs</v>
-<v>.\BiphasicWave.cydwr</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\cy_gsref_v2_10.cysym</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\cy_gsref_v2_10.cystate</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\cy_gsref_v2_10.cyprimitive</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\cy_gsref_v2_10.pdf</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\version.cypatch</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\cycenteredtextcontrol.cs</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\cycenteredtextcontrol.designer.cs</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\cygsrefidcontrol.cs</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\cygsrefidcontrol.designer.cs</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\cycenteredtextcontrol.resx</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10\Custom\cygsrefidcontrol.resx</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_gsref_v2_10</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysInt_PDL_v1_0\SysInt_PDL_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysInt_PDL_v1_0\SysInt_PDL_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysInt_PDL_v1_0\SysInt_PDL_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysInt_PDL_v1_0\SysInt_PDL_v1_0.cystate</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysInt_PDL_v1_0\version.cypatch</v>
+<v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\SysInt_PDL_v1_0\Custom\custom.cs</v>
+<v>.\Switches.cydwr</v>
 </deps_list>
 <gen_list>
 <v>Generated_Source\PSoC6\cyfitter_cfg.h</v>
@@ -4103,7 +4122,7 @@
 <v>Generated_Source\PSoC6\cydisabledsheets.h</v>
 <v>Generated_Source\PSoC6\VDAC_1.c</v>
 <v>Generated_Source\PSoC6\VDAC_1.h</v>
-<v>Generated_Source\PSoC6\Clock_1.h</v>
+<v>Generated_Source\PSoC6\Clock.h</v>
 <v>Generated_Source\PSoC6\project.h</v>
 <v>Generated_Source\PSoC6\cycodeshareimport.ld</v>
 <v>Generated_Source\PSoC6\cycodeshareexport.ld</v>
@@ -4216,35 +4235,33 @@
 <v>Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_tcpwm.h</v>
 <v>Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_udb.h</v>
 <v>Generated_Source\PSoC6\pdl\devices\psoc6\include\ip\cyip_usbfs.h</v>
+<v>Generated_Source\PSoC6\VDAC.c</v>
+<v>Generated_Source\PSoC6\VDAC.h</v>
 </gen_list>
 <warp_dep>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 </warp_dep>
-<deps_time v="132926588035002003" />
+<deps_time v="132938628599946623" />
 <top_block v="TopDesign" />
 <last_generation v="0" />
 <pdl_path v="C:\Program Files (x86)\Cypress\PDL\3.1.3" />
 <sw_packages />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
 </dataGuid>
+<dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">
+<CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469 type_name="CyDesigner.Common.Debugger.CyBreakpointList" version="1">
+<debugger_breakpoint_list />
+</CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469>
+</dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
 <link_deps_times>
-<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0p" v="132926588123450840" />
-<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM4" v="132928987028988744" />
+<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0p" v="132938628698177996" />
+<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM4" v="132938628796402777" />
 </link_deps_times>
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
-</dataGuid>
-<dataGuid v="237c8ed1-e161-4c9d-af97-582eda6d6952">
-<CyGuid_d442b0b8-dd66-4eee-b5be-1cb213792b31 type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyCustomAnalogDevData" version="1" ZoomToPage="False" ZoomScale="0.9325363" ScrollX="-8" ScrollY="135">
-<ComponentStates>
-<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="Net_4" Color="-9580801" />
-<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\VDAC_1:Net_3\" Color="-8213505" />
-<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\VDAC_1:ct_vout\" Color="-8289793" />
-</ComponentStates>
-</CyGuid_d442b0b8-dd66-4eee-b5be-1cb213792b31>
 </dataGuid>
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
