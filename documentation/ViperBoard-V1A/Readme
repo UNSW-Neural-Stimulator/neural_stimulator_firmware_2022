@@ -1,0 +1,12 @@
+# Readme
+
+  * Manufacture:
+    Contains files sent to JLCPCB for manufacture and assembly. This includes BOM and pick and place position file. Solder mask contains exclusions for parts unable to be sourced from manufacturer.
+  * ViperKicad:
+    The KiCad 6.0 project. Includes schematic and PCB layout.
+  * Documents:
+    interactive_pcb.html: Very useful to view where things are on the PCB. Provides interactive inspection of component values and nets.
+    VIPBoard-schematic.pdf: Circuit schematic of the stimulator. First sheet contains hierarchy. Following pages contain subcircuits e.g. MCU and current source.
+    VIPBoard_3D.step: 3D model of the board and components. 
+                      **For reference and graphical illustration ONLY.** 
+                      Should not be considered dimensionally accurate as components are not sourced from datasheets.

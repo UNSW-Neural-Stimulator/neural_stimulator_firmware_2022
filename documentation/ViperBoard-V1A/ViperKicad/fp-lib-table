@@ -1,0 +1,5 @@
+(fp_lib_table
+  (lib (name "CYBLE-416045-02")(type "KiCad")(uri "${KIPRJMOD}/Libraries/CYBLE-416045-02")(options "")(descr ""))
+  (lib (name "HRO-TYPE-C-31-M-12")(type "KiCad")(uri "${KIPRJMOD}/Libraries/HRO-TYPE-C-31-M-12")(options "")(descr ""))
+  (lib (name "Custom_Footprints")(type "KiCad")(uri "${KIPRJMOD}/Libraries/Custom_Footprints.pretty")(options "")(descr ""))
+)
