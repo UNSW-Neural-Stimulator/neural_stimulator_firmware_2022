@@ -41,6 +41,11 @@
 *****************************************************************************/
 #include "project.h"
 #include "ctdac/cy_ctdac.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "semphr.h"
+#include <stdio.h>
+#include <limits.h>
 
 #define SW_ISO P5_2_PORT
 #define SW_LOAD  P5_3_PORT
@@ -51,6 +56,11 @@
 #define SW_LOAD_NUM  P5_3_NUM
 #define SW_SHORT_NUM P5_4_NUM
 #define SW_EVM_NUM P5_5_NUM
+
+#define LED_ON 0
+#define LED_OFF 1
+
+SemaphoreHandle_t bleSemaphore;
 
 // Stage indicates where we are in a pulse, 0 is interpulse, 1 is cathodic, 2 is interphase
 // 3 is anodic
@@ -66,6 +76,7 @@ uint32_t phase_timings[4] = {100u, 50u, 50u, 50u};
 
 void userIsr(void);
 void swap_phase();
+void genericEventHandler(uint32_t event, void *eventParameter);
 
 /*******************************************************************************
 * Function Name: main
@@ -84,12 +95,45 @@ void swap_phase();
 *  None
 *
 *******************************************************************************/
+void bleInterruptNotify()
+{
+    BaseType_t xHigherPriorityTaskWoken;
+    xHigherPriorityTaskWoken = pdFALSE;
+    xSemaphoreGiveFromISR(bleSemaphore, &xHigherPriorityTaskWoken);
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+}
+
+void bleTask(void *arg)
+{
+    (void)arg;
+    printf("Ble task started\r\n");
+    
+    bleSemaphore = xSemaphoreCreateCounting(UINT_MAX, 0);
+    Cy_BLE_Start(genericEventHandler);
+    
+    while (Cy_BLE_GetState() != CY_BLE_STATE_ON)
+    {
+        Cy_BLE_ProcessEvents();
+    }
+    Cy_BLE_RegisterAppHostCallback(bleInterruptNotify);
+    for (;;)
+    {
+        xSemaphoreTake(bleSemaphore, portMAX_DELAY);
+        Cy_BLE_ProcessEvents();
+    }
+}
+
 int main(void)
 {
-    /* Enable global interrupts. */
-    __enable_irq();
-
-    /* Configure the interrupt and provide the ISR address. */
+    __enable_irq(); /* Enable global interrupts. */
+    UART_1_Start();
+    setvbuf(stdin, NULL, _IONBF, 0);
+    setvbuf(stdout, NULL, _IONBF, 0);
+    printf("Sys start\r\n");
+    xTaskCreate(bleTask, "bleTask", 8*1024, 0, 1, 0);
+    UART_1_PutString("beginning\n");
+    
+    
     (void)Cy_SysInt_Init(&SysInt_cfg, userIsr);
 
     /* Enable the interrupt. */
@@ -100,15 +144,16 @@ int main(void)
     Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);//set dummy load to low
     Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);//set short electrode to high 
     Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);//set toggle output to low
-    
-    swap_phase();
    
 
     /* Start the component. */
     VDAC_Start();
     
+    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+    vTaskStartScheduler();
     for(;;)
     {
+        /* Place your application code here. */
     }
 }
 
@@ -154,6 +199,76 @@ void userIsr(void)
     }
 }
 
+/*******************************************************************************
+* Function Name: genericEventHandler
+********************************************************************************
+*
+*  Summary:
+*  Handles events coming in from BLE
+*
+*  Parameters:
+*  uint32_t event, void *eventParameter
+*
+*  Return:
+*  None
+*
+**********************************************************************************/
+void genericEventHandler(uint32_t event, void *eventParameter) {
+    cy_stc_ble_gatts_write_cmd_req_param_t *writeReqParameter;
+    
+    // Take an action based on current event
+    switch (event) {
+        case CY_BLE_EVT_STACK_ON:
+        case CY_BLE_EVT_GAP_DEVICE_DISCONNECTED:
+            printf("disconnected\r\n");
+            Cy_GPIO_Write(GREEN_PORT, GREEN_NUM, LED_OFF);                           // RED is ON
+            Cy_GPIO_Write(RED_PORT, RED_NUM, LED_ON);                           // GREEN is OFF
+            Cy_BLE_GAPP_StartAdvertisement(CY_BLE_ADVERTISING_FAST, CY_BLE_PERIPHERAL_CONFIGURATION_0_INDEX);
+            break;
+        case CY_BLE_EVT_GATT_CONNECT_IND:
+            printf("connected\r\n");
+            Cy_GPIO_Write(GREEN_PORT, GREEN_NUM, LED_ON);                           // RED is OFF
+            Cy_GPIO_Write(RED_PORT, RED_NUM, LED_OFF);                           // GREEN is ON
+            break;
+            
+        case CY_BLE_EVT_GATTS_WRITE_REQ:
+            writeReqParameter = (cy_stc_ble_gatts_write_cmd_req_param_t *) eventParameter;
+            if (CY_BLE_VDAC_OUTPUT_CHAR_HANDLE == writeReqParameter->handleValPair.attrHandle)
+            {
+                uint8_t val1 = writeReqParameter->handleValPair.value.val[0];
+                uint8_t val2 = writeReqParameter->handleValPair.value.val[1];
+                uint8_t val3 = writeReqParameter->handleValPair.value.val[2];
+                uint8_t val4 = writeReqParameter->handleValPair.value.val[3];
+                
+                if (val1 == 0xff) {
+                    swap_phase();
+                }
+                
+                Cy_GPIO_Write(GREEN_PORT, GREEN_NUM, LED_ON);
+                Cy_GPIO_Write(RED_PORT, RED_NUM, LED_ON);
+            }
+                
+            Cy_BLE_GATTS_WriteRsp(writeReqParameter->connHandle);
+            break;
+        default:
+            break;
+    }
+}
+
+/*******************************************************************************
+* Function Name: swap_phase
+********************************************************************************
+*
+*  Summary:
+*  Switch the pulse between being cathodic first or anodic first
+*
+*  Parameters:
+*  None
+*
+*  Return:
+*  None
+*
+**********************************************************************************/
 void swap_phase() {
     int temp = vdac_values[1];
     vdac_values[1] = vdac_values[3];

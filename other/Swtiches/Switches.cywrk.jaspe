@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Switches\Switches\Switches.cydwr">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Switches\Switches\TopDesign">
 <ExpandedNodeIds>
 <v>Switches</v>
 <v>Switches\Switches</v>
@@ -51,6 +51,7 @@
 <v>Switches\Switches\CM4 (Core 1)\ARM MDK Generic</v>
 <v>Switches\Switches\CM4 (Core 1)\ARM MDK Generic\cy8c6xx7_cm4_dual.scat</v>
 <v>Switches\Switches\CM4 (Core 1)\Header Files</v>
+<v>Switches\Switches\CM4 (Core 1)\Header Files\FreeRTOSConfig.h</v>
 <v>Switches\Switches\CM4 (Core 1)\Source Files</v>
 <v>Switches\Switches\CM4 (Core 1)\Source Files\ARM GCC Generic</v>
 <v>Switches\Switches\CM4 (Core 1)\Source Files\ARM GCC Generic\startup_psoc6_01_cm4.S</v>
@@ -61,7 +62,10 @@
 <v>Switches\Switches\CM4 (Core 1)\Source Files\main_cm4.c</v>
 <v>Switches\Switches\CM4 (Core 1)\Source Files\system_psoc6_cm4.c</v>
 <v>Switches\Switches\Shared Files</v>
+<v>Switches\Switches\Shared Files\cy_ble_config.h</v>
 <v>Switches\Switches\Shared Files\cyapicallbacks.h</v>
+<v>Switches\Switches\Shared Files\stdio_user.c</v>
+<v>Switches\Switches\Shared Files\stdio_user.h</v>
 <v>Switches\Switches\Shared Files\system_psoc6.h</v>
 <v>Switches\Switches\Generated_Source</v>
 <v>Switches\Switches\Generated_Source\PSoC6</v>
@@ -103,11 +107,11 @@
 <v>Switches\Switches\CM4 (Core 1)\ARM MDK Generic</v>
 <v>Switches\Switches\CM4 (Core 1)\ARM MDK Generic\cy8c6xx7_cm4_dual.scat</v>
 <v>Switches\Switches\CM4 (Core 1)\Header Files</v>
+<v>Switches\Switches\CM4 (Core 1)\Header Files\FreeRTOSConfig.h</v>
 <v>Switches\Switches\CM4 (Core 1)\Source Files</v>
 <v>Switches\Switches\CM4 (Core 1)\Source Files\ARM GCC Generic</v>
 <v>Switches\Switches\CM4 (Core 1)\Source Files\ARM GCC Generic\startup_psoc6_01_cm4.S</v>
 <v>Switches\Switches\CM4 (Core 1)\Source Files\ARM IAR Generic</v>
-<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM IAR Generic\startup_psoc6_01_cm4.s</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -132,7 +136,50 @@
 <v>Switches\Switches\CortexM0p\ARM_GCC_541</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE_config.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE_custom_config.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_aios.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ancs.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ans.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bas.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bcs.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bls.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bms.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bts.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cgms.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_clk.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cps.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cscs.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cts.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_custom.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_dis.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ess.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_event_handler.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_gap.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_gatt.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_gls.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_int.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_pvt.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hids.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hps.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hrs.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hts.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ias.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ips.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_lls.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_lns.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ndcs.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_pass.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_plxs.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_rscs.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_rtus.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_scps.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_tps.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_uds.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_wpts.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_wss.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ctb.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ctdac.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_device.lst</v>
@@ -145,6 +192,11 @@
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_lvd.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_profile.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_prot.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_common.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_ezi2c.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_i2c.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_spi.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_uart.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysanalog.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysclk.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysint.lst</v>
@@ -158,8 +210,11 @@
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyfitter_sysint_cfg.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\main_cm0p.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\retarget.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\startup_psoc6_01_cm0plus.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\stdio_user.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\system_psoc6_cm0plus.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\UART_1.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\VDAC.lst</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Switches.elf</v>
 <v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Switches.hex</v>
@@ -168,7 +223,51 @@
 <v>Switches\Switches\CortexM4\ARM_GCC_541</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\BLE.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\BLE_config.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\BLE_custom_config.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\croutine.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_aios.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ancs.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ans.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bas.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bcs.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bls.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bms.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bts.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_cgms.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_clk.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_cps.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_cscs.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_cts.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_custom.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_dis.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ess.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_event_handler.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_gap.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_gatt.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_gls.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_int.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_pvt.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hids.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hps.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hrs.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hts.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ias.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ips.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_lls.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_lns.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ndcs.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_pass.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_plxs.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_rscs.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_rtus.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_scps.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_tps.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_uds.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_wpts.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_wss.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ctb.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ctdac.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_device.lst</v>
@@ -181,6 +280,11 @@
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_lvd.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_profile.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_prot.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_common.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_ezi2c.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_i2c.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_spi.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_uart.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_sysanalog.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_sysclk.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_sysint.lst</v>
@@ -192,9 +296,20 @@
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_wdt.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cyfitter_sysint_cfg.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\event_groups.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\heap_4.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\list.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\main_cm4.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\port.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\queue.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\retarget.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\startup_psoc6_01_cm4.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\stdio_user.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\stream_buffer.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\system_psoc6_cm4.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\tasks.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\timers.lst</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\UART_1.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Listing Files\VDAC.lst</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Switches.elf</v>
 <v>Switches\Switches\CortexM4\ARM_GCC_541\Debug\Switches.hex</v>
@@ -206,45 +321,6 @@
 <VisibleNodeIds>
 <v>Switches</v>
 <v>Switches\Switches</v>
-<v>Switches\Switches\CortexM0p</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_clk.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ctb.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ctdac.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_device.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_efuse.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_flash.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_gpio.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_drv.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_pipe.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_sema.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_lvd.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_profile.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_prot.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysanalog.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysclk.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysint.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syslib.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syslib_gcc.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syspm.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_systick.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_trigmux.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_wdt.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyfitter_sysint_cfg.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\main_cm0p.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\startup_psoc6_01_cm0plus.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\system_psoc6_cm0plus.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\VDAC.lst</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Switches.elf</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Switches.hex</v>
-<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Switches.map</v>
-<v>Switches\Switches\CortexM4</v>
-<v>Switches\Switches\CortexM4\ARM_GCC_541</v>
-<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -260,9 +336,11 @@
 <v>Switches\Switches\PSoC 63 Family Datasheet</v>
 <v>Switches\Switches\Peripheral Driver Library</v>
 <v>Switches\Switches\System Reference Guides</v>
+<v>Switches\Switches\BLE_PDL_v2_20.pdf</v>
 <v>Switches\Switches\cy_gsref_v2_10.pdf</v>
 <v>Switches\Switches\GPIO_PDL_v1_0</v>
 <v>Switches\Switches\GPIO_PDL_v1_0\GPIO_PDL_v1_0.pdf</v>
+<v>Switches\Switches\SCB_UART_PDL_v2_0.pdf</v>
 <v>Switches\Switches\SysClk_PDL_v1_0.pdf</v>
 <v>Switches\Switches\SysInt_PDL_v1_0.pdf</v>
 <v>Switches\Switches\VDAC12_PDL_v2_0.pdf</v>
@@ -274,9 +352,11 @@
 <v>Switches\Switches\PSoC 63 Family Datasheet</v>
 <v>Switches\Switches\Peripheral Driver Library</v>
 <v>Switches\Switches\System Reference Guides</v>
+<v>Switches\Switches\BLE_PDL_v2_20.pdf</v>
 <v>Switches\Switches\cy_gsref_v2_10.pdf</v>
 <v>Switches\Switches\GPIO_PDL_v1_0</v>
 <v>Switches\Switches\GPIO_PDL_v1_0\GPIO_PDL_v1_0.pdf</v>
+<v>Switches\Switches\SCB_UART_PDL_v2_0.pdf</v>
 <v>Switches\Switches\SysClk_PDL_v1_0.pdf</v>
 <v>Switches\Switches\SysInt_PDL_v1_0.pdf</v>
 <v>Switches\Switches\VDAC12_PDL_v2_0.pdf</v>
@@ -298,6 +378,7 @@
 <name v=".\Switches.cydsn\main_cm0p.c" />
 <name v=".\Switches.cydsn\main_cm4.c" />
 <name v=".\Switches.cydsn\Switches.cydwr" />
+<name v=".\Switches.cydsn\system_psoc6_cm4.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -305,7 +386,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="835, 509" SelectedTabbedMdiWindow="647eca86-37b5-49bd-a708-ec09e0fdc7e8"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="0a47db2b-26f5-4515-a591-6ef09cef1cd7" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\TopDesign\TopDesign.cysch" Guid="647eca86-37b5-49bd-a708-ec09e0fdc7e8" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\main_cm0p.c" Guid="06cf53de-1030-4b0b-a8a3-e5c44bb7b0c4" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\main_cm4.c" Guid="ccdaf96b-5469-413c-a92f-fc17c54e5705" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\Switches.cydwr" Guid="d0eaa097-ed72-4de6-ad22-99df2c78cc87" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="664, 509" SelectedTabbedMdiWindow="ccdaf96b-5469-413c-a92f-fc17c54e5705"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="0a47db2b-26f5-4515-a591-6ef09cef1cd7" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\TopDesign\TopDesign.cysch" Guid="647eca86-37b5-49bd-a708-ec09e0fdc7e8" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\main_cm0p.c" Guid="06cf53de-1030-4b0b-a8a3-e5c44bb7b0c4" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\main_cm4.c" Guid="ccdaf96b-5469-413c-a92f-fc17c54e5705" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\Switches.cydwr" Guid="d0eaa097-ed72-4de6-ad22-99df2c78cc87" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\system_psoc6_cm4.c" Guid="491c1a1a-9b50-4300-a909-a87d2169fe53" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
