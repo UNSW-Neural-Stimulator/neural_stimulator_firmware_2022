@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
   <block name="Clock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="DummyLoad" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SWCTRL_EVM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GlobalSignal" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="vref" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SysInt" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -63,7 +63,7 @@
       <field name="VALUE" from="11" to="0" access="RW" resetVal="" desc="Next value for CTDAC_VAL.VALUE" hidden="false" />
     </register>
   </block>
-  <block name="StimEnable" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="ToggleOutput" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="ShortElectrode" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SWCTRL_ISO" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SWCTRL_SHORT" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SWCTRL_LOAD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
 </blockRegMap>

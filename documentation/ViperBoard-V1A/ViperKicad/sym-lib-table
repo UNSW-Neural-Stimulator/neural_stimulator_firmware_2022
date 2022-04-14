@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name "CYBLE-416045-02")(type "KiCad")(uri "${KIPRJMOD}/Libraries/CYBLE-416045-02/CYBLE-416045-02.kicad_sym")(options "")(descr ""))
+  (lib (name "HRO-TYPE-C-31-M-12")(type "KiCad")(uri "${KIPRJMOD}/Libraries/HRO-TYPE-C-31-M-12/HRO-TYPE-C-31-M-12.kicad_sym")(options "")(descr ""))
+  (lib (name "Custom_Symbols")(type "KiCad")(uri "${KIPRJMOD}/Libraries/Custom_Symbols.kicad_sym")(options "")(descr ""))
+)

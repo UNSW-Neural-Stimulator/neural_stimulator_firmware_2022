@@ -42,22 +42,15 @@
 #include "project.h"
 #include "ctdac/cy_ctdac.h"
 
-#define STIM_ENABLE P9_0_PORT
-#define DUMMY_LOAD  P9_4_PORT
-#define SHORT_ELECTRODE P9_1_PORT
-#define TOGGLE_OUTPUT P9_3_PORT
+#define SW_ISO P5_2_PORT
+#define SW_LOAD  P5_3_PORT
+#define SW_SHORT P5_4_PORT
+#define SW_EVM P5_5_PORT
 
-#define STIM_ENABLE_NUM P9_0_NUM
-#define DUMMY_LOAD_NUM  P9_4_NUM
-#define SHORT_ELECTRODE_NUM P9_1_NUM
-#define TOGGLE_OUTPUT_NUM P9_3_NUM
-
-// Note there is kind of not a maximum for each of these phases, it is limited only by 
-// uint overflow (each phase cannot be more than 4294s)
-#define INTERPULSE_GAP 100u
-#define CATHODIC_PHASE 50u
-#define INTERPHASE_GAP 50u
-#define ANODIC_PHASE 50u
+#define SW_ISO_NUM P5_2_NUM
+#define SW_LOAD_NUM  P5_3_NUM
+#define SW_SHORT_NUM P5_4_NUM
+#define SW_EVM_NUM P5_5_NUM
 
 // Stage indicates where we are in a pulse, 0 is interpulse, 1 is cathodic, 2 is interphase
 // 3 is anodic
@@ -67,11 +60,12 @@ uint32_t counter = 0u;
 // Current code is what the voltage is going to be set as 
 uint32_t currentCode = 0u;
 
-uint32_t vdac_values[4] = {2048u, 4095u - 25, 2048u, 0u + 25};
-uint32_t phase_timings[4] = {INTERPULSE_GAP, CATHODIC_PHASE, INTERPHASE_GAP, ANODIC_PHASE};
+uint32_t vdac_values[4] = {2048u, 4095u, 2048u, 0u};
+uint32_t phase_timings[4] = {100u, 50u, 50u, 50u};
 
 
 void userIsr(void);
+void swap_phase();
 
 /*******************************************************************************
 * Function Name: main
@@ -102,10 +96,12 @@ int main(void)
     NVIC_EnableIRQ(SysInt_cfg.intrSrc);
     
     /* Set default pin values */
-    Cy_GPIO_Write(STIM_ENABLE, STIM_ENABLE_NUM, 1);//set stim enable to high 
-    Cy_GPIO_Write(DUMMY_LOAD, DUMMY_LOAD_NUM, 0);//set dummy load to low
-    Cy_GPIO_Write(SHORT_ELECTRODE, SHORT_ELECTRODE_NUM, 1);//set short electrode to high 
-    Cy_GPIO_Write(TOGGLE_OUTPUT, TOGGLE_OUTPUT_NUM, 0);//set toggle output to low
+    Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);//set stim enable to high 
+    Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);//set dummy load to low
+    Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);//set short electrode to high 
+    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);//set toggle output to low
+    
+    swap_phase();
    
 
     /* Start the component. */
@@ -148,12 +144,20 @@ void userIsr(void)
             phase %= 4; 
             currentCode = vdac_values[phase];
             counter = 0u;
-            Cy_GPIO_Write(SHORT_ELECTRODE, SHORT_ELECTRODE_NUM, (phase == 0) ? 1 : 0);
-            Cy_GPIO_Write(TOGGLE_OUTPUT, TOGGLE_OUTPUT_NUM, (phase & 1) ? 1 : 0);
+            Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, (phase & 1) ? 1 : 0);
+            Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (phase == 0) ? 1 : 0);
+            Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (phase & 1) ? 0 : 1);
+            Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (phase == 0) ? 0 : 1);
         }
         
         VDAC_SetValueBuffered(currentCode);
     }
+}
+
+void swap_phase() {
+    int temp = vdac_values[1];
+    vdac_values[1] = vdac_values[3];
+    vdac_values[3] = temp;
 }
 
 /* [] END OF FILE */

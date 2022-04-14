@@ -6,12 +6,12 @@
   <Data key="DataVersionKey" value="2" />
   <Group key="DWRInstGuidMapping">
     <Group key="Pin">
-      <Data key="8eb01b2b-ed89-4f68-9ab2-267a191d0c4f" value="ToggleOutput" />
+      <Data key="8eb01b2b-ed89-4f68-9ab2-267a191d0c4f" value="SWCTRL_SHORT" />
       <Data key="0113321b-4a37-46f6-8407-2f8646c68756" value="vdac_out" />
-      <Data key="a61270bc-07ec-447d-ac9e-34cfe85c30e9" value="StimEnable" />
-      <Data key="e16f2373-1e3a-43cc-975c-3b836d45c061" value="ShortElectrode" />
+      <Data key="a61270bc-07ec-447d-ac9e-34cfe85c30e9" value="SWCTRL_ISO" />
+      <Data key="e16f2373-1e3a-43cc-975c-3b836d45c061" value="SWCTRL_LOAD" />
       <Data key="f190044c-43a8-4442-bc43-5318ed29c978" value="vref" />
-      <Data key="fdc4d274-9984-43e4-b617-24d57ec62d27" value="DummyLoad" />
+      <Data key="fdc4d274-9984-43e4-b617-24d57ec62d27" value="SWCTRL_EVM" />
     </Group>
   </Group>
   <Group key="M0S8Clock">
@@ -601,7 +601,7 @@
   <Group key="Pin2">
     <Group key="8eb01b2b-ed89-4f68-9ab2-267a191d0c4f">
       <Group key="0">
-        <Data key="Port Format" value="9,3" />
+        <Data key="Port Format" value="5,4" />
       </Group>
     </Group>
     <Group key="0113321b-4a37-46f6-8407-2f8646c68756">
@@ -611,12 +611,12 @@
     </Group>
     <Group key="a61270bc-07ec-447d-ac9e-34cfe85c30e9">
       <Group key="0">
-        <Data key="Port Format" value="9,0" />
+        <Data key="Port Format" value="5,2" />
       </Group>
     </Group>
     <Group key="e16f2373-1e3a-43cc-975c-3b836d45c061">
       <Group key="0">
-        <Data key="Port Format" value="9,1" />
+        <Data key="Port Format" value="5,3" />
       </Group>
     </Group>
     <Group key="f190044c-43a8-4442-bc43-5318ed29c978">
@@ -626,7 +626,7 @@
     </Group>
     <Group key="fdc4d274-9984-43e4-b617-24d57ec62d27">
       <Group key="0">
-        <Data key="Port Format" value="9,4" />
+        <Data key="Port Format" value="5,5" />
       </Group>
     </Group>
   </Group>

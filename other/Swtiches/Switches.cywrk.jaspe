@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Switches\Switches\TopDesign">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Switches\Switches\Switches.cydwr">
 <ExpandedNodeIds>
 <v>Switches</v>
 <v>Switches\Switches</v>
@@ -206,6 +206,45 @@
 <VisibleNodeIds>
 <v>Switches</v>
 <v>Switches\Switches</v>
+<v>Switches\Switches\CortexM0p</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_clk.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ctb.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ctdac.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_device.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_efuse.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_flash.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_gpio.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_drv.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_pipe.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_sema.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_lvd.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_profile.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_prot.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysanalog.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysclk.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysint.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syslib.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syslib_gcc.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syspm.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_systick.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_trigmux.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_wdt.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyfitter_sysint_cfg.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\main_cm0p.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\startup_psoc6_01_cm0plus.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\system_psoc6_cm0plus.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Listing Files\VDAC.lst</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Switches.elf</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Switches.hex</v>
+<v>Switches\Switches\CortexM0p\ARM_GCC_541\Debug\Switches.map</v>
+<v>Switches\Switches\CortexM4</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541</v>
+<v>Switches\Switches\CortexM4\ARM_GCC_541\Debug</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
