@@ -65,9 +65,9 @@ SemaphoreHandle_t bleSemaphore;
 // Stage indicates where we are in a pulse, 0 is interpulse, 1 is cathodic, 2 is interphase
 // 3 is anodic
 uint32_t phase = 0u;
-// Counter indicates how far through a phase we are 
+// Counter indicates how far through a phase we are
 uint32_t counter = 0u;
-// Current code is what the voltage is going to be set as 
+// Current code is what the voltage is going to be set as
 uint32_t currentCode = 0u;
 
 uint32_t vdac_values[4] = {2048u, 4095u, 2048u, 0u};
@@ -107,10 +107,10 @@ void bleTask(void *arg)
 {
     (void)arg;
     printf("Ble task started\r\n");
-    
+
     bleSemaphore = xSemaphoreCreateCounting(UINT_MAX, 0);
     Cy_BLE_Start(genericEventHandler);
-    
+
     while (Cy_BLE_GetState() != CY_BLE_STATE_ON)
     {
         Cy_BLE_ProcessEvents();
@@ -132,23 +132,23 @@ int main(void)
     printf("Sys start\r\n");
     xTaskCreate(bleTask, "bleTask", 8*1024, 0, 1, 0);
     UART_1_PutString("beginning\n");
-    
-    
+
+
     (void)Cy_SysInt_Init(&SysInt_cfg, userIsr);
 
     /* Enable the interrupt. */
     NVIC_EnableIRQ(SysInt_cfg.intrSrc);
-    
+
     /* Set default pin values */
-    Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);//set stim enable to high 
+    Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);//set stim enable to high
     Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);//set dummy load to low
-    Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);//set short electrode to high 
+    Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);//set short electrode to high
     Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);//set toggle output to low
-   
+
 
     /* Start the component. */
     VDAC_Start();
-    
+
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     vTaskStartScheduler();
     for(;;)
@@ -182,11 +182,11 @@ void userIsr(void)
     {
         /* Clear the interrupt. */
         VDAC_ClearInterrupt();
-       
+
         counter++;
         if (counter >= (phase_timings[phase] / 2)) {
             phase++;
-            phase %= 4; 
+            phase %= 4;
             currentCode = vdac_values[phase];
             counter = 0u;
             Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, (phase & 1) ? 1 : 0);
@@ -194,7 +194,7 @@ void userIsr(void)
             Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (phase & 1) ? 0 : 1);
             Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (phase == 0) ? 0 : 1);
         }
-        
+
         VDAC_SetValueBuffered(currentCode);
     }
 }
@@ -215,7 +215,7 @@ void userIsr(void)
 **********************************************************************************/
 void genericEventHandler(uint32_t event, void *eventParameter) {
     cy_stc_ble_gatts_write_cmd_req_param_t *writeReqParameter;
-    
+
     // Take an action based on current event
     switch (event) {
         case CY_BLE_EVT_STACK_ON:
@@ -230,7 +230,7 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
             Cy_GPIO_Write(GREEN_PORT, GREEN_NUM, LED_ON);                           // RED is OFF
             Cy_GPIO_Write(RED_PORT, RED_NUM, LED_OFF);                           // GREEN is ON
             break;
-            
+
         case CY_BLE_EVT_GATTS_WRITE_REQ:
             writeReqParameter = (cy_stc_ble_gatts_write_cmd_req_param_t *) eventParameter;
             if (CY_BLE_VDAC_OUTPUT_CHAR_HANDLE == writeReqParameter->handleValPair.attrHandle)
@@ -239,15 +239,15 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
                 uint8_t val2 = writeReqParameter->handleValPair.value.val[1];
                 uint8_t val3 = writeReqParameter->handleValPair.value.val[2];
                 uint8_t val4 = writeReqParameter->handleValPair.value.val[3];
-                
+
                 if (val1 == 0xff) {
                     swap_phase();
                 }
-                
+
                 Cy_GPIO_Write(GREEN_PORT, GREEN_NUM, LED_ON);
                 Cy_GPIO_Write(RED_PORT, RED_NUM, LED_ON);
             }
-                
+
             Cy_BLE_GATTS_WriteRsp(writeReqParameter->connHandle);
             break;
         default:
