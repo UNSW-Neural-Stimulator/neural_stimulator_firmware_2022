@@ -10,6 +10,7 @@
       <Data key="6718d2ea-9c23-41fd-9898-f1cd31afe06e" value="REDLED" />
       <Data key="0113321b-4a37-46f6-8407-2f8646c68756" value="VDAC_out" />
       <Data key="a61270bc-07ec-447d-ac9e-34cfe85c30e9" value="Tx_1" />
+      <Data key="c1624cba-8d86-4ade-b52b-52ec6835237b" value="VREF" />
       <Data key="f66885a6-c015-49eb-aade-e092fce24be8" value="VDAC_out" />
     </Group>
   </Group>
@@ -610,12 +611,17 @@
     </Group>
     <Group key="0113321b-4a37-46f6-8407-2f8646c68756">
       <Group key="0">
-        <Data key="Port Format" value="9,6" />
+        <Data key="Port Format" value="9,2" />
       </Group>
     </Group>
     <Group key="a61270bc-07ec-447d-ac9e-34cfe85c30e9">
       <Group key="0">
         <Data key="Port Format" value="5,1" />
+      </Group>
+    </Group>
+    <Group key="c1624cba-8d86-4ade-b52b-52ec6835237b">
+      <Group key="0">
+        <Data key="Port Format" value="9,5" />
       </Group>
     </Group>
     <Group key="f66885a6-c015-49eb-aade-e092fce24be8">
