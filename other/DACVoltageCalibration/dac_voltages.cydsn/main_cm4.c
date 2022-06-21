@@ -63,6 +63,7 @@ void userIsr(void) {
             if (voltage_level > 4095) {
                 voltage_level = 0;
             }
+            //try with 0x00 and 0xFFF
             //printf("line 64\r\n");
             //voltage_level = 1;
             //VDAC_1_SetValueBuffered(voltage_level);
