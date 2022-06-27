@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
-  <block name="VREF" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Tx_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Rx_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWCTRLHVN_EN" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SWCTRL_ISO" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWCTRLHVP_EN" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="VREF" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWCTRLHVN_EN" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SW_SHORT" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SW_LOAD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SW_EVM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Tx_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GlobalSignal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="VDAC_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
@@ -66,6 +68,8 @@
       <field name="VALUE" from="11" to="0" access="RW" resetVal="" desc="Next value for CTDAC_VAL.VALUE" hidden="false" />
     </register>
   </block>
+  <block name="SysInt_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Rx_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="UART_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="cts_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="rx_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -77,5 +81,4 @@
     <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   </block>
   <block name="VDAC_out" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SysInt_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
 </blockRegMap>

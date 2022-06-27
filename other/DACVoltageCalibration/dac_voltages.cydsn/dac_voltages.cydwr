@@ -7,11 +7,14 @@
   <Group key="DWRInstGuidMapping">
     <Group key="Pin">
       <Data key="4cca878b-77b5-471d-8aeb-ad6925202455" value="Rx_1" />
+      <Data key="6a397a30-3868-49e1-811b-a18c42389a9c" value="SW_SHORT" />
       <Data key="6f8c70b2-8672-4d1e-893f-9ce00eb83082" value="SWCTRL_ISO" />
       <Data key="96ddfac2-fe41-480b-9b0f-2664833c1a0b" value="PWCTRLHVP_EN" />
       <Data key="6718d2ea-9c23-41fd-9898-f1cd31afe06e" value="REDLED" />
+      <Data key="15566b87-0055-4ed8-b158-8a1a605431b9" value="SW_LOAD" />
       <Data key="045319b7-968e-4a3d-972c-b477db700107" value="LED_BLUE" />
       <Data key="0113321b-4a37-46f6-8407-2f8646c68756" value="VDAC_out" />
+      <Data key="a90a3120-df13-40de-8c21-c3d11a86cf95" value="SW_EVM" />
       <Data key="a61270bc-07ec-447d-ac9e-34cfe85c30e9" value="Tx_1" />
       <Data key="c1624cba-8d86-4ade-b52b-52ec6835237b" value="VREF" />
       <Data key="ccb42e44-66d5-4658-890f-4136fe8c2fce" value="PWCTRLHVN_EN" />
@@ -608,6 +611,11 @@
         <Data key="Port Format" value="5,0" />
       </Group>
     </Group>
+    <Group key="6a397a30-3868-49e1-811b-a18c42389a9c">
+      <Group key="0">
+        <Data key="Port Format" value="5,4" />
+      </Group>
+    </Group>
     <Group key="6f8c70b2-8672-4d1e-893f-9ce00eb83082">
       <Group key="0">
         <Data key="Port Format" value="5,2" />
@@ -623,6 +631,11 @@
         <Data key="Port Format" value="6,3" />
       </Group>
     </Group>
+    <Group key="15566b87-0055-4ed8-b158-8a1a605431b9">
+      <Group key="0">
+        <Data key="Port Format" value="5,3" />
+      </Group>
+    </Group>
     <Group key="045319b7-968e-4a3d-972c-b477db700107">
       <Group key="0">
         <Data key="Port Format" value="7,1" />
@@ -631,6 +644,11 @@
     <Group key="0113321b-4a37-46f6-8407-2f8646c68756">
       <Group key="0">
         <Data key="Port Format" value="9,2" />
+      </Group>
+    </Group>
+    <Group key="a90a3120-df13-40de-8c21-c3d11a86cf95">
+      <Group key="0">
+        <Data key="Port Format" value="5,5" />
       </Group>
     </Group>
     <Group key="a61270bc-07ec-447d-ac9e-34cfe85c30e9">

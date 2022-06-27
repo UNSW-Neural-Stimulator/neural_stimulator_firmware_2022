@@ -3,13 +3,13 @@
 
 
 // (Time spent on each output in seconds)/500
-#define TIME_ON_EACH_DAC_OUTPUT 500
+#define TIME_ON_EACH_DAC_OUTPUT 400
 
 // Time spent on each DAC output (every increment represent 2us passing)
 uint32_t counter = 0u;
 
 // Current DAC voltage level
-uint32_t voltage_level = 0u;
+int voltage_level = 4000;
 
 
 void userIsr(void);
@@ -18,11 +18,16 @@ int main(void)
 {
     
     UART_1_Start();
-    //set proper switch configuration p5.2 is sw_crtl_iso
+    //setting iso to high
     Cy_GPIO_Write(P5_2_PORT, P5_2_NUM, 1);
     //enable high and low voltage lines
     Cy_GPIO_Write(P5_6_PORT, P5_6_NUM, 1);
     Cy_GPIO_Write(P0_5_PORT, P0_5_NUM, 1);
+    // set all other switches to low
+    Cy_GPIO_Write(P5_3_PORT, P5_3_NUM, 0);
+    Cy_GPIO_Write(P5_4_PORT, P5_4_NUM, 0);
+    Cy_GPIO_Write(P5_5_PORT, P5_5_NUM, 0);
+    
     
     
     //turn led blue on
@@ -63,11 +68,7 @@ void userIsr(void) {
             if (voltage_level > 4095) {
                 voltage_level = 0;
             }
-            //try with 0x00 and 0xFFF
-            //printf("line 64\r\n");
-            //voltage_level = 1;
-            //VDAC_1_SetValueBuffered(voltage_level);
-            //Cy_CTDAC_SetValue(CTDAC0, voltage_level);
+
             //Puts current DAC output value
             printf("Set dac value is %u\r\n", voltage_level);
             counter = 0u;
