@@ -73,6 +73,8 @@ uint32_t currentCode = 0u;
 uint32_t vdac_values[4] = {2048u, 4095u, 2048u, 0u};
 uint32_t phase_timings[4] = {100u, 50u, 50u, 50u};
 
+static TaskHandle_t bleTaskHandle = NULL, adcdacTaskHandle = NULL;
+
 
 void userIsr(void);
 void swap_phase();
@@ -123,21 +125,36 @@ void bleTask(void *arg)
     }
 }
 
+void adcTask(void *arg)
+{
+    (void)arg;
+    
+    (void)Cy_SysInt_Init(&SysInt_cfg, userIsr);
+    
+    while (1) {
+        
+    }
+    
+}
+
+void dacTask(void *arg)
+{
+    (void)arg;
+    
+    (void)Cy_SysInt_Init(&SysInt_cfg, userIsr);
+    
+    NVIC_EnableIRQ(SysInt_cfg.intrSrc);
+    
+    VDAC_Start();
+}
+    
+
 int main(void)
 {
     __enable_irq(); /* Enable global interrupts. */
-    UART_1_Start();
-    setvbuf(stdin, NULL, _IONBF, 0);
-    setvbuf(stdout, NULL, _IONBF, 0);
-    printf("Sys start\r\n");
-    xTaskCreate(bleTask, "bleTask", 8*1024, 0, 1, 0);
-    UART_1_PutString("beginning\n");
     
-    
-    (void)Cy_SysInt_Init(&SysInt_cfg, userIsr);
-
-    /* Enable the interrupt. */
-    NVIC_EnableIRQ(SysInt_cfg.intrSrc);
+    xTaskCreate(bleTask, "bleTask", 1024, 0, 1, &bleTaskHandle);
+    xTaskCreate(dacTask, "dacTask", 1024, 0, 1, &adcdacTaskHandle);
     
     /* Set default pin values */
     Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);//set stim enable to high 
@@ -147,7 +164,7 @@ int main(void)
    
 
     /* Start the component. */
-    VDAC_Start();
+    
     
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     vTaskStartScheduler();
@@ -193,9 +210,8 @@ void userIsr(void)
             Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (phase == 0) ? 1 : 0);
             Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (phase & 1) ? 0 : 1);
             Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (phase == 0) ? 0 : 1);
-        }
-        
-        VDAC_SetValueBuffered(currentCode);
+            VDAC_SetValueBuffered(currentCode);
+        }        
     }
 }
 
@@ -236,12 +252,9 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
             if (CY_BLE_VDAC_OUTPUT_CHAR_HANDLE == writeReqParameter->handleValPair.attrHandle)
             {
                 uint8_t val1 = writeReqParameter->handleValPair.value.val[0];
-                uint8_t val2 = writeReqParameter->handleValPair.value.val[1];
-                uint8_t val3 = writeReqParameter->handleValPair.value.val[2];
-                uint8_t val4 = writeReqParameter->handleValPair.value.val[3];
                 
                 if (val1 == 0xff) {
-                    swap_phase();
+                    xTaskNotifyGive(adcdacTaskHandle);
                 }
                 
                 Cy_GPIO_Write(GREEN_PORT, GREEN_NUM, LED_ON);
