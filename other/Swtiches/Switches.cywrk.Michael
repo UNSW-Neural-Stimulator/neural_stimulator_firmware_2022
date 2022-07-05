@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Switches\Switches\CM4 (Core 1)\Header Files\FreeRTOSConfig.h">
+<ExpandedNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\TopDesign</v>
+<v>Switches\Switches\Switches.cydwr</v>
+<v>Switches\Switches\Switches.cydwr\Pins</v>
+<v>Switches\Switches\Switches.cydwr\Analog</v>
+<v>Switches\Switches\Switches.cydwr\DMA</v>
+<v>Switches\Switches\Switches.cydwr\Clocks</v>
+<v>Switches\Switches\Switches.cydwr\Interrupts</v>
+<v>Switches\Switches\Switches.cydwr\System</v>
+<v>Switches\Switches\Switches.cydwr\Directives</v>
+<v>Switches\Switches\CM0p (Core 0)</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM GCC Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM GCC Generic\cy8c6xx7_cm0plus.ld</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM IAR Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM IAR Generic\cy8c6xx7_cm0plus.icf</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM MDK Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\ARM MDK Generic\cy8c6xx7_cm0plus.scat</v>
+<v>Switches\Switches\CM0p (Core 0)\Header Files</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM GCC Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM GCC Generic\startup_psoc6_01_cm0plus.S</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM IAR Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM IAR Generic\startup_psoc6_01_cm0plus.s</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM MDK Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM MDK Generic\startup_psoc6_01_cm0plus.s</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\main_cm0p.c</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\system_psoc6_cm0plus.c</v>
+<v>Switches\Switches\CM4 (Core 1)</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM GCC Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM GCC Generic\cy8c6xx7_cm4_dual.ld</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM IAR Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM IAR Generic\cy8c6xx7_cm4_dual.icf</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM MDK Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM MDK Generic\cy8c6xx7_cm4_dual.scat</v>
+<v>Switches\Switches\CM4 (Core 1)\Header Files</v>
+<v>Switches\Switches\CM4 (Core 1)\Header Files\FreeRTOSConfig.h</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM GCC Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM GCC Generic\startup_psoc6_01_cm4.S</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM IAR Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM IAR Generic\startup_psoc6_01_cm4.s</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM MDK Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM MDK Generic\startup_psoc6_01_cm4.s</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\main_cm4.c</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\system_psoc6_cm4.c</v>
+<v>Switches\Switches\Shared Files</v>
+<v>Switches\Switches\Shared Files\cy_ble_config.h</v>
+<v>Switches\Switches\Shared Files\cyapicallbacks.h</v>
+<v>Switches\Switches\Shared Files\stdio_user.c</v>
+<v>Switches\Switches\Shared Files\stdio_user.h</v>
+<v>Switches\Switches\Shared Files\system_psoc6.h</v>
+<v>Switches\Switches\Generated_Source</v>
+<v>Switches\Switches\Generated_Source\PSoC6</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Switches\Switches\CM0p (Core 0)\Header Files</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM GCC Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM GCC Generic\startup_psoc6_01_cm0plus.S</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM IAR Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM IAR Generic\startup_psoc6_01_cm0plus.s</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM MDK Generic</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\ARM MDK Generic\startup_psoc6_01_cm0plus.s</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\main_cm0p.c</v>
+<v>Switches\Switches\CM0p (Core 0)\Source Files\system_psoc6_cm0plus.c</v>
+<v>Switches\Switches\CM4 (Core 1)</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM GCC Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM GCC Generic\cy8c6xx7_cm4_dual.ld</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM IAR Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM IAR Generic\cy8c6xx7_cm4_dual.icf</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM MDK Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\ARM MDK Generic\cy8c6xx7_cm4_dual.scat</v>
+<v>Switches\Switches\CM4 (Core 1)\Header Files</v>
+<v>Switches\Switches\CM4 (Core 1)\Header Files\FreeRTOSConfig.h</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM GCC Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM GCC Generic\startup_psoc6_01_cm4.S</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM IAR Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM IAR Generic\startup_psoc6_01_cm4.s</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM MDK Generic</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\ARM MDK Generic\startup_psoc6_01_cm4.s</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\main_cm4.c</v>
+<v>Switches\Switches\CM4 (Core 1)\Source Files\system_psoc6_cm4.c</v>
+<v>Switches\Switches\Shared Files</v>
+<v>Switches\Switches\Shared Files\cy_ble_config.h</v>
+<v>Switches\Switches\Shared Files\cyapicallbacks.h</v>
+<v>Switches\Switches\Shared Files\stdio_user.c</v>
+<v>Switches\Switches\Shared Files\stdio_user.h</v>
+<v>Switches\Switches\Shared Files\system_psoc6.h</v>
+<v>Switches\Switches\Generated_Source</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\TopDesign</v>
+<v>Switches\Switches\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\TopDesign</v>
+<v>Switches\Switches\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\Switches.gpdsc</v>
+<v>Switches\Switches\Switches.rpt</v>
+<v>Switches\Switches\Switches_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\Switches.gpdsc</v>
+<v>Switches\Switches\Switches.rpt</v>
+<v>Switches\Switches\Switches_timing.html</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\PSoC 6 Architecture TRM</v>
+<v>Switches\Switches\PSoC 63 Family Datasheet</v>
+<v>Switches\Switches\Peripheral Driver Library</v>
+<v>Switches\Switches\System Reference Guides</v>
+<v>Switches\Switches\BLE_PDL_v2_20.pdf</v>
+<v>Switches\Switches\cy_gsref_v2_10.pdf</v>
+<v>Switches\Switches\GPIO_PDL_v1_0</v>
+<v>Switches\Switches\GPIO_PDL_v1_0\GPIO_PDL_v1_0.pdf</v>
+<v>Switches\Switches\SCB_UART_PDL_v2_0.pdf</v>
+<v>Switches\Switches\SysClk_PDL_v1_0.pdf</v>
+<v>Switches\Switches\SysInt_PDL_v1_0.pdf</v>
+<v>Switches\Switches\VDAC12_PDL_v2_0.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Switches</v>
+<v>Switches\Switches</v>
+<v>Switches\Switches\PSoC 6 Architecture TRM</v>
+<v>Switches\Switches\PSoC 63 Family Datasheet</v>
+<v>Switches\Switches\Peripheral Driver Library</v>
+<v>Switches\Switches\System Reference Guides</v>
+<v>Switches\Switches\BLE_PDL_v2_20.pdf</v>
+<v>Switches\Switches\cy_gsref_v2_10.pdf</v>
+<v>Switches\Switches\GPIO_PDL_v1_0</v>
+<v>Switches\Switches\GPIO_PDL_v1_0\GPIO_PDL_v1_0.pdf</v>
+<v>Switches\Switches\SCB_UART_PDL_v2_0.pdf</v>
+<v>Switches\Switches\SysClk_PDL_v1_0.pdf</v>
+<v>Switches\Switches\SysInt_PDL_v1_0.pdf</v>
+<v>Switches\Switches\VDAC12_PDL_v2_0.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\Switches.cydsn\stdio_user.h" />
+<name v=".\Switches.cydsn\FreeRTOSConfig.h" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="797, 679" SelectedTabbedMdiWindow="1a6d67f8-6e0e-4fc5-9251-4944bf086c96"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="1a6395ee-278c-4d60-ad22-0cd1ac924609" /><DocumentWindow Key="\\wsl$\Ubuntu\home\michael\linux_files\VIP\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\stdio_user.h" Guid="0ee0f3ca-fdb0-4a69-b0b5-5228c6049772" /><DocumentWindow Key="\\wsl$\Ubuntu\home\michael\linux_files\VIP\neural_stimulator_firmware_2022\other\Swtiches\Switches.cydsn\FreeRTOSConfig.h" Guid="1a6d67f8-6e0e-4fc5-9251-4944bf086c96" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

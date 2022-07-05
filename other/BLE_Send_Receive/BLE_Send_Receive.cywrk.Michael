@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\TopDesign</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\Pins</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\Analog</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\DMA</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\Clocks</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\Interrupts</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\System</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\Directives</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\ARM GCC Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\ARM GCC Generic\cy8c6xx7_cm0plus.ld</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\ARM IAR Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\ARM IAR Generic\cy8c6xx7_cm0plus.icf</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\ARM MDK Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\ARM MDK Generic\cy8c6xx7_cm0plus.scat</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Header Files</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\ARM GCC Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\ARM GCC Generic\startup_psoc6_01_cm0plus.S</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\ARM IAR Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\ARM IAR Generic\startup_psoc6_01_cm0plus.s</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\ARM MDK Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\ARM MDK Generic\startup_psoc6_01_cm0plus.s</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\main_cm0p.c</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\system_psoc6_cm0plus.c</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\ARM GCC Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\ARM GCC Generic\cy8c6xx7_cm4_dual.ld</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\ARM IAR Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\ARM IAR Generic\cy8c6xx7_cm4_dual.icf</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\ARM MDK Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\ARM MDK Generic\cy8c6xx7_cm4_dual.scat</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\Header Files</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\Header Files\FreeRTOSConfig.h</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\Source Files</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\Source Files\ARM GCC Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\Source Files\ARM GCC Generic\startup_psoc6_01_cm4.S</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\Source Files\ARM IAR Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\Source Files\ARM IAR Generic\startup_psoc6_01_cm4.s</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\Source Files\ARM MDK Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\Source Files\ARM MDK Generic\startup_psoc6_01_cm4.s</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\Source Files\main_cm4.c</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\Source Files\system_psoc6_cm4.c</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\Shared Files</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\Shared Files\cy_ble_config.h</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\Shared Files\cyapicallbacks.h</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\Shared Files\stdio_user.c</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\Shared Files\stdio_user.h</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\Shared Files\system_psoc6.h</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\Generated_Source</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\Generated_Source\PSoC6</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\TopDesign</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\Pins</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\Analog</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\DMA</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\Clocks</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\Interrupts</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\System</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.cydwr\Directives</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\ARM GCC Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\ARM GCC Generic\cy8c6xx7_cm0plus.ld</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\ARM IAR Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\ARM IAR Generic\cy8c6xx7_cm0plus.icf</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\ARM MDK Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\ARM MDK Generic\cy8c6xx7_cm0plus.scat</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Header Files</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\ARM GCC Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\ARM GCC Generic\startup_psoc6_01_cm0plus.S</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\ARM IAR Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\ARM IAR Generic\startup_psoc6_01_cm0plus.s</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\ARM MDK Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\ARM MDK Generic\startup_psoc6_01_cm0plus.s</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\main_cm0p.c</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM0p (Core 0)\Source Files\system_psoc6_cm0plus.c</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\ARM GCC Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\ARM GCC Generic\cy8c6xx7_cm4_dual.ld</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\ARM IAR Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\ARM IAR Generic\cy8c6xx7_cm4_dual.icf</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\ARM MDK Generic</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CM4 (Core 1)\ARM MDK Generic\cy8c6xx7_cm4_dual.scat</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\TopDesign</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\TopDesign</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE_config.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_aios.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ancs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ans.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bas.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bcs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bls.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bms.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bts.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cgms.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_clk.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cps.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cscs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cts.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_custom.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_dis.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ess.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_event_handler.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_gap.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_gatt.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_gls.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_int.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_pvt.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hids.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hps.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hrs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hts.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ias.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ips.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_lls.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_lns.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ndcs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_pass.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_plxs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_rscs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_rtus.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_scps.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_tps.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_uds.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_wpts.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_wss.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_device.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_efuse.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_flash.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_gpio.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_drv.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_pipe.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_sema.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_lvd.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_profile.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_prot.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_common.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_ezi2c.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_i2c.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_spi.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_uart.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysanalog.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysclk.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysint.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syslib.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syslib_gcc.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syspm.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_systick.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_trigmux.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_wdt.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyfitter_sysint_cfg.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\main_cm0p.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\retarget.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\startup_psoc6_01_cm0plus.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\stdio_user.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\system_psoc6_cm0plus.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\BLE_Send_Receive.elf</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\BLE_Send_Receive.hex</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\BLE_Send_Receive.map</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\BLE.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\BLE_config.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\croutine.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_aios.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ancs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ans.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bas.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bcs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bls.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bms.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bts.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_cgms.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_clk.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_cps.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_cscs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_cts.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_custom.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_dis.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ess.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_event_handler.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_gap.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_gatt.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_gls.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_int.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_pvt.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hids.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hps.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hrs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hts.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ias.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ips.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_lls.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_lns.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ndcs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_pass.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_plxs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_rscs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_rtus.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_scps.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_tps.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_uds.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_wpts.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_wss.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_device.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_efuse.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_flash.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_gpio.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ipc_drv.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ipc_pipe.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ipc_sema.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_lvd.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_profile.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_prot.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_common.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_ezi2c.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_i2c.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_spi.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_uart.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_sysanalog.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_sysclk.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_sysint.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_syslib.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_syslib_gcc.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_syspm.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_systick.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_trigmux.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_wdt.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cyfitter_sysint_cfg.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\event_groups.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\heap_4.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\list.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\main_cm4.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\port.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\queue.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\retarget.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\startup_psoc6_01_cm4.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\stdio_user.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\stream_buffer.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\system_psoc6_cm4.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\tasks.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\timers.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\BLE_Send_Receive.elf</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\BLE_Send_Receive.hex</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM4\ARM_GCC_541\Debug\BLE_Send_Receive.map</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.gpdsc</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive.rpt</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_Send_Receive_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE_config.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_aios.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ancs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ans.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bas.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bcs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bls.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bms.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bts.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cgms.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_clk.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cps.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cscs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cts.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_custom.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_dis.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ess.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_event_handler.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_gap.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_gatt.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_gls.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_int.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_pvt.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hids.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hps.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hrs.lst</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hts.lst</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\PSoC 6 Architecture TRM</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\PSoC 63 Family Datasheet</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\Peripheral Driver Library</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\System Reference Guides</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_PDL_v2_20.pdf</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\SCB_UART_PDL_v2_0.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\PSoC 6 Architecture TRM</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\PSoC 63 Family Datasheet</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\Peripheral Driver Library</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\System Reference Guides</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\BLE_PDL_v2_20.pdf</v>
+<v>BLE_Send_Receive\BLE_Send_Receive\SCB_UART_PDL_v2_0.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\BLE_Send_Receive.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\BLE_Send_Receive.cydsn\stdio_user.h" />
+<name v=".\BLE_Send_Receive.cydsn\FreeRTOSConfig.h" />
+<name v=".\BLE_Send_Receive.cydsn\BLE_Send_Receive.cydwr" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1051, 679" SelectedTabbedMdiWindow="6cdb329a-9f09-4217-b23c-69e13281b146"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="1a6395ee-278c-4d60-ad22-0cd1ac924609" /><DocumentWindow Key="\\wsl$\Ubuntu\home\michael\linux_files\VIP\neural_stimulator_firmware_2022\other\BLE_Send_Receive\BLE_Send_Receive.cydsn\TopDesign\TopDesign.cysch" Guid="9565de86-6966-4d57-85b5-b0ab2350b4ec" /><DocumentWindow Key="\\wsl$\Ubuntu\home\michael\linux_files\VIP\neural_stimulator_firmware_2022\other\BLE_Send_Receive\BLE_Send_Receive.cydsn\stdio_user.h" Guid="cd29a2e7-8aed-49c5-88a0-e247e39d2f1b" /><DocumentWindow Key="\\wsl$\Ubuntu\home\michael\linux_files\VIP\neural_stimulator_firmware_2022\other\BLE_Send_Receive\BLE_Send_Receive.cydsn\FreeRTOSConfig.h" Guid="87b05ef5-9938-4bb4-8938-6d49fbd0634f" /><DocumentWindow Key="\\wsl$\Ubuntu\home\michael\linux_files\VIP\neural_stimulator_firmware_2022\other\BLE_Send_Receive\BLE_Send_Receive.cydsn\BLE_Send_Receive.cydwr" Guid="6cdb329a-9f09-4217-b23c-69e13281b146" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>
