@@ -17,8 +17,10 @@
 #include <limits.h>
 
 SemaphoreHandle_t bleSemaphore;
+uint8_t val = 0;
 
 uint8_t vals[2] = {0};
+
 
 // BLE event handler
 void genericEventHandler(uint32_t event, void *eventParameter) {
@@ -38,11 +40,33 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
             printf("connected\r\n");
             Cy_GPIO_Write(P6_3_PORT, P6_3_PIN, 1);                           // RED is OFF
             Cy_GPIO_Write(P7_1_PORT, P7_1_PIN, 0);                           // GREEN is ON
+            
             break;
             
         case CY_BLE_EVT_GATTS_WRITE_REQ:
             printf("Write req: ");
             writeReqParameter = (cy_stc_ble_gatts_write_cmd_req_param_t *) eventParameter;
+            printf("attId: 0x%x\n", writeReqParameter->connHandle.attId);
+            printf("attrHandle: 0x%x\n", writeReqParameter->handleValPair.attrHandle);
+            
+            if (writeReqParameter->handleValPair.attrHandle == CY_BLE_NSTIM_NOTIFONE_CLIENT_CHARACTERISTIC_CONFIGURATION_DESC_HANDLE) {
+                printf("Notify request\n");   
+                
+                cy_stc_ble_gatts_handle_value_ntf_t ntf_param;
+                ntf_param.connHandle = writeReqParameter->connHandle;
+                cy_stc_ble_gatt_handle_value_pair_t val_pair;
+                val++;
+                val_pair.value.val = &val;
+                val_pair.value.len = 1;
+                val_pair.value.actualLen = 1;
+                val_pair.attrHandle = CY_BLE_NSTIM_NOTIFONE_CHAR_HANDLE;
+                ntf_param.handleValPair = val_pair;
+                CyDelay(1500);
+                Cy_BLE_GATTS_Notification(&ntf_param);
+                
+                break;
+            }
+            
             uint8_t command[5];
             for (int i = 0; i < writeReqParameter->handleValPair.value.len; i++) {
                 command[i] = writeReqParameter->handleValPair.value.val[i];
@@ -75,6 +99,7 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
                     printf("Broken\n");
             }
             break;
+            
         default:
             printf("BLE request not found\n");
             
