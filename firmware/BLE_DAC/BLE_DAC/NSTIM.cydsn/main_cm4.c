@@ -28,6 +28,10 @@
 #define US_TO_PT(n) (n / 2)
 /* Converts phase timing to microseconds */
 #define PT_TO_US(n) (n * 2)
+/* Convert a current (float) to a vdac value (uint) */
+#define CURR_TO_VDAC(n)     ((uint32_t)((((float)n)+3.48600000e+00)/1.70315347e-03))
+/* Convert a vdac value (uint) to current (float) */
+#define VDAC_TO_CURR(n)     ((float)(((float)n)*1.70315347e-03)-3.48600000e+00)
 /* Our baseline reference for 0V stim */
 #define V0 2056u
 
@@ -50,14 +54,14 @@ int stim_type = 0;
 
 /* VDAC values for each phase in burst mode */
 uint32_t burst_vdac_values[] = {V0, 4095u, V0, 0u};
-/* Phase timings for burst mode */
+/* Phase timings for burst mode, interstim comes first */
 uint32_t burst_phase_timings[] = {100u, 50u, 50u, 50u};
 /* Max value for DC mode, what we want to ramp up to */
 uint32_t dc_vdac_target = 4095u;
 /* Starting value for DC mode, what we start the ramp from */
 uint32_t dc_vdac_base = V0;
 /* Phase timings for DC mode */
-uint32_t dc_phase_timings[] = {100u, 200u, 100u};
+uint32_t dc_phase_timings[] = {100u, 200u, 100u, 200u};
 
 int command_start(uint32_t param);
 int command_stop(uint32_t param);
@@ -73,6 +77,11 @@ static int (*command_handlers[])(uint32_t param) = {
 void burst_handler();
 void dc_handler();
 
+//float vdac_to_curr(int vdac) {
+//    return ((float)(((float)vdac)*1.70315347e-03)-3.48600000e+00);
+
+//}
+
 void command_handler(uint8_t command, uint32_t params) {
     if (command <= 0 || command > 11) {
         printf("Invalid command '%d'\n", command);   
@@ -80,6 +89,9 @@ void command_handler(uint8_t command, uint32_t params) {
     }
     
     err = command_handlers[command](params);
+    if (command == 3) {
+        printf("Changed to %d stim type\n", params);   
+    }
 }
 
 // BLE event handler
@@ -111,7 +123,7 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
             }
             
             uint8_t command = req_param[0];
-            uint32_t param =   (req_param[1] << 24) + 
+            uint32_t param =    (req_param[1] << 24) + 
                                 (req_param[2] << 16) + 
                                 (req_param[3] << 8) + 
                                 (req_param[4]);
@@ -182,7 +194,6 @@ void userIsr(void)
     intrStatus = VDAC_GetInterruptStatus();
     if (intrStatus)
     {
-        printf("VDAC\n");
         /* Clear the interrupt. */
         VDAC_ClearInterrupt();
         /* Run burst handler or dc handler depending on stim_type */
@@ -191,10 +202,9 @@ void userIsr(void)
 }
 
 void dc_handler() {
-    printf("DC\n");
     counter++;
     if (counter >= dc_phase_timings[phase]) {
-        phase = (phase + 1) % 3;            
+        phase = (phase + 1) % 3;
     }
     
     // TODO switches for dc
@@ -213,7 +223,6 @@ void dc_handler() {
 }
 
 void burst_handler() {
-    printf("Burst\n");
     counter++;
     if (counter >= burst_phase_timings[phase]) {
         phase++;
@@ -261,6 +270,11 @@ int main(void)
     
     NVIC_EnableIRQ(SysInt_VDAC_cfg.intrSrc);
     //VDAC_Start();
+    
+    printf("V0 vdac to %f\n", VDAC_TO_CURR(V0));
+    printf("0 amps to %u\n", CURR_TO_VDAC(0));
+    printf("1 amps to %u\n", CURR_TO_VDAC(1));
+    printf("3 amps to %u\n", CURR_TO_VDAC(3));
     
     xTaskCreate(bleTask, "bleTask", 1024, 0, 1, 0);
     
