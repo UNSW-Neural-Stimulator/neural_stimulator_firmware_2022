@@ -69,6 +69,9 @@ uint32_t dc_pulse_done = 0;
  * stim_state[1] = stim_type (0 burst, 1 dc) */
 uint8_t stim_state[2] = {0};
 
+/* Indicates if burst mode is anodic or cathodic right now */
+uint8_t anodic = 0;
+
 /* VDAC values for each phase in burst mode */
 uint16_t burst_vdac_values[] = {V0, 4095u, V0, 0u, V0};
 /* Phase timings for burst mode, interstim comes first */
@@ -277,9 +280,7 @@ void dc_handler() {
         vdac_curr = dc_vdac_base;   
     }
     
-    
-    // TODO switches for dc
-    
+    // TODO switches for DC
 
     VDAC_SetValueBuffered(vdac_curr);
 }
