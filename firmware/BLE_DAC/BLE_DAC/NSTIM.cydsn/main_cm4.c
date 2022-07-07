@@ -51,7 +51,7 @@ uint32_t vdac_curr = 0u;
 /* Generic error status register, accessible through a read directly after a write */
 uint32_t err = 0;
 
-/* Pulse target */
+/* Pulses per burst */
 uint32_t pulse_num = 3;
 /* Pulse completed */
 uint32_t pulse_done = 0;
@@ -59,6 +59,11 @@ uint32_t pulse_done = 0;
 uint32_t burst_num = 100;
 /* Bursts completed */
 uint32_t burst_done = 0;
+
+/* Number of dc bursts target */
+uint32_t dc_pulse_num = 0;
+/* Number of dc_pulses done */
+uint32_t dc_pulse_done = 0;
 
 /* stim_state[0] = stim_on (1 on 0 off)
  * stim_state[1] = stim_type (0 burst, 1 dc) */
@@ -248,12 +253,17 @@ void userIsr(void)
 void dc_handler() {
     counter++;
     if (counter >= dc_phase_timings[phase]) {
-        phase = (phase + 1) % 4;
+        if (phase == 4) {
+            dc_pulse_done++;
+            if (dc_pulse_done < dc_pulse_num || dc_pulse_num == 0) {
+                phase = 0;
+            } else {
+                command_stop(0); 
+                return;
+            }
+        } else phase++;
         counter = 0;
-    }
-    
-    // TODO switches for dc
-    
+    } 
     if (phase == 0) {
         /* Ramping up */
         vdac_curr = (uint32_t)((double)counter * dc_slope + dc_vdac_base);
@@ -266,6 +276,11 @@ void dc_handler() {
     } else if (phase == 4) {
         vdac_curr = dc_vdac_base;   
     }
+    
+    
+    // TODO switches for dc
+    
+
     VDAC_SetValueBuffered(vdac_curr);
 }
 
@@ -301,6 +316,7 @@ void burst_handler() {
                 phase = 0;   
             } else {
                 command_stop(0);   
+                return;
             }
         }
 
