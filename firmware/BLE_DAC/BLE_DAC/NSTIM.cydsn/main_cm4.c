@@ -93,8 +93,8 @@ uint32_t burst_phase_timings[] = {400u, 100u, 100u, 100u, 2000u};
 uint32_t dc_vdac_target = 4095u;
 /* Starting value for DC mode, what we start the ramp from */
 uint32_t dc_vdac_base = V0;
-/* Phase timings for DC mode, 0 is slope, 1 is flat, 2 is interstim */
-uint32_t dc_phase_timings[] = {100u, 200u, 100u};
+/* Phase timings for DC mode, 0 is interstim, 1 ramp up, 2 is high, 3 is ramp down */
+uint32_t dc_phase_timings[] = {100u, 100u, 200u, 100u};
 /* Keeps track of our dc_slope so we don't need to keep calculating it */
 double dc_slope;
 
@@ -165,14 +165,14 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
   case CY_BLE_EVT_GAP_DEVICE_DISCONNECTED:
     printf("disconnected\r\n");
     Cy_GPIO_Write(RED_PORT, RED_NUM, 0);     // RED is ON
-    Cy_GPIO_Write(GREEN_PORT, GREEN_NUM, 1); // GREEN is OFF
+    Cy_GPIO_Write(BLUE_PORT, BLUE_NUM, 1); // GREEN is OFF
     Cy_BLE_GAPP_StartAdvertisement(CY_BLE_ADVERTISING_FAST,
                                    CY_BLE_PERIPHERAL_CONFIGURATION_0_INDEX);
     break;
   case CY_BLE_EVT_GATT_CONNECT_IND:
     printf("connected\r\n");
     Cy_GPIO_Write(RED_PORT, RED_NUM, 1);     // RED is OFF
-    Cy_GPIO_Write(GREEN_PORT, GREEN_NUM, 0); // GREEN is ON
+    Cy_GPIO_Write(BLUE_PORT, BLUE_NUM, 0); // GREEN is ON
     break;
 
   case CY_BLE_EVT_GATTS_WRITE_REQ:
@@ -292,6 +292,10 @@ void userIsr(void) {
 void dc_handler() {
   counter++;
   if (counter >= dc_phase_timings[phase]) {
+    Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 1);//(phase == 0) ? 0 : 1);
+    Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM,0); //(phase == 0) ? 1 : 0);
+    Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0); //(phase == 0) ? 1 : 0);
+    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1); //(phase == 0) ? 0 : 1);
     if (phase == 4) {
       dc_pulse_done++;
       if (dc_pulse_done < dc_pulse_num || dc_pulse_num == 0) {
@@ -300,24 +304,27 @@ void dc_handler() {
         command_stop(0);
         return;
       }
-    } else
+    } else {
       phase++;
-    counter = 0;
-  }
+      counter = 0u;
+  }}
   if (phase == 0) {
+    /* Holding at base */
+    vdac_curr = dc_vdac_base;
+    
+  } else if (phase == 1) {
     /* Ramping up */
     vdac_curr = (uint32_t)((double)counter * dc_slope + dc_vdac_base);
-  } else if (phase == 1) {
-    /* Holding steady */
-    vdac_curr = dc_vdac_target;
+    
   } else if (phase == 2) {
+    /* Holding at high */
+    vdac_curr = dc_vdac_target;
+    
+  } else if (phase == 3) {
     /* Ramping down */
     vdac_curr = (uint32_t)((double)counter * (-dc_slope) + dc_vdac_target);
-  } else if (phase == 4) {
-    vdac_curr = dc_vdac_base;
+    
   }
-
-  // TODO switches for DC
 
   VDAC_SetValueBuffered(vdac_curr);
 }
@@ -503,6 +510,8 @@ int main(void) {
 
   NVIC_EnableIRQ(SysInt_VDAC_cfg.intrSrc);
   VDAC_Start();
+  Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
+  Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
 
   set_dc_slope();
 
