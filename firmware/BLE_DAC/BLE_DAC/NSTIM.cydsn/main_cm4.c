@@ -65,11 +65,11 @@ uint32_t vdac_curr = 0u;
 uint32_t err = 0;
 
 /* Pulses per burst */
-uint32_t pulse_num = 3;
+uint32_t pulse_num = 0;
 /* Pulse completed */
 uint32_t pulse_done = 0;
 /* Bursts target */
-uint32_t burst_num = 100;
+uint32_t burst_num = 0;
 /* Bursts completed */
 uint32_t burst_done = 0;
 
@@ -456,7 +456,8 @@ int command_burst_phase_one_curr(uint32_t param) {
     return 2;
   }
 
-  burst_vdac_values[1] = vdac_val;
+    burst_vdac_values[1] = vdac_val;
+    return 0;
 }
 
 int command_burst_phase_two_curr(uint32_t param) {
