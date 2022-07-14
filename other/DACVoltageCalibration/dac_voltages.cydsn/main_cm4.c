@@ -3,14 +3,14 @@
 
 
 // (Time spent on each output in seconds)/500
-#define TIME_ON_EACH_DAC_OUTPUT 400
+#define TIME_ON_EACH_DAC_OUTPUT 500
 
 // Time spent on each DAC output (every increment represent 2us passing)
 uint32_t counter = 0u;
 
 // Current DAC voltage level
-int voltage_level = 4000;
-
+int voltage_level = 3980;
+//1800 - 2100
 
 void userIsr(void);
 
