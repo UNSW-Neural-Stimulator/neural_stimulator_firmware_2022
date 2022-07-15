@@ -15,6 +15,7 @@
 #include "task.h"
 #include <limits.h>
 #include <stdio.h>
+#include <math.h>
 
 #define SW_ISO P5_2_PORT
 #define SW_LOAD P5_3_PORT
@@ -146,7 +147,7 @@ float uint32_to_float(uint32_t u);
 uint32_t float_to_uint32(float f);
 
 void command_handler(uint8_t command, uint32_t params) {
-  if (command <= 0 || command > 11) {
+  if (command < 1 || command > 16) {
     printf("Invalid command '%d'\n", command);
     err = 1;
   }
@@ -185,8 +186,9 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
     }
 
     uint8_t command = req_param[0];
-    uint32_t param = (req_param[1] << 24) + (req_param[2] << 16) +
-                     (req_param[3] << 8) + (req_param[4]);
+    uint32_t param = req_param[1] + (req_param[2] << 8) +
+                     (req_param[3] << 16) + (req_param[4] << 24);
+    printf("Param %u\n", param);
 
     printf("Executed command %x with param %x\n", command, param);
     command_handler(command, param);
@@ -290,43 +292,54 @@ void userIsr(void) {
 }
 
 void dc_handler() {
-  counter++;
-  if (counter >= dc_phase_timings[phase]) {
-    Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 1);//(phase == 0) ? 0 : 1);
-    Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM,0); //(phase == 0) ? 1 : 0);
-    Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0); //(phase == 0) ? 1 : 0);
-    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1); //(phase == 0) ? 0 : 1);
-    if (phase == 4) {
-      dc_pulse_done++;
-      if (dc_pulse_done < dc_pulse_num || dc_pulse_num == 0) {
-        phase = 0;
-      } else {
-        command_stop(0);
-        return;
-      }
-    } else {
-      phase++;
-      counter = 0u;
-  }}
-  if (phase == 0) {
-    /* Holding at base */
-    vdac_curr = dc_vdac_base;
-    
-  } else if (phase == 1) {
-    /* Ramping up */
-    vdac_curr = (uint32_t)((double)counter * dc_slope + dc_vdac_base);
-    
-  } else if (phase == 2) {
-    /* Holding at high */
-    vdac_curr = dc_vdac_target;
-    
-  } else if (phase == 3) {
-    /* Ramping down */
-    vdac_curr = (uint32_t)((double)counter * (-dc_slope) + dc_vdac_target);
-    
-  }
+    counter++;
+    if (counter >= dc_phase_timings[phase]) {
+        if (phase == 4) {
+            dc_pulse_done++;
+            if (dc_pulse_done < dc_pulse_num || dc_pulse_num == 0) {
+                phase = 0;
+            } else {
+                command_stop(0);
+                return;
+            }
+        } else {
+            phase++;
+            counter = 0u;
+        }
+    }
+    if (phase == 0) {
+        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);
+        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
+        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
+        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
+        /* Holding at base */
+        vdac_curr = dc_vdac_base;
 
-  VDAC_SetValueBuffered(vdac_curr);
+    } else if (phase == 1) {
+        /* Ramping up */
+        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 1);
+        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);
+        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0);
+        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
+        vdac_curr = (uint32_t)((double)counter * dc_slope + dc_vdac_base);
+
+    } else if (phase == 2) {
+        /* Holding at high */
+        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);
+        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
+        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
+        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
+        vdac_curr = dc_vdac_target;
+
+    } else if (phase == 3) {
+        /* Ramping down */
+        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 1);
+        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);
+        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0);
+        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
+        vdac_curr = (uint32_t)((double)counter * (-dc_slope) + dc_vdac_target);
+    }
+    VDAC_SetValueBuffered(vdac_curr);
 }
 
 void burst_handler() {
@@ -455,28 +468,38 @@ int command_burst_burst_num(uint32_t param) {
 }
 
 int command_burst_phase_one_curr(uint32_t param) {
-  uint32_t vdac_val = CURR_TO_VDAC(uint32_to_float(param));
+    float curr = uint32_to_float(param);
+    if (curr == NAN || curr < -3.0 || curr > 3.0) {
+        printf("Invalid current\n");
+    }
+    
+    uint32_t vdac_val = CURR_TO_VDAC(curr);
 
-  if ((anodic && vdac_val > V0) || (!anodic && vdac_val < V0)) {
-    return 1;
-  } else if (vdac_val > VDAC_MAX) {
-    return 2;
-  }
+    if ((anodic && vdac_val > V0) || (!anodic && vdac_val < V0)) {
+        return 1;
+    } else if (vdac_val > VDAC_MAX) {
+        return 2;
+    }
 
     burst_vdac_values[1] = vdac_val;
     return 0;
 }
 
 int command_burst_phase_two_curr(uint32_t param) {
-  uint32_t vdac_val = CURR_TO_VDAC(uint32_to_float(param));
+    float curr = uint32_to_float(param);
+    if (curr == NAN || curr < -3.0 || curr > 3.0) {
+        printf("Invalid current\n");   
+    }
+    uint32_t vdac_val = CURR_TO_VDAC(curr);
 
-  if ((!anodic && vdac_val > V0) || (anodic && vdac_val < V0)) {
-    return 1;
-  } else if (vdac_val > VDAC_MAX) {
-    return 2;
-  }
+    if ((!anodic && vdac_val > V0) || (anodic && vdac_val < V0)) {
+        return 1;
+    } else if (vdac_val > VDAC_MAX) {
+        return 2;
+    }
 
-  burst_vdac_values[3] = vdac_val;
+    burst_vdac_values[3] = vdac_val;
+    return 0;
 }
 
 int command_dc_ramp_time(uint32_t param) {
@@ -491,12 +514,18 @@ int command_dc_hold_time(uint32_t param) {
 }
 
 int command_dc_curr_target(uint32_t param) {
-  uint32_t vdac_val = CURR_TO_VDAC(uint32_to_float(param));
-  if (vdac_val > VDAC_MAX || vdac_val < V0) {
-    return 1;
-  }
-  dc_vdac_target = vdac_val;
-  return 0;
+    float curr = uint32_to_float(param);
+    if (curr == NAN || curr < -3.0 || curr > 3.0) {
+        printf("Invalid current\n");
+    }
+    
+    uint32_t vdac_val = CURR_TO_VDAC(curr);
+    
+    if (vdac_val > VDAC_MAX || vdac_val < V0) {
+        return 1;
+    }
+    dc_vdac_target = vdac_val;
+    return 0;
 }
 
 int main(void) {
