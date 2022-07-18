@@ -424,8 +424,8 @@ int command_anodic_cathodic(uint32_t param) {
     (void)param;
     if (param == 0 || param == 1) {
         anodic = param;
-        ac_vdac_values[1] = INVERT_VDAC(ac_vdac_values[1]);
-        ac_vdac_values[3] = INVERT_VDAC(ac_vdac_values[3]);
+        // ac_vdac_values[1] = INVERT_VDAC(ac_vdac_values[1]);
+        // ac_vdac_values[3] = INVERT_VDAC(ac_vdac_values[3]);
         return 0;
     } else {
         return 1;
@@ -501,10 +501,10 @@ int command_ac_phase_one_curr(uint32_t param) {
     
     printf("To vdac: %u\n", vdac_val);
 
-    /* if ((anodic && vdac_val > V0) || (!anodic && vdac_val < V0)) {
+    if ((anodic && vdac_val > V0) || (!anodic && vdac_val < V0)) {
+        printf("VDAC val does match\n");
         return 1;
-    } else */
-    if (vdac_val > VDAC_MAX) {
+    } else if (vdac_val > VDAC_MAX) {
         return 2;
     }
 
@@ -524,9 +524,9 @@ int command_ac_phase_two_curr(uint32_t param) {
     uint32_t vdac_val = CURR_TO_VDAC(curr);
     printf("VDAC: %u\n", vdac_val);
 
-    /*if ((!anodic && vdac_val > V0) || (anodic && vdac_val < V0)) {
+    if ((!anodic && vdac_val > V0) || (anodic && vdac_val < V0)) {
         return 1;
-    } else */if (vdac_val > VDAC_MAX) {
+    } else if (vdac_val > VDAC_MAX) {
         return 2;
     }
 
