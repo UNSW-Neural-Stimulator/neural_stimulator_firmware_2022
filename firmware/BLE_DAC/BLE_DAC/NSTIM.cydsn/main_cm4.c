@@ -487,6 +487,7 @@ int command_ac_burst_num(uint32_t param) {
 
 int command_ac_phase_one_curr(uint32_t param) {
     int curr_uamps = uint_to_int(param);
+    printf("Requesting %d uamps\n", curr_uamps);
     float curr = ((float) curr_uamps) / 1000;
     // float curr = uint32_to_float(param);
     if (curr == NAN || curr < -3.5 || curr > 3.5) {
