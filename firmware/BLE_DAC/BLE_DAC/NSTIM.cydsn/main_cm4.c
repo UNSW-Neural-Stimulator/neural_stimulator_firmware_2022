@@ -278,7 +278,7 @@ void bleTask(void *arg) {
 
 void set_dc_slope() {
     dc_slope = ((double)dc_vdac_target - (double)dc_vdac_base) /
-             (double)dc_phase_timings[0];
+             (double)dc_phase_timings[1];
 }
 
 int compliance_check(uint16_t p1_time, uint32_t p1_dac, uint16_t p2_time,
@@ -394,9 +394,18 @@ void burst_handler() {
     VDAC_SetValueBuffered(ac_vdac_values[phase]);
 }
 
+void ac_print_state() {
+    printf("ac_pulse_num: %u, ac_burst_num: %u, stim_state[0]: %u, stim_state[1]: %u, ac_phase[0]: %u, ac_phase[1]: %u, ac_phase[2]: %u, ac_phase[3]: %u, ac_v[0]: %u, ac_v[1]: %u, ac_v[2]: %u, ac_v[3]: %u\n", ac_pulse_num, ac_burst_num, stim_state[0], stim_state[1], ac_phase_timings[0], ac_phase_timings[1], ac_phase_timings[2], ac_phase_timings[3], ac_vdac_values[0], ac_vdac_values[1], ac_vdac_values[2], ac_vdac_values[3]);
+}
+
+void dc_print_state() {
+    printf("Ramp time: %u, hold time: %u, dc_vdac_target: %u, dc_base: %u\n", dc_phase_timings[1], dc_phase_timings[2], dc_vdac_target, dc_vdac_base);
+}
+
 int command_start(uint32_t param) {
     printf("Inside start command with param %u\n", param);
     stim_state[0] = 1;
+    dc_print_state();
     // Compliance check and err if not passed
     return 0;
 }
@@ -535,13 +544,13 @@ int command_ac_phase_two_curr(uint32_t param) {
 }
 
 int command_dc_ramp_time(uint32_t param) {
-  dc_phase_timings[0] = US_TO_PT(param);
+  dc_phase_timings[1] = US_TO_PT(param);
   set_dc_slope();
   return 0;
 }
 
 int command_dc_hold_time(uint32_t param) {
-  dc_phase_timings[1] = US_TO_PT(param);
+  dc_phase_timings[2] = US_TO_PT(param);
   return 0;
 }
 
@@ -554,6 +563,7 @@ int command_dc_curr_target(uint32_t param) {
     }
     
     uint32_t vdac_val = CURR_TO_VDAC(curr);
+    printf("Curr: %f, vdac: %u\n", curr, vdac_val);
     
     if (vdac_val > VDAC_MAX || vdac_val < V0) {
         return 1;
