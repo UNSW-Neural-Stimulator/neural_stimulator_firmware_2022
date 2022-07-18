@@ -490,7 +490,7 @@ int command_ac_phase_one_curr(uint32_t param) {
     printf("Requesting %d uamps\n", curr_uamps);
     float curr = ((float) curr_uamps) / 1000;
     // float curr = uint32_to_float(param);
-    if (curr == NAN || curr < -3.5 || curr > 3.5) {
+    if (curr == NAN || curr < -3.48 || curr > 3.48) {
         printf("Invalid current\n");
         return 1;
     }
@@ -501,21 +501,22 @@ int command_ac_phase_one_curr(uint32_t param) {
     
     printf("To vdac: %u\n", vdac_val);
 
-    if ((anodic && vdac_val > V0) || (!anodic && vdac_val < V0)) {
+    /* if ((anodic && vdac_val > V0) || (!anodic && vdac_val < V0)) {
         return 1;
-    } else if (vdac_val > VDAC_MAX) {
+    } else */
+    if (vdac_val > VDAC_MAX) {
         return 2;
     }
 
     ac_vdac_values[1] = vdac_val;
     return 0;
-}
+}   
 
 int command_ac_phase_two_curr(uint32_t param) {
     int curr_uamps = uint_to_int(param);
     float curr = ((float) curr_uamps) / 1000;
     // float curr = uint32_to_float(param);
-    if (curr == NAN || curr < -3.5 || curr > 3.5) {
+    if (curr == NAN || curr < -3.48 || curr > 3.48) {
         printf("Invalid current\n");   
         return 1;
     }
@@ -523,9 +524,9 @@ int command_ac_phase_two_curr(uint32_t param) {
     uint32_t vdac_val = CURR_TO_VDAC(curr);
     printf("VDAC: %u\n", vdac_val);
 
-    if ((!anodic && vdac_val > V0) || (anodic && vdac_val < V0)) {
+    /*if ((!anodic && vdac_val > V0) || (anodic && vdac_val < V0)) {
         return 1;
-    } else if (vdac_val > VDAC_MAX) {
+    } else */if (vdac_val > VDAC_MAX) {
         return 2;
     }
 
@@ -548,7 +549,7 @@ int command_dc_curr_target(uint32_t param) {
     int curr_uamps = uint_to_int(param);
     float curr = ((float) curr_uamps) / 1000;
     //float curr = uint32_to_float(param);
-    if (curr == NAN || curr < -3.5 || curr > 3.5) {
+    if (curr == NAN || curr < -3.48 || curr > 3.48) {
         printf("Invalid current\n");
     }
     
