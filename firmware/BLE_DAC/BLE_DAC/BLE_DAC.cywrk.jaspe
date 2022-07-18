@@ -985,6 +985,7 @@
 <v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hps.lst</v>
 <v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hrs.lst</v>
 <v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hts.lst</v>
+<v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ias.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -1101,6 +1102,7 @@
 <v>BLE_DAC\CustomService\SysClk_PDL_v1_0\SysClk_PDL_v1_0.pdf</v>
 <v>BLE_DAC\CustomService\TCPWM_PWM_PDL_v1_0</v>
 <v>BLE_DAC\CustomService\TCPWM_PWM_PDL_v1_0\TCPWM_PWM_PDL_v1_0.pdf</v>
+<v>BLE_DAC\NSTIM</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>

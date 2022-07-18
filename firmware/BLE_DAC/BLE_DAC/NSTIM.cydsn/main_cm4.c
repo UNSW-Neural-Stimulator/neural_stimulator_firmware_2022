@@ -475,7 +475,8 @@ int command_ac_burst_num(uint32_t param) {
 }
 
 int command_ac_phase_one_curr(uint32_t param) {
-    float curr = uint32_to_float(param);
+    float curr = ((float) param) / 1000;
+    // float curr = uint32_to_float(param);
     if (curr == NAN || curr < -3.0 || curr > 3.0) {
         printf("Invalid current\n");
         return 1;
@@ -498,7 +499,8 @@ int command_ac_phase_one_curr(uint32_t param) {
 }
 
 int command_ac_phase_two_curr(uint32_t param) {
-    float curr = uint32_to_float(param);
+    float curr = ((float) param) / 1000;
+    // float curr = uint32_to_float(param);
     if (curr == NAN || curr < -3.0 || curr > 3.0) {
         printf("Invalid current\n");   
         return 1;
