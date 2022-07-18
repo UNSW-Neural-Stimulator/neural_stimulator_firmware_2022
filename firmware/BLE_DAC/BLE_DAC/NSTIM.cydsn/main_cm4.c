@@ -50,6 +50,11 @@ typedef union overlay_t {
   float f;
 } overlay_t;
 
+typedef union uint_int_overlay_t {
+    uint32_t u;
+    int i;
+} uint_int_overlay_t;
+
 /* Used by BLE task to wait for next BLE request */
 SemaphoreHandle_t bleSemaphore;
 
@@ -439,6 +444,12 @@ uint32_t float_to_uint32(float f) {
     return p.u;
 }
 
+int uint_to_int(uint32_t u) {
+    uint_int_overlay_t p;
+    p.u = u;
+    return p.i;
+}
+
 int command_ac_phase_one(uint32_t param) {
     ac_phase_timings[1] = US_TO_PT(param);
     return 0;
@@ -475,9 +486,10 @@ int command_ac_burst_num(uint32_t param) {
 }
 
 int command_ac_phase_one_curr(uint32_t param) {
-    float curr = ((float) param) / 1000;
+    int curr_uamps = uint_to_int(param);
+    float curr = ((float) curr_uamps) / 1000;
     // float curr = uint32_to_float(param);
-    if (curr == NAN || curr < -3.0 || curr > 3.0) {
+    if (curr == NAN || curr < -3.5 || curr > 3.5) {
         printf("Invalid current\n");
         return 1;
     }
@@ -499,7 +511,8 @@ int command_ac_phase_one_curr(uint32_t param) {
 }
 
 int command_ac_phase_two_curr(uint32_t param) {
-    float curr = ((float) param) / 1000;
+    int curr_uamps = uint_to_int(param);
+    float curr = ((float) curr_uamps) / 1000;
     // float curr = uint32_to_float(param);
     if (curr == NAN || curr < -3.0 || curr > 3.0) {
         printf("Invalid current\n");   
