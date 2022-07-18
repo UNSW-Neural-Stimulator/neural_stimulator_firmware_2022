@@ -94,11 +94,11 @@ uint16_t ac_vdac_values[] = {V0, 4095u, V0, 0u, V0};
 /* Phase timings for ac mode, interstim, p1, interphase, p2, interburst */
 uint32_t ac_phase_timings[] = {400u, 100u, 100u, 100u, 2000u};
 /* Max value for DC mode, what we want to ramp up to */
-uint32_t dc_vdac_target = 4095u;
+uint32_t dc_vdac_target = 2633u;
 /* Starting value for DC mode, what we start the ramp from */
 uint32_t dc_vdac_base = V0;
 /* Phase timings for DC mode, 0 is interstim, 1 ramp up, 2 is high, 3 is ramp down */
-uint32_t dc_phase_timings[] = {100u, 100u, 200u, 100u};
+uint32_t dc_phase_timings[] = {1000u, 250u, 500u, 100u};
 /* Keeps track of our dc_slope so we don't need to keep calculating it */
 double dc_slope;
 
@@ -277,8 +277,8 @@ void bleTask(void *arg) {
 }
 
 void set_dc_slope() {
-    dc_slope = ((double)dc_vdac_target - (double)dc_vdac_base) /
-             (double)dc_phase_timings[1];
+    dc_phase_timings[3] = dc_phase_timings[1];
+    dc_slope = (((double)(dc_vdac_target - dc_vdac_base)) / ((double)dc_phase_timings[1]));
 }
 
 int compliance_check(uint16_t p1_time, uint32_t p1_dac, uint16_t p2_time,
@@ -333,7 +333,7 @@ void dc_handler() {
         Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);
         Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0);
         Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
-        vdac_curr = (uint32_t)((double)counter * dc_slope + dc_vdac_base);
+        vdac_curr = (uint32_t)(((double)counter * dc_slope) + dc_vdac_base);
 
     } else if (phase == 2) {
         /* Holding at high */
@@ -349,13 +349,18 @@ void dc_handler() {
         Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);
         Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0);
         Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
-        vdac_curr = (uint32_t)((double)counter * (-dc_slope) + dc_vdac_target);
+        vdac_curr = (uint32_t)(dc_vdac_target - (counter * (double)dc_slope));
     }
-    VDAC_SetValueBuffered(vdac_curr);
+    VDAC_SetValueBuffered((uint32_t)vdac_curr);
 }
 
 void burst_handler() {
     counter++;
+    if (phase==1 && counter == ac_phase_timings[phase]/2){
+        Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
+        int16_t result = Cy_SAR_GetResult16(SAR,0);
+        printf("Voltage result: %f\r\n",Cy_SAR_CountsTo_Volts(SAR,0,result));
+    }
     if (counter >= ac_phase_timings[phase]) {
         counter = 0u;
         if (phase < 3) {
@@ -399,10 +404,20 @@ void ac_print_state() {
 }
 
 void dc_print_state() {
-    printf("Ramp time: %u, hold time: %u, dc_vdac_target: %u, dc_base: %u\n", dc_phase_timings[1], dc_phase_timings[2], dc_vdac_target, dc_vdac_base);
+    printf("Ramp up time: %u, ramp down time: %u, hold time: %u, dc_vdac_target: %u, dc_base: %u, dc_ramp: %lf\n", dc_phase_timings[1], dc_phase_timings[3], dc_phase_timings[2], dc_vdac_target, dc_vdac_base, dc_slope);
 }
 
 int command_start(uint32_t param) {
+    /*VDAC_SetValueBuffered(V0 + 40);
+    Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
+    int16_t result = Cy_SAR_GetResult16(SAR,0);
+    float voltage = Cy_SAR_CountsTo_Volts(SAR,0,result)
+    if (voltage > 2.03) {
+        return 1;   
+    }
+    else if (result < ) {
+        return 1;   
+    }*/
     printf("Inside start command with param %u\n", param);
     stim_state[0] = 1;
     dc_print_state();
@@ -544,9 +559,10 @@ int command_ac_phase_two_curr(uint32_t param) {
 }
 
 int command_dc_ramp_time(uint32_t param) {
-  dc_phase_timings[1] = US_TO_PT(param);
-  set_dc_slope();
-  return 0;
+    dc_phase_timings[1] = US_TO_PT(param);
+    dc_phase_timings[3] = dc_phase_timings[1];
+    set_dc_slope();
+    return 0;
 }
 
 int command_dc_hold_time(uint32_t param) {
@@ -583,6 +599,7 @@ int main(void) {
 
     NVIC_EnableIRQ(SysInt_VDAC_cfg.intrSrc);
     VDAC_Start();
+    ADC_Start();
     Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
     Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
 

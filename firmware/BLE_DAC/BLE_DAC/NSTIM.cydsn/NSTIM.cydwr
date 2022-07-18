@@ -14,6 +14,7 @@
     </Group>
     <Group key="Pin">
       <Data key="00f67d9c-779b-472a-ae5c-8395db48e1af" value="HOWLAND_NEG_EN" />
+      <Data key="80b0080f-f36c-4b8d-bd88-67dcba854764" value="EVM_SENSE" />
       <Data key="0113321b-4a37-46f6-8407-2f8646c68756" value="VDAC_Out" />
       <Data key="70269159-a16e-4151-8f48-0bd6940f9b47" value="HOWLAND_POS_EN" />
       <Data key="a61270bc-07ec-447d-ac9e-34cfe85c30e9" value="BLUE" />
@@ -648,6 +649,11 @@
     <Group key="00f67d9c-779b-472a-ae5c-8395db48e1af">
       <Group key="0">
         <Data key="Port Format" value="5,6" />
+      </Group>
+    </Group>
+    <Group key="80b0080f-f36c-4b8d-bd88-67dcba854764">
+      <Group key="0">
+        <Data key="Port Format" value="10,0" />
       </Group>
     </Group>
     <Group key="0113321b-4a37-46f6-8407-2f8646c68756">
