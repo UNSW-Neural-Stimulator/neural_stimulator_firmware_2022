@@ -515,7 +515,7 @@ int command_ac_phase_two_curr(uint32_t param) {
     int curr_uamps = uint_to_int(param);
     float curr = ((float) curr_uamps) / 1000;
     // float curr = uint32_to_float(param);
-    if (curr == NAN || curr < -3.0 || curr > 3.0) {
+    if (curr == NAN || curr < -3.5 || curr > 3.5) {
         printf("Invalid current\n");   
         return 1;
     }
@@ -545,8 +545,10 @@ int command_dc_hold_time(uint32_t param) {
 }
 
 int command_dc_curr_target(uint32_t param) {
-    float curr = uint32_to_float(param);
-    if (curr == NAN || curr < -3.0 || curr > 3.0) {
+    int curr_uamps = uint_to_int(param);
+    float curr = ((float) curr_uamps) / 1000;
+    //float curr = uint32_to_float(param);
+    if (curr == NAN || curr < -3.5 || curr > 3.5) {
         printf("Invalid current\n");
     }
     
