@@ -58,9 +58,6 @@ typedef union uint_int_overlay_t {
 /* Used by BLE task to wait for next BLE request */
 SemaphoreHandle_t bleSemaphore;
 
-/* Task handle for the ADC */
-static TaskHandle_t xADCTaskHandle = NULL;
-
 /* Phase of pulse */
 uint32_t phase = 0u;
 /* Generic phase timing counter */
@@ -103,7 +100,9 @@ uint32_t dc_vdac_base = V0;
 /* Phase timings for DC mode, 0 is interstim, 1 ramp up, 2 is high, 3 is ramp down */
 uint32_t dc_phase_timings[] = {1000u, 250u, 500u, 100u};
 /* Keeps track of our dc_slope so we don't need to keep calculating it */
-double dc_slope;
+float dc_slope;
+/* For DC, keep track of our current vdac value */
+float dc_voltage = (float)V0;
 
 int command_start(uint32_t param);
 int command_stop(uint32_t param);
@@ -145,7 +144,6 @@ static int (*command_handlers[])(uint32_t param) = {
 };
 
 /* RTOS Tasks */
-void xADCTask( void *arg );
 void bleTask(void *arg);
 
 /* Helper functions */
@@ -159,7 +157,7 @@ float uint32_to_float(uint32_t u);
 uint32_t float_to_uint32(float f);
 
 void command_handler(uint8_t command, uint32_t params) {
-    if (command < 1 || command > 16) {
+    if (command < 1 || command > 17) {
         printf("Invalid command '%d'\n", command);
         err = 1;
     }
@@ -241,9 +239,6 @@ void read_req_handler(cy_stc_ble_gatts_char_val_read_req_t *readReqParam) {
         case (CY_BLE_DC_SERV_TIMING_CHAR_HANDLE):
             CY_BLE_GATT_DB_ATTR_SET_GEN_VALUE(readReqParam->attrHandle,
                                               &dc_phase_timings, 12);
-            for (int i = 0; i < 8; i++) {
-                printf("0x%x ", ((uint8_t *)dc_phase_timings)[i]);
-            }
             break;
         case (CY_BLE_DC_SERV_PULSES_CHAR_HANDLE):
             CY_BLE_GATT_DB_ATTR_SET_GEN_VALUE(readReqParam->attrHandle, 
@@ -265,7 +260,7 @@ void bleInterruptNotify() {
     portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
-void xADCTask( void *arg ) {
+/*void xADCTask( void *arg ) {
     (void)arg;
     for (;;) {
         // Block until we are woken by dac task
@@ -277,7 +272,7 @@ void xADCTask( void *arg ) {
         printf("Voltage result: %f\r\n",Cy_SAR_CountsTo_Volts(SAR,0,result));
         
     }
-}
+}*/
 
 void bleTask(void *arg) {
     (void)arg;
@@ -333,6 +328,7 @@ void dc_handler() {
         if (phase == 4) {
             dc_pulse_done++;
             if (dc_pulse_done < dc_pulse_num || dc_pulse_num == 0) {
+                counter = 0u;
                 phase = 0;
             } else {
                 command_stop(0);
@@ -342,47 +338,37 @@ void dc_handler() {
             phase++;
             counter = 0u;
         }
+
+        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM,(phase) ? 1 : 0);
+        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (phase) ? 0 : 1);
+        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (phase) ? 0 : 1);
+        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (phase) ? 1 : 0);
     }
-    if (phase == 0) {
-        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);
-        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
-        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
-        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
-        /* Holding at base */
-        vdac_curr = dc_vdac_base;
-
-    } else if (phase == 1) {
-        /* Ramping up */
-        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 1);
-        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);
-        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0);
-        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
-        vdac_curr = (uint32_t)(((double)counter * dc_slope) + dc_vdac_base);
-
-    } else if (phase == 2) {
-        /* Holding at high */
-        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 1);
-        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);
-        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0);
-        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
-        vdac_curr = dc_vdac_target;
-
-    } else if (phase == 3) {
-        /* Ramping down */
-        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 1);
-        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);
-        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0);
-        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
-        vdac_curr = (uint32_t)(dc_vdac_target - (counter * (double)dc_slope));
+    
+    switch (phase) {
+        case (0):
+            dc_voltage = (float)dc_vdac_base;
+            break;
+        case (1):
+            dc_voltage += dc_slope;
+            break;
+        case (2):
+            dc_voltage = (float)dc_vdac_target;
+            break;
+        case (3):
+            dc_voltage -= dc_slope;
+            break;
     }
-    VDAC_SetValueBuffered((uint32_t)vdac_curr);
+    VDAC_SetValueBuffered((uint32_t)dc_voltage);
 }
 
 void burst_handler() {
     counter++;
     
     if (phase==1 && counter == ac_phase_timings[phase]/2){
-        xTaskNotifyGive( xADCTaskHandle );
+        Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
+        int16_t result = Cy_SAR_GetResult16(SAR,0);
+        printf("Voltage result: %f\r\n",Cy_SAR_CountsTo_Volts(SAR,0,result));
     }
     
     if (counter >= ac_phase_timings[phase]) {
@@ -435,7 +421,7 @@ void dc_print_state() {
 int command_start(uint32_t param) {
     printf("Inside start command with param %u\n", param);
     stim_state[0] = 1;
-    //dc_print_state();
+    dc_print_state();
     // Compliance check and err if not passed
     return 0;
 }
@@ -615,21 +601,23 @@ int main(void) {
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     UART_Start();
+    ADC_Start();
     printf("Process started\n");
 
     (void)Cy_SysInt_Init(&SysInt_VDAC_cfg, userIsr);
 
     NVIC_EnableIRQ(SysInt_VDAC_cfg.intrSrc);
 
+    VDAC_Start();
+    
     Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
     Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
 
     set_dc_slope();
 
     xTaskCreate(bleTask, "bleTask", 1024, 0, 1, 0);
-    //xTaskCreate(xADCTask, "ascTask", 200, 0, 1, &xADCTaskHandle);
-    VDAC_Start();
-    ADC_Start();
+    
+    //ADC_Start();
     vTaskStartScheduler();
     for (;;) {
         /* Place your application code here. */
