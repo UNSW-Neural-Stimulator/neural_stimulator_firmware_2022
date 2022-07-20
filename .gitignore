@@ -5,3 +5,4 @@ Export/
 Generated_Source/
 iar/
 mdk/
+**/BUILD.log
