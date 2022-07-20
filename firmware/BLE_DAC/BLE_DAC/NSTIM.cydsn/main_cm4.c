@@ -72,7 +72,7 @@ uint32_t vdac_curr = 0u;
 uint32_t err = 0;
 
 /* Pulses per burst */
-uint32_t ac_pulse_num = 0;
+uint32_t ac_pulse_num = 2;
 /* Pulse completed */
 uint32_t ac_pulse_done = 0;
 /* Bursts target */
@@ -370,10 +370,10 @@ void dc_handler() {
 void burst_handler() {
     counter++;
     
-    if (phase==1 && counter == ac_phase_timings[phase]/2){
+    if (phase==1 && counter == 10){
         Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
         int16_t result = Cy_SAR_GetResult16(SAR,0);
-        printf("Voltage result: %f\r\n",Cy_SAR_CountsTo_Volts(SAR,0,result));
+        printf("Voltage result: %f\r\n",(15.0*(Cy_SAR_CountsTo_Volts(SAR,0,result)-1.5)));
     }
     
     if (counter >= ac_phase_timings[phase]) {
