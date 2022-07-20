@@ -433,19 +433,9 @@ void dc_print_state() {
 }
 
 int command_start(uint32_t param) {
-    /*VDAC_SetValueBuffered(V0 + 40);
-    Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
-    int16_t result = Cy_SAR_GetResult16(SAR,0);
-    float voltage = Cy_SAR_CountsTo_Volts(SAR,0,result)
-    if (voltage > 2.03) {
-        return 1;   
-    }
-    else if (result < ) {
-        return 1;   
-    }*/
     printf("Inside start command with param %u\n", param);
     stim_state[0] = 1;
-    dc_print_state();
+    //dc_print_state();
     // Compliance check and err if not passed
     return 0;
 }
@@ -630,16 +620,16 @@ int main(void) {
     (void)Cy_SysInt_Init(&SysInt_VDAC_cfg, userIsr);
 
     NVIC_EnableIRQ(SysInt_VDAC_cfg.intrSrc);
-    VDAC_Start();
-    ADC_Start();
+
     Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
     Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
 
     set_dc_slope();
 
     xTaskCreate(bleTask, "bleTask", 1024, 0, 1, 0);
-    xTaskCreate(xADCTask, "ascTask", 200, 0, 1, &xADCTaskHandle);
-
+    //xTaskCreate(xADCTask, "ascTask", 200, 0, 1, &xADCTaskHandle);
+    VDAC_Start();
+    ADC_Start();
     vTaskStartScheduler();
     for (;;) {
         /* Place your application code here. */
