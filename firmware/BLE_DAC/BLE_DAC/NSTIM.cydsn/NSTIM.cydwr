@@ -24,6 +24,7 @@
       <Data key="e0c15dd6-8ccc-4bd8-b709-1f4589aa7b4f" value="SW_SHORT" />
       <Data key="f8eb80e4-2f1e-4940-b42e-9114c8efd00c/65f3af6c-759b-4ccb-8c66-5c95ba1f5f4f" value="UART_tx" />
       <Data key="f8eb80e4-2f1e-4940-b42e-9114c8efd00c/b7e8018e-1ef7-49c0-b5a5-61641a03e31c" value="UART_rx" />
+      <Data key="fcb9af75-08d4-4962-aed9-912873f6879f" value="REF_3V" />
       <Data key="fcf218e7-3102-4735-a174-cab8e3e82f8a" value="SW_LOAD" />
     </Group>
   </Group>
@@ -699,6 +700,11 @@
     <Group key="f8eb80e4-2f1e-4940-b42e-9114c8efd00c/b7e8018e-1ef7-49c0-b5a5-61641a03e31c">
       <Group key="0">
         <Data key="Port Format" value="5,0" />
+      </Group>
+    </Group>
+    <Group key="fcb9af75-08d4-4962-aed9-912873f6879f">
+      <Group key="0">
+        <Data key="Port Format" value="9,5" />
       </Group>
     </Group>
     <Group key="fcf218e7-3102-4735-a174-cab8e3e82f8a">
