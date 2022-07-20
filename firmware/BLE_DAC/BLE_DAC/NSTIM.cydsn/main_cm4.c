@@ -58,6 +58,9 @@ typedef union uint_int_overlay_t {
 /* Used by BLE task to wait for next BLE request */
 SemaphoreHandle_t bleSemaphore;
 
+/* Task handle for the ADC */
+static TaskHandle_t xADCTaskHandle = NULL;
+
 /* Phase of pulse */
 uint32_t phase = 0u;
 /* Generic phase timing counter */
@@ -118,6 +121,7 @@ int command_ac_phase_two_curr(uint32_t param);
 int command_dc_ramp_time(uint32_t param);
 int command_dc_hold_time(uint32_t param);
 int command_dc_curr_target(uint32_t param);
+int command_dc_burst_gap(uint32_t param);
 
 static int (*command_handlers[])(uint32_t param) = {
     NULL,                           // 0x00
@@ -137,7 +141,12 @@ static int (*command_handlers[])(uint32_t param) = {
     command_dc_ramp_time,           // 0x0E
     command_dc_hold_time,           // 0x0F
     command_dc_curr_target,         // 0x10
+    command_dc_burst_gap,           // 0x11
 };
+
+/* RTOS Tasks */
+void xADCTask( void *arg );
+void bleTask(void *arg);
 
 /* Helper functions */
 void burst_handler();
@@ -173,6 +182,7 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
             Cy_GPIO_Write(BLUE_PORT, BLUE_NUM, 1); // GREEN is OFF
             Cy_BLE_GAPP_StartAdvertisement(CY_BLE_ADVERTISING_FAST,
                CY_BLE_PERIPHERAL_CONFIGURATION_0_INDEX);
+            command_stop(0);
             break;
         case CY_BLE_EVT_GATT_CONNECT_IND:
             printf("connected\r\n");
@@ -253,6 +263,20 @@ void bleInterruptNotify() {
     xHigherPriorityTaskWoken = pdFALSE;
     xSemaphoreGiveFromISR(bleSemaphore, &xHigherPriorityTaskWoken);
     portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+}
+
+void xADCTask( void *arg ) {
+    (void)arg;
+    for (;;) {
+        // Block until we are woken by dac task
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY );
+  
+        // Take measurement
+        Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
+        int16_t result = Cy_SAR_GetResult16(SAR,0);
+        printf("Voltage result: %f\r\n",Cy_SAR_CountsTo_Volts(SAR,0,result));
+        
+    }
 }
 
 void bleTask(void *arg) {
@@ -337,10 +361,10 @@ void dc_handler() {
 
     } else if (phase == 2) {
         /* Holding at high */
-        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);
-        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
-        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
-        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
+        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 1);
+        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);
+        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0);
+        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
         vdac_curr = dc_vdac_target;
 
     } else if (phase == 3) {
@@ -356,11 +380,11 @@ void dc_handler() {
 
 void burst_handler() {
     counter++;
+    
     if (phase==1 && counter == ac_phase_timings[phase]/2){
-        Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
-        int16_t result = Cy_SAR_GetResult16(SAR,0);
-        printf("Voltage result: %f\r\n",Cy_SAR_CountsTo_Volts(SAR,0,result));
+        xTaskNotifyGive( xADCTaskHandle );
     }
+    
     if (counter >= ac_phase_timings[phase]) {
         counter = 0u;
         if (phase < 3) {
@@ -388,6 +412,7 @@ void burst_handler() {
         } else if (phase == 4) {
             ac_burst_done++;
             if (ac_burst_done < ac_burst_num || ac_burst_num == 0) {
+                
                 phase = 0;
             } else {
                 command_stop(0);
@@ -427,6 +452,7 @@ int command_start(uint32_t param) {
 
 int command_stop(uint32_t param) {
     printf("Inside command stop with param %u\n", param);
+    Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);
     stim_state[0] = 0;
     counter = 0;
     ac_burst_done = 0;
@@ -588,6 +614,12 @@ int command_dc_curr_target(uint32_t param) {
     return 0;
 }
 
+
+int command_dc_burst_gap(uint32_t param) {
+    dc_phase_timings[0] = US_TO_PT(param);
+    return 0;
+}
+
 int main(void) {
     __enable_irq(); /* Enable global interrupts. */
 
@@ -606,6 +638,7 @@ int main(void) {
     set_dc_slope();
 
     xTaskCreate(bleTask, "bleTask", 1024, 0, 1, 0);
+    xTaskCreate(xADCTask, "ascTask", 200, 0, 1, &xADCTaskHandle);
 
     vTaskStartScheduler();
     for (;;) {
