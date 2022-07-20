@@ -43,6 +43,9 @@
 #define INVERT_VDAC(n) (V0 * 2 - n)
 /* Return the abs value of a number */
 #define ABS(n) (n > 0) ? n : -n
+/* Min and max */
+#define MAX(a, b) (a > b) ? a : b
+#define MIN(a, b) (a > b) ? b : a
 
 /* Struct for converting uint32 bits to float and vice versa */
 typedef union overlay_t {
@@ -121,6 +124,7 @@ int command_dc_ramp_time(uint32_t param);
 int command_dc_hold_time(uint32_t param);
 int command_dc_curr_target(uint32_t param);
 int command_dc_burst_gap(uint32_t param);
+int command_dc_burst_num(uint32_t param);
 
 static int (*command_handlers[])(uint32_t param) = {
     NULL,                           // 0x00
@@ -141,6 +145,7 @@ static int (*command_handlers[])(uint32_t param) = {
     command_dc_hold_time,           // 0x0F
     command_dc_curr_target,         // 0x10
     command_dc_burst_gap,           // 0x11
+    command_dc_burst_num,           // 0x12
 };
 
 /* RTOS Tasks */
@@ -157,7 +162,7 @@ float uint32_to_float(uint32_t u);
 uint32_t float_to_uint32(float f);
 
 void command_handler(uint8_t command, uint32_t params) {
-    if (command < 1 || command > 17) {
+    if (command < 1 || command > 18) {
         printf("Invalid command '%d'\n", command);
         err = 1;
     }
@@ -297,7 +302,7 @@ void bleTask(void *arg) {
 
 void set_dc_slope() {
     dc_phase_timings[3] = dc_phase_timings[1];
-    dc_slope = (((double)(dc_vdac_target - dc_vdac_base)) / ((double)dc_phase_timings[1]));
+    dc_slope = (((float)(dc_vdac_target - dc_vdac_base)) / ((float)dc_phase_timings[1]));
 }
 
 int compliance_check(uint16_t p1_time, uint32_t p1_dac, uint16_t p2_time,
@@ -350,13 +355,13 @@ void dc_handler() {
             dc_voltage = (float)dc_vdac_base;
             break;
         case (1):
-            dc_voltage += dc_slope;
+            dc_voltage = MIN(dc_vdac_target, dc_voltage + dc_slope);
             break;
         case (2):
             dc_voltage = (float)dc_vdac_target;
             break;
         case (3):
-            dc_voltage -= dc_slope;
+            dc_voltage = MAX(dc_vdac_base, dc_voltage - dc_slope);
             break;
     }
     VDAC_SetValueBuffered((uint32_t)dc_voltage);
@@ -420,7 +425,11 @@ void dc_print_state() {
 
 int command_start(uint32_t param) {
     printf("Inside start command with param %u\n", param);
+    ac_burst_done = 0;
+    ac_pulse_done = 0;
+    dc_pulse_done = 0;
     stim_state[0] = 1;
+    set_dc_slope();
     dc_print_state();
     // Compliance check and err if not passed
     return 0;
@@ -563,7 +572,7 @@ int command_ac_phase_two_curr(uint32_t param) {
 int command_dc_ramp_time(uint32_t param) {
     dc_phase_timings[1] = US_TO_PT(param);
     dc_phase_timings[3] = dc_phase_timings[1];
-    set_dc_slope();
+    //set_dc_slope();
     return 0;
 }
 
@@ -596,6 +605,11 @@ int command_dc_burst_gap(uint32_t param) {
     return 0;
 }
 
+int command_dc_burst_num(uint32_t param) {
+    dc_pulse_num = param;
+    return 0;
+}
+
 int main(void) {
     __enable_irq(); /* Enable global interrupts. */
 
@@ -613,7 +627,7 @@ int main(void) {
     Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
     Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
 
-    set_dc_slope();
+    //set_dc_slope();
 
     xTaskCreate(bleTask, "bleTask", 1024, 0, 1, 0);
     
