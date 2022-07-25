@@ -373,7 +373,7 @@ void burst_handler() {
     if (phase==1 && counter == 10){
         Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
         int16_t result = Cy_SAR_GetResult16(SAR,0);
-        printf("Voltage result: %f\r\n",(15.0*(Cy_SAR_CountsTo_Volts(SAR,0,result)-1.5)));
+        // printf("Voltage result: %f\r\n",(15.0*(Cy_SAR_CountsTo_Volts(SAR,0,result)-1.5)));
     }
     
     if (counter >= ac_phase_timings[phase]) {
@@ -401,9 +401,8 @@ void burst_handler() {
                 // SWITCHES
             }
         } else if (phase == 4) {
-            ac_burst_done++;
             if (ac_burst_done < ac_burst_num || ac_burst_num == 0) {
-                
+                ac_burst_done++;
                 phase = 0;
             } else {
                 command_stop(0);
@@ -442,6 +441,7 @@ int command_stop(uint32_t param) {
     counter = 0;
     ac_burst_done = 0;
     ac_pulse_done = 0;
+    dc_pulse_done = 0;
     vdac_curr = 0;
     return 0;
 }
