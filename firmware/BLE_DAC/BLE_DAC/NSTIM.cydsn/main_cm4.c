@@ -309,7 +309,9 @@ int compliance_check() {
     Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
     int16_t result = Cy_SAR_GetResult16(SAR,0);
     float v = Cy_SAR_CountsTo_Volts(SAR,0,result);
-    return ((result - 1.4647) * 10.2325 > 12.0);
+    VDAC_SetValueBuffered(V0);
+    printf("Compliance check got %f\n", v);
+    return ((v - 1.4647) * 10.2325 > 12.0);
 }
 
 void userIsr(void) {
