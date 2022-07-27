@@ -155,8 +155,7 @@ void bleTask(void *arg);
 void ac_handler();
 void dc_handler();
 void set_dc_slope();
-int compliance_check(uint16_t p1_time, uint32_t p1_dac, uint16_t p2_time,
-                     uint32_t p2_dac);
+int compliance_check();
 void read_req_handler(cy_stc_ble_gatts_char_val_read_req_t *readReqParam);
 float uint32_to_float(uint32_t u);
 uint32_t float_to_uint32(float f);
@@ -305,9 +304,12 @@ void set_dc_slope() {
     dc_slope = (((float)(dc_vdac_target - dc_vdac_base)) / ((float)dc_phase_timings[1]));
 }
 
-int compliance_check(uint16_t p1_time, uint32_t p1_dac, uint16_t p2_time,
-                     uint32_t p2_dac) {
-    return ABS(p1_time * (V0 - p1_dac)) == ABS(p2_time * (V0 - p2_dac));
+int compliance_check() {
+    VDAC_SetValueBuffered(V0 + 10);
+    Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
+    int16_t result = Cy_SAR_GetResult16(SAR,0);
+    float v = Cy_SAR_CountsTo_Volts(SAR,0,result);
+    return ((result - 1.4647) * 10.2325 > 12.0);
 }
 
 void userIsr(void) {
@@ -430,6 +432,8 @@ int command_start(uint32_t param) {
     set_dc_slope();
     dc_print_state();
     // Compliance check and err if not passed
+    
+    
     return 0;
 }
 
