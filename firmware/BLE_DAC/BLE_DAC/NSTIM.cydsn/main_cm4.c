@@ -425,6 +425,11 @@ void dc_print_state() {
 
 int command_start(uint32_t param) {
     printf("Inside start command with param %u\n", param);
+    if (compliance_check()) {
+        return 1;   
+    } else {
+        VDAC_SetValueBuffered(V0);   
+    }
     ac_burst_done = 0;
     ac_pulse_done = 0;
     dc_pulse_done = 0;
@@ -432,8 +437,6 @@ int command_start(uint32_t param) {
     set_dc_slope();
     dc_print_state();
     // Compliance check and err if not passed
-    
-    
     return 0;
 }
 
