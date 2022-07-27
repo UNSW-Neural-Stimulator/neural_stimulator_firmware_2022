@@ -152,7 +152,7 @@ static int (*command_handlers[])(uint32_t param) = {
 void bleTask(void *arg);
 
 /* Helper functions */
-void burst_handler();
+void ac_handler();
 void dc_handler();
 void set_dc_slope();
 int compliance_check(uint16_t p1_time, uint32_t p1_dac, uint16_t p2_time,
@@ -320,7 +320,7 @@ void userIsr(void) {
         VDAC_ClearInterrupt();
         /* Run burst handler or dc handler depending on stim_type */
         if (stim_state[0]) {
-            stim_state[1] ? dc_handler() : burst_handler();
+            stim_state[1] ? dc_handler() : ac_handler();
         } else {
             VDAC_SetValueBuffered(V0);
         }
@@ -330,9 +330,9 @@ void userIsr(void) {
 void dc_handler() {
     counter++;
     if (counter >= dc_phase_timings[phase]) {
-        if (phase == 4) {
+        if (phase >= 4) {
             dc_pulse_done++;
-            if (dc_pulse_done < dc_pulse_num || dc_pulse_num == 0) {
+            if (dc_pulse_done <= dc_pulse_num || dc_pulse_num == 0) {
                 counter = 0u;
                 phase = 0;
             } else {
@@ -344,10 +344,10 @@ void dc_handler() {
             counter = 0u;
         }
 
-        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM,(phase) ? 1 : 0);
-        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (phase) ? 0 : 1);
-        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (phase) ? 0 : 1);
-        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (phase) ? 1 : 0);
+        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM,(!phase) ? 0 : 1);
+        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (!phase) ? 1 : 0);
+        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (!phase) ? 1 : 0);
+        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (!phase) ? 0 : 1);
     }
     
     switch (phase) {
@@ -367,7 +367,7 @@ void dc_handler() {
     VDAC_SetValueBuffered((uint32_t)dc_voltage);
 }
 
-void burst_handler() {
+void ac_handler() {
     counter++;
     
     if (phase==1 && counter == 10){
@@ -389,16 +389,15 @@ void burst_handler() {
             if (ac_pulse_done < ac_pulse_num) {
                 // Not finished with this burst
                 phase = 0;
-
-                Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, (phase & 1) ? 1 : 0);
-                Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (phase == 0) ? 1 : 0);
-                Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (phase & 1) ? 0 : 1);
-                Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (phase == 0) ? 0 : 1);
             } else {
                 // Finished with this burst
                 phase++;
                 ac_pulse_done = 0;
                 // SWITCHES
+                Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);
+                Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
+                Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
+                Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
             }
         } else if (phase == 4) {
             if (ac_burst_done < ac_burst_num || ac_burst_num == 0) {
@@ -419,7 +418,7 @@ void ac_print_state() {
 }
 
 void dc_print_state() {
-    printf("Ramp up time: %u, ramp down time: %u, hold time: %u, dc_vdac_target: %u, dc_base: %u, dc_ramp: %lf\n", dc_phase_timings[1], dc_phase_timings[3], dc_phase_timings[2], dc_vdac_target, dc_vdac_base, dc_slope);
+    printf("Ramp up time: %u, ramp down time: %u, hold time: %u, dc_vdac_target: %u, dc_base: %u, dc_ramp: %lf, dc_burst_num: %d\n", dc_phase_timings[1], dc_phase_timings[3], dc_phase_timings[2], dc_vdac_target, dc_vdac_base, dc_slope, dc_pulse_num);
 }
 
 int command_start(uint32_t param) {
@@ -436,7 +435,10 @@ int command_start(uint32_t param) {
 
 int command_stop(uint32_t param) {
     printf("Inside command stop with param %u\n", param);
-    Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);
+    Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);
+    Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
+    Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
+    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
     stim_state[0] = 0;
     counter = 0;
     ac_burst_done = 0;
