@@ -373,6 +373,8 @@ void dc_handler() {
 void ac_handler() {
     counter++;
     
+    VDAC_SetValueBuffered(ac_vdac_values[phase]);
+    
     if (phase==1 && counter == 10){
         Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
         int16_t result = Cy_SAR_GetResult16(SAR,0);
@@ -413,7 +415,7 @@ void ac_handler() {
         }
     }
 
-    VDAC_SetValueBuffered(ac_vdac_values[phase]);
+    
 }
 
 void ac_print_state() {
