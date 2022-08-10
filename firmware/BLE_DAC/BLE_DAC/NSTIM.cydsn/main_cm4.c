@@ -102,10 +102,12 @@ uint32_t dc_vdac_target = 2633u;
 uint32_t dc_vdac_base = V0;
 /* Phase timings for DC mode, 0 is interstim, 1 ramp up, 2 is high, 3 is ramp down */
 uint32_t dc_phase_timings[] = {1000u, 250u, 500u, 100u};
-/* Keeps track of our dc_slope so we don't need to keep calculating it */
-float dc_slope;
-/* For DC, keep track of our current vdac value */
-float dc_voltage = (float)V0;
+
+/* Counters for the dc slope */
+uint32_t dc_step_counter = 0;
+uint32_t dc_this_step_counter = 0;
+uint32_t dc_intr_per_step = 0;
+uint32_t dc_vdac_current = 0;
 
 int command_start(uint32_t param);
 int command_stop(uint32_t param);
@@ -154,11 +156,11 @@ void bleTask(void *arg);
 /* Helper functions */
 void ac_handler();
 void dc_handler();
-void set_dc_slope();
 int compliance_check();
 void read_req_handler(cy_stc_ble_gatts_char_val_read_req_t *readReqParam);
 float uint32_to_float(uint32_t u);
 uint32_t float_to_uint32(float f);
+void set_dc_slope_counter();
 
 void command_handler(uint8_t command, uint32_t params) {
     if (command < 1 || command > 18) {
@@ -205,10 +207,9 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
             uint32_t param = req_param[1] + (req_param[2] << 8) +
                             (req_param[3] << 16) + (req_param[4] << 24);
             printf("Param %u\n", param);
-
-  
+            
             command_handler(command, param);
-
+            
             Cy_BLE_GATTS_WriteRsp(writeReqParameter->connHandle);
             break;
         case CY_BLE_EVT_GATTS_READ_CHAR_VAL_ACCESS_REQ:
@@ -264,20 +265,6 @@ void bleInterruptNotify() {
     portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
-/*void xADCTask( void *arg ) {
-    (void)arg;
-    for (;;) {
-        // Block until we are woken by dac task
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY );
-  
-        // Take measurement
-        Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
-        int16_t result = Cy_SAR_GetResult16(SAR,0);
-        printf("Voltage result: %f\r\n",Cy_SAR_CountsTo_Volts(SAR,0,result));
-        
-    }
-}*/
-
 void bleTask(void *arg) {
     (void)arg;
     printf("BLE Task Started\r\n");
@@ -299,19 +286,23 @@ void bleTask(void *arg) {
     }
 }
 
-void set_dc_slope() {
-    dc_phase_timings[3] = dc_phase_timings[1];
-    dc_slope = (((float)(dc_vdac_target - dc_vdac_base)) / ((float)dc_phase_timings[1]));
+void set_dc_slope_counter() {
+    dc_step_counter = 0;
+    dc_this_step_counter = 0;
+    dc_intr_per_step = dc_phase_timings[1] / (dc_vdac_target - dc_vdac_base);
 }
 
 int compliance_check() {
     VDAC_SetValueBuffered(V0 + 10);
+    Cy_GPIO_Write(SW_EVM_PORT, SW_EVM_NUM, 1);
     Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
+    CyDelay(1000);
     int16_t result = Cy_SAR_GetResult16(SAR,0);
     float v = Cy_SAR_CountsTo_Volts(SAR,0,result);
+    Cy_GPIO_Write(SW_EVM_PORT, SW_EVM_NUM, 0);
     VDAC_SetValueBuffered(V0);
     printf("Compliance check got %f\n", v);
-    return ((v - 1.4647) * 10.2325 > 12.0);
+    return (((v - 1.4647) * 10.2325) > 12.0);
 }
 
 void userIsr(void) {
@@ -356,19 +347,25 @@ void dc_handler() {
     
     switch (phase) {
         case (0):
-            dc_voltage = (float)dc_vdac_base;
+            dc_vdac_current = dc_vdac_base;
             break;
         case (1):
-            dc_voltage = MIN(dc_vdac_target, dc_voltage + dc_slope);
+            if (dc_this_step_counter >= dc_intr_per_step) {
+                dc_this_step_counter = 0u;
+                dc_vdac_current++;
+            }
             break;
         case (2):
-            dc_voltage = (float)dc_vdac_target;
+            dc_vdac_current = dc_vdac_target;
             break;
         case (3):
-            dc_voltage = MAX(dc_vdac_base, dc_voltage - dc_slope);
+            if (dc_this_step_counter >= dc_intr_per_step) {
+                dc_this_step_counter = 0u;
+                dc_vdac_current--;
+            }
             break;
     }
-    VDAC_SetValueBuffered((uint32_t)dc_voltage);
+    VDAC_SetValueBuffered(dc_vdac_current);
 }
 
 void ac_handler() {
@@ -422,28 +419,29 @@ void ac_print_state() {
 }
 
 void dc_print_state() {
-    printf("Ramp up time: %u, ramp down time: %u, hold time: %u, dc_vdac_target: %u, dc_base: %u, dc_ramp: %lf, dc_burst_num: %d\n", dc_phase_timings[1], dc_phase_timings[3], dc_phase_timings[2], dc_vdac_target, dc_vdac_base, dc_slope, dc_pulse_num);
+    printf("Ramp up time: %u, ramp down time: %u, hold time: %u, dc_vdac_target: %u, dc_base: %u, dc_intr_per_step: %d, dc_burst_num: %d\n", dc_phase_timings[1], dc_phase_timings[3], dc_phase_timings[2], dc_vdac_target, dc_vdac_base, dc_intr_per_step, dc_pulse_num);
 }
 
 int command_start(uint32_t param) {
     printf("Inside start command with param %u\n", param);
     if (compliance_check()) {
-        return 1;   
-    } else {
-        VDAC_SetValueBuffered(V0);   
+        printf("Failed compliance check\n");
+        return 1;
     }
     ac_burst_done = 0;
     ac_pulse_done = 0;
     dc_pulse_done = 0;
     stim_state[0] = 1;
-    set_dc_slope();
+    set_dc_slope_counter();
     dc_print_state();
+    ac_print_state();
     // Compliance check and err if not passed
     return 0;
 }
 
 int command_stop(uint32_t param) {
     printf("Inside command stop with param %u\n", param);
+    
     Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);
     Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
     Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
@@ -634,7 +632,7 @@ int main(void) {
     NVIC_EnableIRQ(SysInt_VDAC_cfg.intrSrc);
 
     VDAC_Start();
-    
+    VDAC_SetValueBuffered(V0);
     Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
     Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
 
