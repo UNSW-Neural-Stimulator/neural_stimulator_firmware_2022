@@ -294,18 +294,21 @@ void set_dc_slope_counter() {
 
 int compliance_check() {
     VDAC_SetValueBuffered(V0 + 10);
+    
     Cy_GPIO_Write(SW_EVM_PORT, SW_EVM_NUM, 1);
     Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
-    CyDelay(1000);
+    int16_t result = Cy_SAR_GetResult16(SAR,0);
+    return 0;
+}
+
+void adcIsr(void) {
     int16_t result = Cy_SAR_GetResult16(SAR,0);
     float v = Cy_SAR_CountsTo_Volts(SAR,0,result);
     Cy_GPIO_Write(SW_EVM_PORT, SW_EVM_NUM, 0);
-    VDAC_SetValueBuffered(V0);
     printf("Compliance check got %f\n", v);
-    return (((v - 1.4647) * 10.2325) > 12.0);
 }
 
-void userIsr(void) {
+void dacIsr(void) {
     uint8_t intrStatus;
 
     /* Check that an interrupt occurred in the VDAC component instance. */
@@ -631,9 +634,11 @@ int main(void) {
     ADC_Start();
     printf("Process started\n");
 
-    (void)Cy_SysInt_Init(&SysInt_VDAC_cfg, userIsr);
+    (void)Cy_SysInt_Init(&SysInt_VDAC_cfg, dacIsr);
+    (void)Cy_SysInt_Init(&SysInt_ADC_Scan_cfg, adcIsr);
 
     NVIC_EnableIRQ(SysInt_VDAC_cfg.intrSrc);
+    NVIC_EnableIRQ(SysInt_ADC_Scan_cfg.intrSrc);
 
     VDAC_Start();
     VDAC_SetValueBuffered(V0);
