@@ -386,7 +386,7 @@ void ac_handler() {
         if (phase < 3) {
             phase++;
             Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, (phase & 1) ? 1 : 0);
-            Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (phase == 0) ? 1 : 0);
+            Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (!(phase & 1)) ? 1 : 0);
             Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (phase & 1) ? 0 : 1);
             Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (phase == 0) ? 0 : 1);
         } else if (phase == 3) {
