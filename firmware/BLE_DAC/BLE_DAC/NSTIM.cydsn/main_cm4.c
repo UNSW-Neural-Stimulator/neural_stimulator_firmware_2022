@@ -350,6 +350,7 @@ void dc_handler() {
             dc_vdac_current = dc_vdac_base;
             break;
         case (1):
+            dc_this_step_counter++;
             if (dc_this_step_counter >= dc_intr_per_step) {
                 dc_this_step_counter = 0u;
                 dc_vdac_current++;
@@ -359,6 +360,7 @@ void dc_handler() {
             dc_vdac_current = dc_vdac_target;
             break;
         case (3):
+            dc_this_step_counter++;
             if (dc_this_step_counter >= dc_intr_per_step) {
                 dc_this_step_counter = 0u;
                 dc_vdac_current--;
