@@ -391,6 +391,10 @@ void ac_handler() {
             Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (phase == 0) ? 0 : 1);
         } else if (phase == 3) {
             ac_pulse_done++;
+            Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);
+            Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
+            Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
+            Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
             if (ac_pulse_done < ac_pulse_num) {
                 // Not finished with this burst
                 phase = 0;
@@ -399,10 +403,6 @@ void ac_handler() {
                 phase++;
                 ac_pulse_done = 0;
                 // SWITCHES
-                Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);
-                Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
-                Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
-                Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
             }
         } else if (phase == 4) {
             if (ac_burst_done < ac_burst_num || ac_burst_num == 0) {
