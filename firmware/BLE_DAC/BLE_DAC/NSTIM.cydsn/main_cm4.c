@@ -109,6 +109,9 @@ uint32_t dc_this_step_counter = 0;
 uint32_t dc_intr_per_step = 0;
 uint32_t dc_vdac_current = 0;
 
+/* Flag to indicate we want to stop AC stimulation when appropriate */
+bool stop_ac_stim = 0;
+
 int command_start(uint32_t param);
 int command_stop(uint32_t param);
 int command_stim_type(uint32_t param);
@@ -166,6 +169,7 @@ void command_handler(uint8_t command, uint32_t params) {
     if (command < 1 || command > 18) {
         printf("Invalid command '%d'\n", command);
         err = 1;
+        return;
     }
     printf("Command 0x%x with param 0x%x\n", command, params);
     err = command_handlers[command](params);
@@ -308,6 +312,7 @@ void adcIsr(void) {
     printf("Compliance check got %f\n", v);
 }
 
+/* Interrupt service routine for the DAC */
 void dacIsr(void) {
     uint8_t intrStatus;
 
@@ -378,10 +383,16 @@ void ac_handler() {
     
     VDAC_SetValueBuffered(ac_vdac_values[phase]);
     
-    if (phase==1 && counter == 10){
+    /*if (phase==1 && counter == 10){
         Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
         int16_t result = Cy_SAR_GetResult16(SAR,0);
         // printf("Voltage result: %f\r\n",(15.0*(Cy_SAR_CountsTo_Volts(SAR,0,result)-1.5)));
+    }*/
+    
+    // Force stim to stop as it's safe to do so
+    if (stop_ac_stim == 1 && (phase == 0 || phase == 4)) {
+        command_stop(1);
+        return;
     }
     
     if (counter >= ac_phase_timings[phase]) {
@@ -438,6 +449,7 @@ int command_start(uint32_t param) {
     ac_burst_done = 0;
     ac_pulse_done = 0;
     dc_pulse_done = 0;
+    stop_ac_stim = 0;
     stim_state[0] = 1;
     set_dc_slope_counter();
     dc_print_state();
@@ -446,19 +458,36 @@ int command_start(uint32_t param) {
     return 0;
 }
 
+/* 
+ * Stop stimulation. 
+ * 
+ * If param == 1 or DC
+ * then 
+ *   force stim stop
+ * else 
+ *   request AC stim stop
+ * */
 int command_stop(uint32_t param) {
     printf("Inside command stop with param %u\n", param);
     
-    Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);
-    Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
-    Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
-    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
-    stim_state[0] = 0;
-    counter = 0;
-    ac_burst_done = 0;
-    ac_pulse_done = 0;
-    dc_pulse_done = 0;
-    vdac_curr = 0;
+    // If forced or DC or already off then do normal stop code
+    if (param == 1 || stim_state[1] == 1 || stim_state[0] == 0) {
+        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);
+        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
+        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
+        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
+        stim_state[0] = 0;
+        counter = 0;
+        ac_burst_done = 0;
+        ac_pulse_done = 0;
+        dc_pulse_done = 0;
+        stop_ac_stim = 0;
+        vdac_curr = 0;
+        printf("Stopped stim\n");
+    } else {
+        stop_ac_stim = 1;
+        printf("Requested AC stop stim\n");
+    }
     return 0;
 }
 
@@ -635,10 +664,10 @@ int main(void) {
     printf("Process started\n");
 
     (void)Cy_SysInt_Init(&SysInt_VDAC_cfg, dacIsr);
-    (void)Cy_SysInt_Init(&SysInt_ADC_Scan_cfg, adcIsr);
+    //(void)Cy_SysInt_Init(&SysInt_ADC_Scan_cfg, adcIsr);
 
     NVIC_EnableIRQ(SysInt_VDAC_cfg.intrSrc);
-    NVIC_EnableIRQ(SysInt_ADC_Scan_cfg.intrSrc);
+    //NVIC_EnableIRQ(SysInt_ADC_Scan_cfg.intrSrc);
 
     VDAC_Start();
     VDAC_SetValueBuffered(V0);
