@@ -32,7 +32,7 @@
 #define PT_TO_US(n) (n * 2)
 /* Convert a current (float) to a vdac value (uint) */
 #define CURR_TO_VDAC(n)                                                        \
-  ((uint32_t)((((float)n) + 3.48600000e+00) / 1.70315347e-03))
+  ((uint32_t)((((float)n) + 3.49176225384674) / 1.6993915402934326e-03))
 /* Convert a vdac value (uint) to current (float) */
 #define VDAC_TO_CURR(n) ((float)(((float)n) * 1.70315347e-03) - 3.48600000e+00)
 /* Our baseline reference for 0V stim */
