@@ -164,6 +164,7 @@ void read_req_handler(cy_stc_ble_gatts_char_val_read_req_t *readReqParam);
 float uint32_to_float(uint32_t u);
 uint32_t float_to_uint32(float f);
 void set_dc_slope_counter();
+void error_notify(uint8_t id, uint8_t val);
 
 void command_handler(uint8_t command, uint32_t params) {
     if (command < 1 || command > 18) {
@@ -173,7 +174,10 @@ void command_handler(uint8_t command, uint32_t params) {
     }
     printf("Command 0x%x with param 0x%x\n", command, params);
     err = command_handlers[command](params);
-    if (err) printf("Command 0x%x failed with status %d\n", command, err);
+    if (err) {
+        printf("Command 0x%x failed with status %d\n", command, err);
+        error_notify(command, err);
+    }
 }
 
 // BLE event handler
@@ -231,9 +235,9 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
 void read_req_handler(cy_stc_ble_gatts_char_val_read_req_t *readReqParam) {
     float ret_f;
     switch (readReqParam->attrHandle) {
-        case (CY_BLE_NSTIM_ERR_CHAR_HANDLE):
+        /*case (CY_BLE_NSTIM_ERR_CHAR_HANDLE):
             CY_BLE_GATT_DB_ATTR_SET_GEN_VALUE(readReqParam->attrHandle, &err, 1);
-            break;
+            break;*/
         case (CY_BLE_NSTIM_STIM_STATE_CHAR_HANDLE):
             CY_BLE_GATT_DB_ATTR_SET_GEN_VALUE(readReqParam->attrHandle, &stim_state, 2);
             break;
@@ -653,6 +657,22 @@ int command_dc_burst_gap(uint32_t param) {
 int command_dc_burst_num(uint32_t param) {
     dc_pulse_num = param;
     return 0;
+}
+
+void error_notify(uint8_t id, uint8_t val) {
+    uint8_t ret_val[] = {id, val};
+    
+    cy_stc_ble_gatts_handle_value_ntf_t ntf_param;
+    ntf_param.connHandle = cy_ble_connHandle[0];
+    
+    cy_stc_ble_gatt_handle_value_pair_t val_pair;
+    val_pair.value.val = ret_val;
+    val_pair.value.len = 2;
+    val_pair.value.actualLen = 2;
+    val_pair.attrHandle = CY_BLE_NSTIM_ERR_CHAR_HANDLE;
+    ntf_param.handleValPair = val_pair;
+
+    Cy_BLE_GATTS_Notification(&ntf_param);   
 }
 
 int main(void) {
