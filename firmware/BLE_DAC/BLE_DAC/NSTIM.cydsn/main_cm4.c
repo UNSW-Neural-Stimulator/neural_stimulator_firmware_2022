@@ -112,6 +112,10 @@ uint32_t dc_vdac_current = 0;
 /* Flag to indicate we want to stop AC stimulation when appropriate */
 bool stop_ac_stim = 0;
 
+/* Flag used to indicate that Impedance check is active
+(so that ISR doesn't try to set output to zero while scan is active) */
+bool impedance_check_active = false;
+
 int command_start(uint32_t param);
 int command_stop(uint32_t param);
 int command_stim_type(uint32_t param);
@@ -301,20 +305,35 @@ void set_dc_slope_counter() {
 }
 
 int compliance_check() {
+    impedance_check_active = true;
+    
+    Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 1);//(phase) ? 1 : 0);
+    Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);//(phase) ? 0 : 1);
+    Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0);//(phase) ? 0 : 1);
+    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);//(phase) ? 1 : 0);
+    
     VDAC_SetValueBuffered(V0 + 10);
     
-    Cy_GPIO_Write(SW_EVM_PORT, SW_EVM_NUM, 1);
+
     Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
     int16_t result = Cy_SAR_GetResult16(SAR,0);
+    
+    printf("Voltage result: %f\r\n",(15.0*(Cy_SAR_CountsTo_Volts(SAR,0,result)-1.5)));
+    
+    Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);//(phase) ? 1 : 0);
+    Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);//(phase) ? 0 : 1);
+    Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);//(phase) ? 0 : 1);
+    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);//(phase) ? 1 : 0);
+    impedance_check_active = false;
     return 0;
 }
-
+/*
 void adcIsr(void) {
     int16_t result = Cy_SAR_GetResult16(SAR,0);
     float v = Cy_SAR_CountsTo_Volts(SAR,0,result);
     Cy_GPIO_Write(SW_EVM_PORT, SW_EVM_NUM, 0);
     printf("Compliance check got %f\n", v);
-}
+}*/
 
 /* Interrupt service routine for the DAC */
 void dacIsr(void) {
@@ -325,6 +344,10 @@ void dacIsr(void) {
     if (intrStatus) {
         /* Clear the interrupt. */
         VDAC_ClearInterrupt();
+        
+        /* Exit if there is an active impedance check */
+        if (impedance_check_active) return;
+        
         /* Run burst handler or dc handler depending on stim_type */
         if (stim_state[0]) {
             stim_state[1] ? dc_handler() : ac_handler();
@@ -350,11 +373,12 @@ void dc_handler() {
             phase++;
             counter = 0u;
         }
-
-        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM,(!phase) ? 0 : 1);
-        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (!phase) ? 1 : 0);
-        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (!phase) ? 1 : 0);
-        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (!phase) ? 0 : 1);
+        
+        
+        Cy_GPIO_Write(SW_ISO, SW_ISO_NUM,(phase) ? 1 : 0);
+        Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (phase) ? 0 : 1);
+        Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (phase) ? 0 : 1);
+        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (phase) ? 1 : 0);
     }
     
     switch (phase) {
@@ -369,7 +393,7 @@ void dc_handler() {
             }
             break;
         case (2):
-            dc_vdac_current = dc_vdac_target;
+            dc_vdac_current = dc_vdac_target; 
             break;
         case (3):
             dc_this_step_counter++;
@@ -390,7 +414,7 @@ void ac_handler() {
     /*if (phase==1 && counter == 10){
         Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
         int16_t result = Cy_SAR_GetResult16(SAR,0);
-        // printf("Voltage result: %f\r\n",(15.0*(Cy_SAR_CountsTo_Volts(SAR,0,result)-1.5)));
+        printf("Voltage result: %f\r\n",(Cy_SAR_CountsTo_Volts(SAR,0,result)));
     }*/
     
     // Force stim to stop as it's safe to do so
@@ -458,6 +482,9 @@ int command_start(uint32_t param) {
     set_dc_slope_counter();
     dc_print_state();
     ac_print_state();
+    
+    Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
+    Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
     // Compliance check and err if not passed
     return 0;
 }
@@ -480,6 +507,10 @@ int command_stop(uint32_t param) {
         Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
         Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
         Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
+        
+        Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 0);
+        Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 0);
+        
         stim_state[0] = 0;
         counter = 0;
         ac_burst_done = 0;
@@ -691,8 +722,9 @@ int main(void) {
 
     VDAC_Start();
     VDAC_SetValueBuffered(V0);
-    Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
-    Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
+    
+    // Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
+    // Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
 
     //set_dc_slope();
 
