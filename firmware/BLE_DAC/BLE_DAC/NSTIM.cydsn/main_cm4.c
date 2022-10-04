@@ -171,7 +171,7 @@ uint32_t float_to_uint32(float f);
 void set_dc_slope_counter();
 void error_notify(uint8_t id, uint8_t val);
 void _compliance_check();
-int command_start(uint32_t param);
+void _command_start();
 
 void command_handler(uint8_t command, uint32_t params) {
     if (command < 1 || command > 18) {
@@ -333,6 +333,7 @@ void _compliance_check() {
     Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);//(phase) ? 1 : 0);
     impedance_check_active = false;
     impedance_check_counter = 0;
+    _command_start();
 }
 /*
 void adcIsr(void) {
@@ -482,7 +483,7 @@ void dc_print_state() {
     printf("Ramp up time: %u, ramp down time: %u, hold time: %u, dc_vdac_target: %u, dc_base: %u, dc_intr_per_step: %d, dc_burst_num: %d\n", dc_phase_timings[1], dc_phase_timings[3], dc_phase_timings[2], dc_vdac_target, dc_vdac_base, dc_intr_per_step, dc_pulse_num);
 }
 
-int _command_start() {
+void _command_start() {
     ac_burst_done = 0;
     ac_pulse_done = 0;
     dc_pulse_done = 0;
@@ -494,8 +495,6 @@ int _command_start() {
     
     Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
     Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
-    // Compliance check and err if not passed
-    return 0;
 }
 
 int command_start(uint32_t param) {
