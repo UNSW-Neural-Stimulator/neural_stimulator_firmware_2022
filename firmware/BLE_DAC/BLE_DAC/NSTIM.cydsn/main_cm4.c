@@ -318,7 +318,7 @@ int compliance_check() {
     
     VDAC_SetValueBuffered(V0 + 20);
 
-    Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
+    
     return 0;
 }
 
@@ -355,9 +355,12 @@ void dacIsr(void) {
         
         /* Exit if there is an active impedance check */
         if (impedance_check_active) {
-            if (impedance_check_counter > 100) {
+            if (impedance_check_counter > 200) {
                 _compliance_check();
             } else {
+                if (impedance_check_counter == 50) {
+                    Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);   
+                }
                 impedance_check_counter++;
             }
             return;

@@ -883,12 +883,45 @@
 <VisibleNodeIds>
 <v>BLE_DAC</v>
 <v>BLE_DAC\BLE_DAC</v>
+<v>BLE_DAC\BLE_DAC\CortexM0p</v>
+<v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541</v>
+<v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541\Debug</v>
+<v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541\Debug\BLE_DAC.elf</v>
+<v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541\Debug\BLE_DAC.hex</v>
+<v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541\Debug\BLE_DAC.map</v>
+<v>BLE_DAC\BLE_DAC\CortexM4</v>
+<v>BLE_DAC\BLE_DAC\CortexM4\ARM_GCC_541</v>
+<v>BLE_DAC\BLE_DAC\CortexM4\ARM_GCC_541\Debug</v>
+<v>BLE_DAC\BLE_DAC\CortexM4\ARM_GCC_541\Debug\BLE_DAC.elf</v>
+<v>BLE_DAC\BLE_DAC\CortexM4\ARM_GCC_541\Debug\BLE_DAC.hex</v>
+<v>BLE_DAC\BLE_DAC\CortexM4\ARM_GCC_541\Debug\BLE_DAC.map</v>
+<v>BLE_DAC\BLE_DAC\BLE_DAC.gpdsc</v>
 <v>BLE_DAC\BLE_DAC\BLE_DAC.rpt</v>
 <v>BLE_DAC\BLE_DAC\BLE_DAC_timing.html</v>
 <v>BLE_DAC\BLE_read</v>
+<v>BLE_DAC\BLE_read\CortexM0p</v>
+<v>BLE_DAC\BLE_read\CortexM0p\ARM_GCC_541</v>
+<v>BLE_DAC\BLE_read\CortexM0p\ARM_GCC_541\Debug</v>
+<v>BLE_DAC\BLE_read\CortexM0p\ARM_GCC_541\Debug\BLE_read.elf</v>
+<v>BLE_DAC\BLE_read\CortexM0p\ARM_GCC_541\Debug\BLE_read.hex</v>
+<v>BLE_DAC\BLE_read\CortexM0p\ARM_GCC_541\Debug\BLE_read.map</v>
+<v>BLE_DAC\BLE_read\CortexM4</v>
+<v>BLE_DAC\BLE_read\CortexM4\ARM_GCC_541</v>
+<v>BLE_DAC\BLE_read\CortexM4\ARM_GCC_541\Debug</v>
+<v>BLE_DAC\BLE_read\CortexM4\ARM_GCC_541\Debug\BLE_read.elf</v>
+<v>BLE_DAC\BLE_read\CortexM4\ARM_GCC_541\Debug\BLE_read.hex</v>
+<v>BLE_DAC\BLE_read\CortexM4\ARM_GCC_541\Debug\BLE_read.map</v>
+<v>BLE_DAC\BLE_read\BLE_read.gpdsc</v>
 <v>BLE_DAC\BLE_read\BLE_read.rpt</v>
 <v>BLE_DAC\BLE_read\BLE_read_timing.html</v>
 <v>BLE_DAC\CustomService</v>
+<v>BLE_DAC\CustomService\CortexM0p</v>
+<v>BLE_DAC\CustomService\CortexM0p\ARM_GCC_541</v>
+<v>BLE_DAC\CustomService\CortexM0p\ARM_GCC_541\Debug</v>
+<v>BLE_DAC\CustomService\CortexM0p\ARM_GCC_541\Debug\Listing Files</v>
+<v>BLE_DAC\CustomService\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE.lst</v>
+<v>BLE_DAC\CustomService\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE_config.lst</v>
+<v>BLE_DAC\CustomService\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE_custom_config.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
