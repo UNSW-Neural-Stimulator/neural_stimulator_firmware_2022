@@ -115,6 +115,7 @@ bool stop_ac_stim = 0;
 /* Flag used to indicate that Impedance check is active
 (so that ISR doesn't try to set output to zero while scan is active) */
 bool impedance_check_active = false;
+int impedance_check_counter = 0;
 
 int command_start(uint32_t param);
 int command_stop(uint32_t param);
@@ -169,6 +170,8 @@ float uint32_to_float(uint32_t u);
 uint32_t float_to_uint32(float f);
 void set_dc_slope_counter();
 void error_notify(uint8_t id, uint8_t val);
+void _compliance_check();
+int command_start(uint32_t param);
 
 void command_handler(uint8_t command, uint32_t params) {
     if (command < 1 || command > 18) {
@@ -306,16 +309,20 @@ void set_dc_slope_counter() {
 
 int compliance_check() {
     impedance_check_active = true;
+    impedance_check_counter = 0;
     
     Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 1);//(phase) ? 1 : 0);
     Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);//(phase) ? 0 : 1);
     Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0);//(phase) ? 0 : 1);
     Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);//(phase) ? 1 : 0);
     
-    VDAC_SetValueBuffered(V0 + 10);
-    
+    VDAC_SetValueBuffered(V0 + 20);
 
     Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
+    return 0;
+}
+
+void _compliance_check() {
     int16_t result = Cy_SAR_GetResult16(SAR,0);
     
     printf("Voltage result: %f\r\n",(15.0*(Cy_SAR_CountsTo_Volts(SAR,0,result)-1.5)));
@@ -325,7 +332,7 @@ int compliance_check() {
     Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);//(phase) ? 0 : 1);
     Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);//(phase) ? 1 : 0);
     impedance_check_active = false;
-    return 0;
+    impedance_check_counter = 0;
 }
 /*
 void adcIsr(void) {
@@ -346,7 +353,14 @@ void dacIsr(void) {
         VDAC_ClearInterrupt();
         
         /* Exit if there is an active impedance check */
-        if (impedance_check_active) return;
+        if (impedance_check_active) {
+            if (impedance_check_counter > 100) {
+                _compliance_check();
+            } else {
+                impedance_check_counter++;
+            }
+            return;
+        }
         
         /* Run burst handler or dc handler depending on stim_type */
         if (stim_state[0]) {
@@ -468,12 +482,7 @@ void dc_print_state() {
     printf("Ramp up time: %u, ramp down time: %u, hold time: %u, dc_vdac_target: %u, dc_base: %u, dc_intr_per_step: %d, dc_burst_num: %d\n", dc_phase_timings[1], dc_phase_timings[3], dc_phase_timings[2], dc_vdac_target, dc_vdac_base, dc_intr_per_step, dc_pulse_num);
 }
 
-int command_start(uint32_t param) {
-    printf("Inside start command with param %u\n", param);
-    if (compliance_check()) {
-        printf("Failed compliance check\n");
-        return 1;
-    }
+int _command_start() {
     ac_burst_done = 0;
     ac_pulse_done = 0;
     dc_pulse_done = 0;
@@ -487,6 +496,25 @@ int command_start(uint32_t param) {
     Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
     // Compliance check and err if not passed
     return 0;
+}
+
+int command_start(uint32_t param) {
+    printf("Inside start command with param %u\n", param);
+    compliance_check();
+    return 0;
+    /*ac_burst_done = 0;
+    ac_pulse_done = 0;
+    dc_pulse_done = 0;
+    stop_ac_stim = 0;
+    stim_state[0] = 1;
+    set_dc_slope_counter();
+    dc_print_state();
+    ac_print_state();
+    
+    Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
+    Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
+    // Compliance check and err if not passed
+    return 0;*/
 }
 
 /* 
