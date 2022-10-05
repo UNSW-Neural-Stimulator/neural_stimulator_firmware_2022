@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="BLE_DAC\BLE_read\TopDesign">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="BLE_DAC\BLE_read\CM4 (Core 1)\Source Files\main_cm4.c">
 <ExpandedNodeIds>
 <v>BLE_DAC</v>
 <v>BLE_DAC\BLE_DAC\TopDesign</v>
@@ -278,33 +278,6 @@
 <v>BLE_DAC\SampleMicroSeconds\Generated_Source\PSoC6</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
-<v>BLE_DAC</v>
-<v>BLE_DAC\BLE_DAC</v>
-<v>BLE_DAC\BLE_read</v>
-<v>BLE_DAC\BLE_read\TopDesign</v>
-<v>BLE_DAC\BLE_read\BLE_read.cydwr</v>
-<v>BLE_DAC\BLE_read\BLE_read.cydwr\Pins</v>
-<v>BLE_DAC\BLE_read\BLE_read.cydwr\Analog</v>
-<v>BLE_DAC\BLE_read\BLE_read.cydwr\DMA</v>
-<v>BLE_DAC\BLE_read\BLE_read.cydwr\Clocks</v>
-<v>BLE_DAC\BLE_read\BLE_read.cydwr\Interrupts</v>
-<v>BLE_DAC\BLE_read\BLE_read.cydwr\System</v>
-<v>BLE_DAC\BLE_read\BLE_read.cydwr\Directives</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\ARM GCC Generic</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\ARM GCC Generic\cy8c6xx7_cm0plus.ld</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\ARM IAR Generic</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\ARM IAR Generic\cy8c6xx7_cm0plus.icf</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\ARM MDK Generic</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\ARM MDK Generic\cy8c6xx7_cm0plus.scat</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\Header Files</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\Source Files</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\Source Files\ARM GCC Generic</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\Source Files\ARM GCC Generic\startup_psoc6_01_cm0plus.S</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\Source Files\ARM IAR Generic</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\Source Files\ARM IAR Generic\startup_psoc6_01_cm0plus.s</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\Source Files\ARM MDK Generic</v>
-<v>BLE_DAC\BLE_read\CM0p (Core 0)\Source Files\ARM MDK Generic\startup_psoc6_01_cm0plus.s</v>
 <v>BLE_DAC\BLE_read\CM0p (Core 0)\Source Files\main_cm0p.c</v>
 <v>BLE_DAC\BLE_read\CM0p (Core 0)\Source Files\system_psoc6_cm0plus.c</v>
 <v>BLE_DAC\BLE_read\CM4 (Core 1)</v>
@@ -319,6 +292,33 @@
 <v>BLE_DAC\BLE_read\CM4 (Core 1)\Source Files</v>
 <v>BLE_DAC\BLE_read\CM4 (Core 1)\Source Files\ARM GCC Generic</v>
 <v>BLE_DAC\BLE_read\CM4 (Core 1)\Source Files\ARM GCC Generic\startup_psoc6_01_cm4.S</v>
+<v>BLE_DAC\BLE_read\CM4 (Core 1)\Source Files\ARM IAR Generic</v>
+<v>BLE_DAC\BLE_read\CM4 (Core 1)\Source Files\ARM IAR Generic\startup_psoc6_01_cm4.s</v>
+<v>BLE_DAC\BLE_read\CM4 (Core 1)\Source Files\ARM MDK Generic</v>
+<v>BLE_DAC\BLE_read\CM4 (Core 1)\Source Files\ARM MDK Generic\startup_psoc6_01_cm4.s</v>
+<v>BLE_DAC\BLE_read\CM4 (Core 1)\Source Files\main_cm4.c</v>
+<v>BLE_DAC\BLE_read\CM4 (Core 1)\Source Files\system_psoc6_cm4.c</v>
+<v>BLE_DAC\BLE_read\Shared Files</v>
+<v>BLE_DAC\BLE_read\Shared Files\cy_ble_config.h</v>
+<v>BLE_DAC\BLE_read\Shared Files\cyapicallbacks.h</v>
+<v>BLE_DAC\BLE_read\Shared Files\stdio_user.c</v>
+<v>BLE_DAC\BLE_read\Shared Files\stdio_user.h</v>
+<v>BLE_DAC\BLE_read\Shared Files\system_psoc6.h</v>
+<v>BLE_DAC\BLE_read\Generated_Source</v>
+<v>BLE_DAC\CustomService</v>
+<v>BLE_DAC\NSTIM</v>
+<v>BLE_DAC\NSTIM\TopDesign</v>
+<v>BLE_DAC\NSTIM\NSTIM.cydwr</v>
+<v>BLE_DAC\NSTIM\NSTIM.cydwr\Pins</v>
+<v>BLE_DAC\NSTIM\NSTIM.cydwr\Analog</v>
+<v>BLE_DAC\NSTIM\NSTIM.cydwr\DMA</v>
+<v>BLE_DAC\NSTIM\NSTIM.cydwr\Clocks</v>
+<v>BLE_DAC\NSTIM\NSTIM.cydwr\Interrupts</v>
+<v>BLE_DAC\NSTIM\NSTIM.cydwr\System</v>
+<v>BLE_DAC\NSTIM\NSTIM.cydwr\Directives</v>
+<v>BLE_DAC\NSTIM\CM0p (Core 0)</v>
+<v>BLE_DAC\NSTIM\CM0p (Core 0)\ARM GCC Generic</v>
+<v>BLE_DAC\NSTIM\CM0p (Core 0)\ARM GCC Generic\cy8c6xx7_cm0plus.ld</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -883,45 +883,12 @@
 <VisibleNodeIds>
 <v>BLE_DAC</v>
 <v>BLE_DAC\BLE_DAC</v>
-<v>BLE_DAC\BLE_DAC\CortexM0p</v>
-<v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541</v>
-<v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541\Debug</v>
-<v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541\Debug\BLE_DAC.elf</v>
-<v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541\Debug\BLE_DAC.hex</v>
-<v>BLE_DAC\BLE_DAC\CortexM0p\ARM_GCC_541\Debug\BLE_DAC.map</v>
-<v>BLE_DAC\BLE_DAC\CortexM4</v>
-<v>BLE_DAC\BLE_DAC\CortexM4\ARM_GCC_541</v>
-<v>BLE_DAC\BLE_DAC\CortexM4\ARM_GCC_541\Debug</v>
-<v>BLE_DAC\BLE_DAC\CortexM4\ARM_GCC_541\Debug\BLE_DAC.elf</v>
-<v>BLE_DAC\BLE_DAC\CortexM4\ARM_GCC_541\Debug\BLE_DAC.hex</v>
-<v>BLE_DAC\BLE_DAC\CortexM4\ARM_GCC_541\Debug\BLE_DAC.map</v>
-<v>BLE_DAC\BLE_DAC\BLE_DAC.gpdsc</v>
 <v>BLE_DAC\BLE_DAC\BLE_DAC.rpt</v>
 <v>BLE_DAC\BLE_DAC\BLE_DAC_timing.html</v>
 <v>BLE_DAC\BLE_read</v>
-<v>BLE_DAC\BLE_read\CortexM0p</v>
-<v>BLE_DAC\BLE_read\CortexM0p\ARM_GCC_541</v>
-<v>BLE_DAC\BLE_read\CortexM0p\ARM_GCC_541\Debug</v>
-<v>BLE_DAC\BLE_read\CortexM0p\ARM_GCC_541\Debug\BLE_read.elf</v>
-<v>BLE_DAC\BLE_read\CortexM0p\ARM_GCC_541\Debug\BLE_read.hex</v>
-<v>BLE_DAC\BLE_read\CortexM0p\ARM_GCC_541\Debug\BLE_read.map</v>
-<v>BLE_DAC\BLE_read\CortexM4</v>
-<v>BLE_DAC\BLE_read\CortexM4\ARM_GCC_541</v>
-<v>BLE_DAC\BLE_read\CortexM4\ARM_GCC_541\Debug</v>
-<v>BLE_DAC\BLE_read\CortexM4\ARM_GCC_541\Debug\BLE_read.elf</v>
-<v>BLE_DAC\BLE_read\CortexM4\ARM_GCC_541\Debug\BLE_read.hex</v>
-<v>BLE_DAC\BLE_read\CortexM4\ARM_GCC_541\Debug\BLE_read.map</v>
-<v>BLE_DAC\BLE_read\BLE_read.gpdsc</v>
 <v>BLE_DAC\BLE_read\BLE_read.rpt</v>
 <v>BLE_DAC\BLE_read\BLE_read_timing.html</v>
 <v>BLE_DAC\CustomService</v>
-<v>BLE_DAC\CustomService\CortexM0p</v>
-<v>BLE_DAC\CustomService\CortexM0p\ARM_GCC_541</v>
-<v>BLE_DAC\CustomService\CortexM0p\ARM_GCC_541\Debug</v>
-<v>BLE_DAC\CustomService\CortexM0p\ARM_GCC_541\Debug\Listing Files</v>
-<v>BLE_DAC\CustomService\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE.lst</v>
-<v>BLE_DAC\CustomService\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE_config.lst</v>
-<v>BLE_DAC\CustomService\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE_custom_config.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
