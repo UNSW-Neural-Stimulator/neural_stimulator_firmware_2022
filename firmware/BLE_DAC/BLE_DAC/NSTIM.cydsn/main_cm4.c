@@ -212,8 +212,11 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
         case CY_BLE_EVT_GATTS_WRITE_REQ:
             printf("Write req\n");
             if (writeReqParameter->handleValPair.attrHandle == CY_BLE_NSTIM_ERR_CLIENT_CHARACTERISTIC_CONFIGURATION_DESC_HANDLE) {
+                printf("Notify subscription request\n");
                 CyDelay(5000);
+                printf("Sending notify... ");
                 error_notify(10, 10);
+                printf("sent notify.\n");
                 break;
             }
             writeReqParameter =
