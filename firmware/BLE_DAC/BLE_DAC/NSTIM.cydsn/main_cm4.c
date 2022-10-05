@@ -211,6 +211,11 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
 
         case CY_BLE_EVT_GATTS_WRITE_REQ:
             printf("Write req\n");
+            if (writeReqParameter->handleValPair.attrHandle == CY_BLE_NSTIM_ERR_CLIENT_CHARACTERISTIC_CONFIGURATION_DESC_HANDLE) {
+                CyDelay(5000);
+                error_notify(10, 10);
+                break;
+            }
             writeReqParameter =
             (cy_stc_ble_gatts_write_cmd_req_param_t *)eventParameter;
             uint8_t req_param[5] = {0};
@@ -355,13 +360,13 @@ void dacIsr(void) {
         
         /* Exit if there is an active impedance check */
         if (impedance_check_active) {
-            if (impedance_check_counter > 200) {
+            impedance_check_counter++;
+            if (impedance_check_counter > 2000) {
                 _compliance_check();
             } else {
-                if (impedance_check_counter == 50) {
+                if (impedance_check_counter == 600) {
                     Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);   
                 }
-                impedance_check_counter++;
             }
             return;
         }
