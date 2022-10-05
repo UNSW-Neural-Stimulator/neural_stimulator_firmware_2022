@@ -215,9 +215,10 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
             writeReqParameter =
             (cy_stc_ble_gatts_write_cmd_req_param_t *)eventParameter;
             
+            // START REMOVE WHEN DONE WITH NOTIFY TESTING
             printf("attId: 0x%x\n", writeReqParameter->connHandle.attId);
             printf("attrHandle: 0x%x\n", writeReqParameter->handleValPair.attrHandle);
-
+            
             if (writeReqParameter->handleValPair.attrHandle == CY_BLE_NSTIM_ERR_CLIENT_CHARACTERISTIC_CONFIGURATION_DESC_HANDLE) {
                 printf("Notify subscription request\n");
                 CyDelay(5000);
@@ -225,13 +226,8 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
                 error_notify(10, 10);
                 printf("sent notify.\n");
                 break;
-            }
-
-           
-            
-            //writeReqParameter = (cy_stc_ble_gatts_write_cmd_req_param_t *) eventParameter;
-
-            
+            }            
+            // END 
             
             uint8_t req_param[5] = {0};
             for (int i = 0; i < writeReqParameter->handleValPair.value.len; i++) {
