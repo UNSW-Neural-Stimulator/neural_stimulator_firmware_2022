@@ -86,7 +86,7 @@ uint32_t dc_pulse_num = 0;
 uint32_t dc_pulse_done = 0;
 
 /* stim_state[0] = stim_on (1 on 0 off)
- * stim_state[1] = stim_type (0 ac, 1 dc) */
+ * stim_state[1] = stim_type (0 ac, 1 dc, 2 is impedance check) */
 uint8_t stim_state[2] = {0};
 
 /* Indicates if ac mode is anodic or cathodic right now */
@@ -96,12 +96,19 @@ uint8_t anodic = 0;
 uint16_t ac_vdac_values[] = {V0, 4095u, V0, 0u, V0};
 /* Phase timings for ac mode, interstim, p1, interphase, p2, interburst */
 uint32_t ac_phase_timings[] = {400u, 100u, 100u, 100u, 2000u};
+
 /* Max value for DC mode, what we want to ramp up to */
 uint32_t dc_vdac_target = 2633u;
 /* Starting value for DC mode, what we start the ramp from */
 uint32_t dc_vdac_base = V0;
 /* Phase timings for DC mode, 0 is interstim, 1 ramp up, 2 is high, 3 is ramp down */
 uint32_t dc_phase_timings[] = {1000u, 250u, 500u, 100u};
+
+uint16_t impedance_check_vdac_values[4] = {V0, V0 + 1000, V0, V0 - 1000};
+uint32_t impedance_check_phase_timings[4] = {1000u, 1000u, 1000u, 1000u};
+float impedance_check_readings[4096] = {0};
+uint8_t impedance_check_phase_readings[4096] = {0};
+uint32_t impedance_check_readings_ind = 0;
 
 /* Counters for the dc slope */
 uint32_t dc_step_counter = 0;
@@ -169,6 +176,7 @@ float uint32_to_float(uint32_t u);
 uint32_t float_to_uint32(float f);
 void set_dc_slope_counter();
 void error_notify(uint8_t id, uint8_t val);
+void impedance_check_handler();
 
 void command_handler(uint8_t command, uint32_t params) {
     if (command < 1 || command > 18) {
@@ -316,9 +324,9 @@ int compliance_check() {
     
 
     Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
-    int16_t result = Cy_SAR_GetResult16(SAR,0);
-    
-    printf("Voltage result: %f\r\n",(15.0*(Cy_SAR_CountsTo_Volts(SAR,0,result)-1.5)));
+    volatile float value = Cy_SAR_GetResult16(SAR,0);
+    volatile float volts = Cy_SAR_CountsTo_mVolts(SAR, 0, value);
+    //printf("Voltage result: %f\r\n",(15.0*(Cy_SAR_CountsTo_Volts(SAR,0,result)-1.5)));
     
     Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);//(phase) ? 1 : 0);
     Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);//(phase) ? 0 : 1);
@@ -346,11 +354,26 @@ void dacIsr(void) {
         VDAC_ClearInterrupt();
         
         /* Exit if there is an active impedance check */
-        if (impedance_check_active) return;
+        //if (impedance_check_active) return;
         
         /* Run burst handler or dc handler depending on stim_type */
-        if (stim_state[0]) {
-            stim_state[1] ? dc_handler() : ac_handler();
+        if (stim_state[0] == 1) {
+            //stim_state[1] ? dc_handler() : ac_handler();
+            switch (stim_state[1]) {
+                case 0:
+                    ac_handler();
+                    break;
+                case 1:
+                    dc_handler();
+                    break;
+                case 2:
+                    impedance_check_handler();
+                    break;
+                default:
+                    printf("Unknown stim state. Stopping.\n");
+                    command_stop(1);
+                    break;
+            }
         } else {
             VDAC_SetValueBuffered(V0);
         }
@@ -455,9 +478,76 @@ void ac_handler() {
                 return;
             }
         }
-    }
+    }    
+}
 
+void impedance_readings_print() {
+    printf("Printing impedance vals\n");
+    uint32_t i = 0;
+    for (i = 1; i < impedance_check_readings_ind; i++) {
+        //if (ABS(impedance_check_readings[i] - impedance_check_readings[i - 1]) > 1.0) {
+            printf("%f,%d\n", impedance_check_readings[i], impedance_check_phase_readings[i]);
+        //}
+        
+    }
+    printf("%u values read\n", i);
+    command_stop(1);
+}
+
+void impedance_check_handler() {
+    counter++;
     
+    VDAC_SetValueBuffered(impedance_check_vdac_values[phase]);
+    
+    Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_CONTINUOUS);
+    volatile float value = Cy_SAR_GetResult16(SAR,0);
+    volatile float volts = Cy_SAR_CountsTo_mVolts(SAR, 0, value);
+    
+    impedance_check_readings[impedance_check_readings_ind] = volts;
+    impedance_check_phase_readings[impedance_check_readings_ind] = phase;
+    impedance_check_readings_ind++;
+    
+    if (impedance_check_readings_ind >= 4096) {
+        printf("Overflown reading buf during phase %d count %d\n", phase, counter);
+        impedance_readings_print();
+        return;
+    }
+    
+    if (counter >= impedance_check_phase_timings[phase]) {
+        counter = 0u;
+        if (phase < 3) {
+            phase++;
+            Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, (phase & 1) ? 1 : 0);
+            Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (!(phase & 1)) ? 1 : 0);
+            Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (phase & 1) ? 0 : 1);
+            //Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (phase == 0) ? 0 : 1);
+        } else if (phase >= 3) {
+            Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);
+            Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
+            Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
+            //Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
+            impedance_readings_print();
+            command_stop(1);
+            return;
+        }
+    }    
+    
+    /*if (counter >= impedance_check_phase_timings[phase]) {
+        phase++;
+        counter = 0u;
+        if (phase > 3) {
+            printf("Fininshed impedance pulse with phase %d and counter %u\n", phase, counter);
+            impedance_readings_print();
+            command_stop(0);
+            return;
+        }
+        else {
+            Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, (phase & 1) ? 1 : 0);
+            Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (!(phase & 1)) ? 1 : 0);
+            Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (phase & 1) ? 0 : 1);
+            Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
+        }
+    }*/
 }
 
 void ac_print_state() {
@@ -470,18 +560,28 @@ void dc_print_state() {
 
 int command_start(uint32_t param) {
     printf("Inside start command with param %u\n", param);
-    if (compliance_check()) {
-        printf("Failed compliance check\n");
-        return 1;
-    }
+    //if (compliance_check()) {
+    //    printf("Failed compliance check\n");
+    //    return 1;
+    //}
     ac_burst_done = 0;
+    phase = 0;
+    counter = 0;
+    impedance_check_readings_ind = 0;
     ac_pulse_done = 0;
     dc_pulse_done = 0;
     stop_ac_stim = 0;
-    stim_state[0] = 1;
+    
     set_dc_slope_counter();
     dc_print_state();
     ac_print_state();
+    
+    // REMOVE AFTER TESTING 
+    stim_state[1] = 2;
+    // REMOVE AFTER TESTING
+    stim_state[0] = 1;
+    
+    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
     
     Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
     Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
