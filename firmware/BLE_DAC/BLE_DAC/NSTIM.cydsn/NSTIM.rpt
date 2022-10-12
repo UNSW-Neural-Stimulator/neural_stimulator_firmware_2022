@@ -1,19 +1,19 @@
-Loading plugins phase: Elapsed time ==> 1s.001ms
+Loading plugins phase: Elapsed time ==> 0s.369ms
 <CYPRESSTAG name="CyDsfit arguments...">
-cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -d CYBLE-416045-02 -s C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\Generated_Source\PSoC6 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -d CYBLE-416045-02 -s C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\Generated_Source\PSoC6 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 </CYPRESSTAG>
 ADD: fit.M0067: information: Clock Information: (The WCO is enabled. Chip startup will be slower because clock configuration cannot continue until the WCO is ready. See the device datasheet for WCO startup timing. If WCO is not required during startup, consider starting it in main() for faster chip startup.).
- * C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cydwr (WCO)
+ * C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cydwr (WCO)
 
 <CYPRESSTAG name="Design elaboration results...">
 ADD: fit.M0052: information: Interrupt "BLE_1_bless_isr" is currently mapped to multiple cores on the device.
- * C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cydwr (BLE_1_bless_isr)
+ * C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cydwr (BLE_1_bless_isr)
 
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 7s.245ms
+Elaboration phase: Elapsed time ==> 7s.578ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.115ms
+HDL generation phase: Elapsed time ==> 0s.345ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -31,23 +31,23 @@ HDL generation phase: Elapsed time ==> 0s.115ms
 ======================================================================
 Compiling:  NSTIM.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\bin\warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -dcpsoc3 NSTIM.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -dcpsoc3 NSTIM.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  NSTIM.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\bin\warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -dcpsoc3 NSTIM.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -dcpsoc3 NSTIM.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  NSTIM.v
 Program  :   vlogfe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -dcpsoc3 -verilog NSTIM.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -dcpsoc3 -verilog NSTIM.v
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Wed Oct 05 16:28:42 2022
+Wed Oct 12 13:14:30 2022
 
 
 ======================================================================
@@ -57,7 +57,7 @@ Options  :    -yv2 -q10 NSTIM.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Wed Oct 05 16:28:42 2022
+Wed Oct 12 13:14:30 2022
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'
@@ -91,11 +91,11 @@ vlogfe:  No errors.
 ======================================================================
 Compiling:  NSTIM.v
 Program  :   tovif
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -dcpsoc3 -verilog NSTIM.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -dcpsoc3 -verilog NSTIM.v
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Wed Oct 05 16:28:43 2022
+Wed Oct 12 13:14:33 2022
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -106,9 +106,9 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\codegentemp\NSTIM.ctl'.
+Linking 'C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\codegentemp\NSTIM.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
-Linking 'C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\codegentemp\NSTIM.v'.
+Linking 'C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\codegentemp\NSTIM.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\or_v1_0\or_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
@@ -124,11 +124,11 @@ tovif:  No errors.
 ======================================================================
 Compiling:  NSTIM.v
 Program  :   topld
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -dcpsoc3 -verilog NSTIM.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -dcpsoc3 -verilog NSTIM.v
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Wed Oct 05 16:28:43 2022
+Wed Oct 12 13:14:35 2022
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -139,9 +139,9 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\codegentemp\NSTIM.ctl'.
+Linking 'C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\codegentemp\NSTIM.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
-Linking 'C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\codegentemp\NSTIM.v'.
+Linking 'C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\codegentemp\NSTIM.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\or_v1_0\or_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
@@ -222,16 +222,16 @@ topld:  No errors.
 
 CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\bin\warp.exe
-Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -dcpsoc3 NSTIM.v -verilog
+Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -dcpsoc3 NSTIM.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 2s.592ms
+Warp synthesis phase: Elapsed time ==> 7s.499ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.4.0.80, Family: PSoC3, Started at: Wednesday, 05 October 2022 16:28:44
-Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -d CYBLE-416045-02 NSTIM.v -verilog
+cyp3fit: V4.4.0.80, Family: PSoC3, Started at: Wednesday, 12 October 2022 13:14:37
+Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\maher\OneDrive\Desktop\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cyprj -d CYBLE-416045-02 NSTIM.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.636ms
+Design parsing phase: Elapsed time ==> 1s.675ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech Mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -1032,8 +1032,8 @@ Sample and Hold               :    0 :    1 :    1 :  0.00 %
 SAR ADC                       :    1 :    0 :    1 : 100.00 %
 DieTemp Sensor                :    0 :    1 :    1 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.114ms
-Tech Mapping phase: Elapsed time ==> 0s.180ms
+Technology Mapping: Elapsed time ==> 0s.389ms
+Tech Mapping phase: Elapsed time ==> 0s.553ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 <CYPRESSTAG name="FFB & IO Pre Placement">
@@ -1074,15 +1074,15 @@ PASS_BLOCK                          : PASSBLOCK_[FFB(PASSBLOCK,0)]
 </CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Real Analog Placement">
-Elapsed time ==> 0.1092082s
+Elapsed time ==> 0.2843794s
 </CYPRESSTAG>
-Analog Placement phase: Elapsed time ==> 0s.725ms
+Analog Placement phase: Elapsed time ==> 1s.863ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 <CYPRESSTAG name="Analog Routing">
-Route success=True, Iterations=1 Elapsed=0.0085514 secs
+Route success=True, Iterations=1 Elapsed=0.0483819 secs
 </CYPRESSTAG>
-Analog Routing phase: Elapsed time ==> 0s.008ms
+Analog Routing phase: Elapsed time ==> 0s.051ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -1175,26 +1175,26 @@ Map of item to net {
 }
 Mux Info {
 }
-Analog Code Generation phase: Elapsed time ==> 0s.014ms
+Analog Code Generation phase: Elapsed time ==> 0s.080ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
 I2659: No Constrained paths were found. The placer will run in non-timing driven mode.
-I2076: Total run-time: 0.4 sec.
+I2076: Total run-time: 1.1 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
 <CYPRESSTAG name="PLD Packing Summary">
 No PLDs were packed.
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.001ms
+PLD Packing: Elapsed time ==> 0s.005ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.033ms
+Partitioning: Elapsed time ==> 0s.065ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -2206,33 +2206,33 @@ Port | Pin | Fixed |      Type |       Drive Mode |                       Name |
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.025ms
-Digital Placement phase: Elapsed time ==> 4s.591ms
+Digital component placer commit/Report: Elapsed time ==> 0s.084ms
+Digital Placement phase: Elapsed time ==> 12s.489ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\bin/sjrouter.exe" --xml-path "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc6/0/route_arch-rrg.cydata" --vh2-path "NSTIM_r.vh2" --pcf-path "NSTIM.pco" --des-name "NSTIM" --dsf-path "NSTIM.dsf" --sdc-path "NSTIM.sdc" --lib-path "NSTIM_r.lib"
 Routing successful.
-Digital Routing phase: Elapsed time ==> 0s.753ms
+Digital Routing phase: Elapsed time ==> 1s.957ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
-Bitstream Generation phase: Elapsed time ==> 0s.395ms
+Bitstream Generation phase: Elapsed time ==> 1s.437ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.000ms
+Bitstream Verification phase: Elapsed time ==> 0s.001ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in NSTIM_timing.html.
-Static timing analysis phase: Elapsed time ==> 6s.815ms
+Static timing analysis phase: Elapsed time ==> 16s.780ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
-Data reporting phase: Elapsed time ==> 0s.000ms
+Data reporting phase: Elapsed time ==> 0s.006ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.158ms
+Design database save phase: Elapsed time ==> 0s.416ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 14s.326ms
+cydsfit: Elapsed time ==> 37s.489ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 14s.326ms
-API generation phase: Elapsed time ==> 1s.152ms
-Dependency generation phase: Elapsed time ==> 0s.008ms
-Cleanup phase: Elapsed time ==> 0s.001ms
+Fitter phase: Elapsed time ==> 37s.498ms
+API generation phase: Elapsed time ==> 3s.359ms
+Dependency generation phase: Elapsed time ==> 0s.048ms
+Cleanup phase: Elapsed time ==> 0s.000ms

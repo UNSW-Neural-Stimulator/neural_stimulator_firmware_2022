@@ -658,7 +658,8 @@ int command_ac_phase_one_curr(uint32_t param) {
     
     printf("Current: %f\n", curr);
     
-    uint32_t vdac_val = CURR_TO_VDAC(curr);
+    uint32_t vdac_val = (curr == 0) ? V0 : CURR_TO_VDAC(curr);
+     
     
     printf("To vdac: %u\n", vdac_val);
 
@@ -682,7 +683,7 @@ int command_ac_phase_two_curr(uint32_t param) {
         return 1;
     }
     printf("Curr: %f\n", curr);
-    uint32_t vdac_val = CURR_TO_VDAC(curr);
+    uint32_t vdac_val = (curr == 0) ? V0 : CURR_TO_VDAC(curr);
     printf("VDAC: %u\n", vdac_val);
 
     if ((!anodic && vdac_val > V0) || (anodic && vdac_val < V0)) {
@@ -715,7 +716,7 @@ int command_dc_curr_target(uint32_t param) {
         printf("Invalid current\n");
     }
     
-    uint32_t vdac_val = CURR_TO_VDAC(curr);
+    uint32_t vdac_val = (curr == 0) ? V0 : CURR_TO_VDAC(curr);
     printf("Curr: %f, vdac: %u\n", curr, vdac_val);
     
     if (vdac_val > VDAC_MAX || vdac_val < V0) {
