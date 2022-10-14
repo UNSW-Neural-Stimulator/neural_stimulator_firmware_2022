@@ -25,6 +25,9 @@
 #define LED_ON 0
 #define LED_OFF 1
 
+#define IMPEDANCE_CHECK_EVM_DELAY 1000
+#define IMPEDANCE_CHECK_PHASE_TIMINGS 1000
+
 /* Converts microseconds to phase timing. We only care about phase timings in
  * code! */
 #define US_TO_PT(n) (n / 2)
@@ -58,6 +61,24 @@ typedef union uint_int_overlay_t {
     int i;
 } uint_int_overlay_t;
 
+typedef struct _impedance_check {
+    float p1_avg;
+    float p1_max;
+    float p1_min;
+  
+    float p2_avg;
+    float p2_max;
+    float p2_min;
+    
+    float p3_avg;
+    float p3_min;
+    float p3_max;
+    
+    float p4_avg;
+    float p4_min;
+    float p4_max;
+} impedance_check_t;
+
 /* Used by BLE task to wait for next BLE request */
 SemaphoreHandle_t bleSemaphore;
 
@@ -88,6 +109,7 @@ uint32_t dc_pulse_done = 0;
 /* stim_state[0] = stim_on (1 on 0 off)
  * stim_state[1] = stim_type (0 ac, 1 dc, 2 is impedance check) */
 uint8_t stim_state[2] = {0};
+uint8_t stim_mode_temp = 0;
 
 /* Indicates if ac mode is anodic or cathodic right now */
 uint8_t anodic = 0;
@@ -105,10 +127,11 @@ uint32_t dc_vdac_base = V0;
 uint32_t dc_phase_timings[] = {1000u, 250u, 500u, 100u};
 
 uint16_t impedance_check_vdac_values[4] = {V0, V0 + 1000, V0, V0 - 1000};
-uint32_t impedance_check_phase_timings[4] = {1000u, 1000u, 1000u, 1000u};
+uint32_t impedance_check_phase_timings[4] = {IMPEDANCE_CHECK_PHASE_TIMINGS, IMPEDANCE_CHECK_PHASE_TIMINGS, IMPEDANCE_CHECK_PHASE_TIMINGS, IMPEDANCE_CHECK_PHASE_TIMINGS};
 float impedance_check_readings[4096] = {0};
-uint8_t impedance_check_phase_readings[4096] = {0};
 uint32_t impedance_check_readings_ind = 0;
+uint32_t impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
+impedance_check_t impedance_check_data = {};
 
 /* Counters for the dc slope */
 uint32_t dc_step_counter = 0;
@@ -177,6 +200,9 @@ uint32_t float_to_uint32(float f);
 void set_dc_slope_counter();
 void error_notify(uint8_t id, uint8_t val);
 void impedance_check_handler();
+void impedance_check_process_data();
+void min_max_avg(float *list, int min_ind, int max_ind, float *min, float *max, float *avg);
+void post_impedance_start();
 
 void command_handler(uint8_t command, uint32_t params) {
     if (command < 1 || command > 18) {
@@ -481,20 +507,84 @@ void ac_handler() {
     }    
 }
 
-void impedance_readings_print() {
-    printf("Printing impedance vals\n");
-    uint32_t i = 0;
-    for (i = 1; i < impedance_check_readings_ind; i++) {
-        //if (ABS(impedance_check_readings[i] - impedance_check_readings[i - 1]) > 1.0) {
-            printf("%f,%d\n", impedance_check_readings[i], impedance_check_phase_readings[i]);
-        //}
-        
+void min_max_avg(float *list, int min_ind, int max_ind, float *min, float *max, float *avg) {
+    *min = list[min_ind];
+    *max = list[min_ind];
+    double total = 0.0;
+    for (int i = min_ind; i <= max_ind; i++) {
+        if (list[i] < *min) *min = list[i];
+        else if (list[i] > *max) *max = list[i];
+        total += list[i];
     }
-    printf("%u values read\n", i);
-    command_stop(1);
+    *avg = total / (max_ind - min_ind + 1);
+}
+
+void impedance_check_process_data() {
+    min_max_avg(impedance_check_readings, 
+            10, 
+            IMPEDANCE_CHECK_PHASE_TIMINGS - 10, 
+            &impedance_check_data.p1_min, 
+            &impedance_check_data.p1_max, 
+            &impedance_check_data.p1_avg);
+    
+    min_max_avg(impedance_check_readings, 
+            IMPEDANCE_CHECK_PHASE_TIMINGS + 10, 
+            IMPEDANCE_CHECK_PHASE_TIMINGS * 2 - 10, 
+            &impedance_check_data.p2_min, 
+            &impedance_check_data.p2_max, 
+            &impedance_check_data.p2_avg);
+    
+    min_max_avg(impedance_check_readings, 
+            IMPEDANCE_CHECK_PHASE_TIMINGS * 2 + 10, 
+            IMPEDANCE_CHECK_PHASE_TIMINGS * 3 - 10, 
+            &impedance_check_data.p3_min, 
+            &impedance_check_data.p3_max, 
+            &impedance_check_data.p3_avg);
+    
+    min_max_avg(impedance_check_readings, 
+            IMPEDANCE_CHECK_PHASE_TIMINGS * 3 + 10, 
+            IMPEDANCE_CHECK_PHASE_TIMINGS * 4 - 10, 
+            &impedance_check_data.p4_min, 
+            &impedance_check_data.p4_max, 
+            &impedance_check_data.p4_avg);
+}
+
+void impedance_readings_print() {
+    printf("\nImpedance check results:\n");
+    printf("\tValues read: %u\n", impedance_check_readings_ind);
+    printf("\tData processed:\n");
+    printf("\tp1: min: %f  max: %f  avg: %f\n", 
+        impedance_check_data.p1_min, 
+        impedance_check_data.p1_max, 
+        impedance_check_data.p1_avg);
+    printf("\tp2: min: %f  max: %f  avg: %f\n", 
+        impedance_check_data.p2_min, 
+        impedance_check_data.p2_max, 
+        impedance_check_data.p2_avg);
+    printf("\tp3: min: %f  max: %f  avg: %f\n", 
+        impedance_check_data.p3_min, 
+        impedance_check_data.p3_max, 
+        impedance_check_data.p3_avg);
+    printf("\tp4: min: %f  max: %f  avg: %f\n", 
+        impedance_check_data.p4_min, 
+        impedance_check_data.p4_max, 
+        impedance_check_data.p4_avg);
 }
 
 void impedance_check_handler() {
+    /* We want to wait for the EVM Pin to actually turn on */
+    if (impedance_check_evm_pin_delay > 0) {
+        impedance_check_evm_pin_delay--;
+        /* Take some measurements to 'warm up' the ADC.
+           Without this you get some noise in the first few. */
+        if (impedance_check_evm_pin_delay < 10) {
+            VDAC_SetValueBuffered(impedance_check_vdac_values[phase]);
+            Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_CONTINUOUS);
+            volatile float value = Cy_SAR_GetResult16(SAR,0);
+            volatile float volts = Cy_SAR_CountsTo_mVolts(SAR, 0, value);
+        }
+        return;
+    }
     counter++;
     
     VDAC_SetValueBuffered(impedance_check_vdac_values[phase]);
@@ -504,11 +594,11 @@ void impedance_check_handler() {
     volatile float volts = Cy_SAR_CountsTo_mVolts(SAR, 0, value);
     
     impedance_check_readings[impedance_check_readings_ind] = volts;
-    impedance_check_phase_readings[impedance_check_readings_ind] = phase;
     impedance_check_readings_ind++;
     
     if (impedance_check_readings_ind >= 4096) {
         printf("Overflown reading buf during phase %d count %d\n", phase, counter);
+        //impedance_check_process_data();
         impedance_readings_print();
         return;
     }
@@ -526,28 +616,12 @@ void impedance_check_handler() {
             Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);
             Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);
             //Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
+            impedance_check_process_data();
             impedance_readings_print();
-            command_stop(1);
+            post_impedance_start();
             return;
         }
     }    
-    
-    /*if (counter >= impedance_check_phase_timings[phase]) {
-        phase++;
-        counter = 0u;
-        if (phase > 3) {
-            printf("Fininshed impedance pulse with phase %d and counter %u\n", phase, counter);
-            impedance_readings_print();
-            command_stop(0);
-            return;
-        }
-        else {
-            Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, (phase & 1) ? 1 : 0);
-            Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, (!(phase & 1)) ? 1 : 0);
-            Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, (phase & 1) ? 0 : 1);
-            Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
-        }
-    }*/
 }
 
 void ac_print_state() {
@@ -558,12 +632,15 @@ void dc_print_state() {
     printf("Ramp up time: %u, ramp down time: %u, hold time: %u, dc_vdac_target: %u, dc_base: %u, dc_intr_per_step: %d, dc_burst_num: %d\n", dc_phase_timings[1], dc_phase_timings[3], dc_phase_timings[2], dc_vdac_target, dc_vdac_base, dc_intr_per_step, dc_pulse_num);
 }
 
+void post_impedance_start() {
+    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
+    stim_state[1] = stim_mode_temp;
+    stim_state[0] = 1;
+    counter = 0;
+}
+
 int command_start(uint32_t param) {
     printf("Inside start command with param %u\n", param);
-    //if (compliance_check()) {
-    //    printf("Failed compliance check\n");
-    //    return 1;
-    //}
     ac_burst_done = 0;
     phase = 0;
     counter = 0;
@@ -576,16 +653,17 @@ int command_start(uint32_t param) {
     dc_print_state();
     ac_print_state();
     
-    // REMOVE AFTER TESTING 
+    impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
+    
+    // Do an impedance check
+    stim_mode_temp = stim_state[1];
     stim_state[1] = 2;
-    // REMOVE AFTER TESTING
     stim_state[0] = 1;
     
     Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
     
     Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
     Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
-    // Compliance check and err if not passed
     return 0;
 }
 
@@ -613,6 +691,8 @@ int command_stop(uint32_t param) {
         
         stim_state[0] = 0;
         counter = 0;
+        memset(impedance_check_readings, 0, 4096);
+        impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
         ac_burst_done = 0;
         ac_pulse_done = 0;
         dc_pulse_done = 0;
