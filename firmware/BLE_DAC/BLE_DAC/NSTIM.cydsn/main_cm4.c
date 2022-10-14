@@ -131,7 +131,7 @@ uint32_t impedance_check_phase_timings[4] = {IMPEDANCE_CHECK_PHASE_TIMINGS, IMPE
 float impedance_check_readings[4096] = {0};
 uint32_t impedance_check_readings_ind = 0;
 uint32_t impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
-impedance_check_t impedance_check_data = {};
+impedance_check_t impedance_check_data = {0};
 
 /* Counters for the dc slope */
 uint32_t dc_step_counter = 0;
@@ -145,6 +145,7 @@ bool stop_ac_stim = 0;
 /* Flag used to indicate that Impedance check is active
 (so that ISR doesn't try to set output to zero while scan is active) */
 bool impedance_check_active = false;
+int impedance_check_counter = 0;
 
 int command_start(uint32_t param);
 int command_stop(uint32_t param);
@@ -242,8 +243,24 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
 
         case CY_BLE_EVT_GATTS_WRITE_REQ:
             printf("Write req\n");
+            
             writeReqParameter =
             (cy_stc_ble_gatts_write_cmd_req_param_t *)eventParameter;
+            
+            // START REMOVE WHEN DONE WITH NOTIFY TESTING
+            printf("attId: 0x%x\n", writeReqParameter->connHandle.attId);
+            printf("attrHandle: 0x%x\n", writeReqParameter->handleValPair.attrHandle);
+            
+            if (writeReqParameter->handleValPair.attrHandle == CY_BLE_NSTIM_ERR_CLIENT_CHARACTERISTIC_CONFIGURATION_DESC_HANDLE) {
+                printf("Notify subscription request\n");
+                CyDelay(5000);
+                printf("Sending notify... ");
+                error_notify(10, 10);
+                printf("sent notify.\n");
+                break;
+            }            
+            // END 
+            
             uint8_t req_param[5] = {0};
             for (int i = 0; i < writeReqParameter->handleValPair.value.len; i++) {
                 req_param[i] = writeReqParameter->handleValPair.value.val[i];
@@ -338,29 +355,6 @@ void set_dc_slope_counter() {
     dc_intr_per_step = dc_phase_timings[1] / (dc_vdac_target - dc_vdac_base);
 }
 
-int compliance_check() {
-    impedance_check_active = true;
-    
-    Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 1);//(phase) ? 1 : 0);
-    Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 0);//(phase) ? 0 : 1);
-    Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 0);//(phase) ? 0 : 1);
-    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);//(phase) ? 1 : 0);
-    
-    VDAC_SetValueBuffered(V0 + 10);
-    
-
-    Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
-    volatile float value = Cy_SAR_GetResult16(SAR,0);
-    volatile float volts = Cy_SAR_CountsTo_mVolts(SAR, 0, value);
-    //printf("Voltage result: %f\r\n",(15.0*(Cy_SAR_CountsTo_Volts(SAR,0,result)-1.5)));
-    
-    Cy_GPIO_Write(SW_ISO, SW_ISO_NUM, 0);//(phase) ? 1 : 0);
-    Cy_GPIO_Write(SW_SHORT, SW_SHORT_NUM, 1);//(phase) ? 0 : 1);
-    Cy_GPIO_Write(SW_LOAD, SW_LOAD_NUM, 1);//(phase) ? 0 : 1);
-    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);//(phase) ? 1 : 0);
-    impedance_check_active = false;
-    return 0;
-}
 /*
 void adcIsr(void) {
     int16_t result = Cy_SAR_GetResult16(SAR,0);

@@ -1,4 +1,4 @@
---------------- Rebuild Started: 09/27/2022 11:03:10 Project: NSTIM, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Rebuild Started: 10/04/2022 17:48:18 Project: NSTIM, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 Deleting file ".\CortexM0p\ARM_GCC_541\Debug\startup_psoc6_01_cm0plus.o"
 Deleting file ".\CortexM0p\ARM_GCC_541\Debug\main_cm0p.o"
 Deleting file ".\CortexM0p\ARM_GCC_541\Debug\system_psoc6_cm0plus.o"
@@ -195,8 +195,6 @@ ADD: fit.M0067: information: Clock Information: (The WCO is enabled. Chip startu
 Elaborating Design...
 ADD: fit.M0052: information: Interrupt "BLE_1_bless_isr" is currently mapped to multiple cores on the device.
  * C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cydwr (BLE_1_bless_isr)
-ADD: sdb.M0061: information: Info from component: ADC. Off-chip Vref bypass does not have any effect when Vref is set to VDDA.
- * C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\TopDesign\TopDesign.cysch (Instance:ADC)
 HDL Generation...
 Synthesis...
 Tech Mapping...
@@ -315,84 +313,80 @@ Checksum calculated and stored in ELF section .cymeta
 arm-none-eabi-gcc.exe -mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sar/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/scb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -IGenerated_Source\PSoC6\pdl\rtos/FreeRTOS/10.0.1/Source/include/ -IGenerated_Source\PSoC6\pdl\rtos/FreeRTOS/10.0.1/Source/portable/GCC/CM4F/ -IGenerated_Source\PSoC6\pdl\utilities/ -Wa,-alh=.\CortexM4\ARM_GCC_541\Debug/startup_psoc6_01_cm4.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og -c gcc\startup_psoc6_01_cm4.S -o .\CortexM4\ARM_GCC_541\Debug\startup_psoc6_01_cm4.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sar/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/scb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -IGenerated_Source\PSoC6\pdl\rtos/FreeRTOS/10.0.1/Source/include/ -IGenerated_Source\PSoC6\pdl\rtos/FreeRTOS/10.0.1/Source/portable/GCC/CM4F/ -IGenerated_Source\PSoC6\pdl\utilities/ -Wa,-alh=.\CortexM4\ARM_GCC_541\Debug/main_cm4.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og -c main_cm4.c -o .\CortexM4\ARM_GCC_541\Debug\main_cm4.o
 main_cm4.c: In function 'command_handler':
-main_cm4.c:175:12: warning: format '%x' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:182:12: warning: format '%x' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
      printf("Command 0x%x with param 0x%x\n", command, params);
             ^
-main_cm4.c:175:12: warning: format '%x' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:178:16: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:182:12: warning: format '%x' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:185:16: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
          printf("Command 0x%x failed with status %d\n", command, err);
                 ^
-main_cm4.c:178:16: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:185:16: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
 main_cm4.c: In function 'genericEventHandler':
-main_cm4.c:186:12: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:193:12: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
      printf("\nBLE Event handler, event 0x%x\n", event);
             ^
-main_cm4.c:186:12: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:217:20: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:193:12: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:224:20: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
              printf("Param %u\n", param);
                     ^
-main_cm4.c:217:20: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c: In function 'compliance_check':
-main_cm4.c:308:13: warning: unused variable 'result' [-Wunused-variable]
-     int16_t result = Cy_SAR_GetResult16(SAR,0);
-             ^
+main_cm4.c:224:20: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
 main_cm4.c: In function 'ac_print_state':
-main_cm4.c:440:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:478:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
      printf("ac_pulse_num: %u, ac_burst_num: %u, stim_state[0]: %u, stim_state[1]: %u, ac_phase[0]: %u, ac_phase[1]: %u, ac_phase[2]: %u, ac_phase[3]: %u, ac_v[0]: %u, ac_v[1]: %u, ac_v[2]: %u, ac_v[3]: %u\n", ac_pulse_num, ac_burst_num, stim_state[0], stim_state[1], ac_phase_timings[0], ac_phase_timings[1], ac_phase_timings[2], ac_phase_timings[3], ac_vdac_values[0], ac_vdac_values[1], ac_vdac_values[2], ac_vdac_values[3]);
             ^
-main_cm4.c:440:12: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:440:12: warning: format '%u' expects argument of type 'unsigned int', but argument 6 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:440:12: warning: format '%u' expects argument of type 'unsigned int', but argument 7 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:440:12: warning: format '%u' expects argument of type 'unsigned int', but argument 8 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:440:12: warning: format '%u' expects argument of type 'unsigned int', but argument 9 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:440:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:440:12: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:440:12: warning: format '%u' expects argument of type 'unsigned int', but argument 6 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:440:12: warning: format '%u' expects argument of type 'unsigned int', but argument 7 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:440:12: warning: format '%u' expects argument of type 'unsigned int', but argument 8 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:440:12: warning: format '%u' expects argument of type 'unsigned int', but argument 9 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:478:12: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:478:12: warning: format '%u' expects argument of type 'unsigned int', but argument 6 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:478:12: warning: format '%u' expects argument of type 'unsigned int', but argument 7 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:478:12: warning: format '%u' expects argument of type 'unsigned int', but argument 8 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:478:12: warning: format '%u' expects argument of type 'unsigned int', but argument 9 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:478:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:478:12: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:478:12: warning: format '%u' expects argument of type 'unsigned int', but argument 6 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:478:12: warning: format '%u' expects argument of type 'unsigned int', but argument 7 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:478:12: warning: format '%u' expects argument of type 'unsigned int', but argument 8 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:478:12: warning: format '%u' expects argument of type 'unsigned int', but argument 9 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
 main_cm4.c: In function 'dc_print_state':
-main_cm4.c:444:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
      printf("Ramp up time: %u, ramp down time: %u, hold time: %u, dc_vdac_target: %u, dc_base: %u, dc_intr_per_step: %d, dc_burst_num: %d\n", dc_phase_timings[1], dc_phase_timings[3], dc_phase_timings[2], dc_vdac_target, dc_vdac_base, dc_intr_per_step, dc_pulse_num);
             ^
-main_cm4.c:444:12: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:444:12: warning: format '%u' expects argument of type 'unsigned int', but argument 4 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:444:12: warning: format '%u' expects argument of type 'unsigned int', but argument 5 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:444:12: warning: format '%u' expects argument of type 'unsigned int', but argument 6 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:444:12: warning: format '%d' expects argument of type 'int', but argument 7 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:444:12: warning: format '%d' expects argument of type 'int', but argument 8 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:444:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:444:12: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:444:12: warning: format '%u' expects argument of type 'unsigned int', but argument 4 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:444:12: warning: format '%u' expects argument of type 'unsigned int', but argument 5 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:444:12: warning: format '%u' expects argument of type 'unsigned int', but argument 6 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:444:12: warning: format '%d' expects argument of type 'int', but argument 7 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-main_cm4.c:444:12: warning: format '%d' expects argument of type 'int', but argument 8 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%u' expects argument of type 'unsigned int', but argument 4 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%u' expects argument of type 'unsigned int', but argument 5 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%u' expects argument of type 'unsigned int', but argument 6 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%d' expects argument of type 'int', but argument 7 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%d' expects argument of type 'int', but argument 8 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%u' expects argument of type 'unsigned int', but argument 4 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%u' expects argument of type 'unsigned int', but argument 5 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%u' expects argument of type 'unsigned int', but argument 6 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%d' expects argument of type 'int', but argument 7 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:482:12: warning: format '%d' expects argument of type 'int', but argument 8 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
 main_cm4.c: In function 'command_start':
-main_cm4.c:448:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:502:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
      printf("Inside start command with param %u\n", param);
             ^
-main_cm4.c:448:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:502:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
 main_cm4.c: In function 'command_stop':
-main_cm4.c:475:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:530:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
      printf("Inside command stop with param %u\n", param);
             ^
-main_cm4.c:475:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:530:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
 main_cm4.c: In function 'command_ac_phase_one_curr':
-main_cm4.c:586:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:645:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
      printf("To vdac: %u\n", vdac_val);
             ^
-main_cm4.c:586:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:645:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
 main_cm4.c: In function 'command_ac_phase_two_curr':
-main_cm4.c:609:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:668:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
      printf("VDAC: %u\n", vdac_val);
             ^
-main_cm4.c:609:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:668:12: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
 main_cm4.c: In function 'command_dc_curr_target':
-main_cm4.c:642:12: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:701:12: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
      printf("Curr: %f, vdac: %u\n", curr, vdac_val);
             ^
-main_cm4.c:642:12: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+main_cm4.c:701:12: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
 arm-none-eabi-gcc.exe -mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sar/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/scb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -IGenerated_Source\PSoC6\pdl\rtos/FreeRTOS/10.0.1/Source/include/ -IGenerated_Source\PSoC6\pdl\rtos/FreeRTOS/10.0.1/Source/portable/GCC/CM4F/ -IGenerated_Source\PSoC6\pdl\utilities/ -Wa,-alh=.\CortexM4\ARM_GCC_541\Debug/system_psoc6_cm4.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og -c system_psoc6_cm4.c -o .\CortexM4\ARM_GCC_541\Debug\system_psoc6_cm4.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sar/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/scb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -IGenerated_Source\PSoC6\pdl\rtos/FreeRTOS/10.0.1/Source/include/ -IGenerated_Source\PSoC6\pdl\rtos/FreeRTOS/10.0.1/Source/portable/GCC/CM4F/ -IGenerated_Source\PSoC6\pdl\utilities/ -Wa,-alh=.\CortexM4\ARM_GCC_541\Debug/stdio_user.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og -c stdio_user.c -o .\CortexM4\ARM_GCC_541\Debug\stdio_user.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ctdac/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sar/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/scb/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -IGenerated_Source\PSoC6\pdl\rtos/FreeRTOS/10.0.1/Source/include/ -IGenerated_Source\PSoC6\pdl\rtos/FreeRTOS/10.0.1/Source/portable/GCC/CM4F/ -IGenerated_Source\PSoC6\pdl\utilities/ -Wa,-alh=.\CortexM4\ARM_GCC_541\Debug/cyfitter_sysint_cfg.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CYBLE_416045_02 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC6\cyfitter_sysint_cfg.c -o .\CortexM4\ARM_GCC_541\Debug\cyfitter_sysint_cfg.o
@@ -493,5 +487,5 @@ Checksum calculated and stored in ELF section .cymeta
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 "C:\Program Files (x86)\Cypress\PDL\3.1.3\tools\win\elf\cymcuelftool.exe" -A C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\CortexM4\ARM_GCC_541\Debug\NSTIM.elf
-code:223519	sram:66464
---------------- Rebuild Succeeded: 09/27/2022 11:04:19 ---------------
+code:220691	sram:66472
+--------------- Rebuild Succeeded: 10/04/2022 17:49:28 ---------------
