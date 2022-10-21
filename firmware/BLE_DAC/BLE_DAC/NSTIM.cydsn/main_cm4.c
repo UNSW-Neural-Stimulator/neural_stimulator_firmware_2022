@@ -533,59 +533,59 @@ void impedance_check_process_data() {
 
 /* Please rewrite this */
 void send_impedance_readings() {
-    uint8_t vals[49] = {0};
+    uint8_t vals[25] = {0};
     union {
-        float imp_val;
-        uint8_t temp_array[4];
+        uint16_t imp_val;
+        uint8_t temp_array[2];
     } u;
     vals[0] = IMPEDANCE_READING_NOTIF;
     int i = 1;
-    u.imp_val = impedance_check_data.p1_avg;
-    memcpy(&vals[i], u.temp_array, 4);
-    i += 4;
+    u.imp_val = (uint16_t)impedance_check_data.p1_avg;
+    memcpy(&vals[i], u.temp_array, 2);
+    i += 2;
     
-    u.imp_val = impedance_check_data.p1_min;
-    memcpy(&vals[i], u.temp_array, 4);
-    i += 4;
+    u.imp_val = (uint16_t)impedance_check_data.p1_min;
+    memcpy(&vals[i], u.temp_array, 2);
+    i += 2;
     
-    u.imp_val = impedance_check_data.p1_max;
-    memcpy(&vals[i], u.temp_array, 4);
-    i += 4;
+    u.imp_val = (uint16_t)impedance_check_data.p1_max;
+    memcpy(&vals[i], u.temp_array, 2);
+    i += 2;
     
-    u.imp_val = impedance_check_data.p2_avg;
-    memcpy(&vals[i], u.temp_array, 4);
-    i += 4;
+    u.imp_val = (uint16_t)impedance_check_data.p2_avg;
+    memcpy(&vals[i], u.temp_array, 2);
+    i += 2;
     
-    u.imp_val = impedance_check_data.p2_min;
-    memcpy(&vals[i], u.temp_array, 4);
-    i += 4;
+    u.imp_val = (uint16_t)impedance_check_data.p2_min;
+    memcpy(&vals[i], u.temp_array, 2);
+    i += 2;
     
-    u.imp_val = impedance_check_data.p2_max;
-    memcpy(&vals[i], u.temp_array, 4);
-    i += 4;
+    u.imp_val = (uint16_t)impedance_check_data.p2_max;
+    memcpy(&vals[i], u.temp_array, 2);
+    i += 2;
     
-    u.imp_val = impedance_check_data.p3_avg;
-    memcpy(&vals[i], u.temp_array, 4);
-    i += 4;
+    u.imp_val = (uint16_t)impedance_check_data.p3_avg;
+    memcpy(&vals[i], u.temp_array, 2);
+    i += 2;
     
-    u.imp_val = impedance_check_data.p3_min;
-    memcpy(&vals[i], u.temp_array, 4);
-    i += 4;
+    u.imp_val = (uint16_t)impedance_check_data.p3_min;
+    memcpy(&vals[i], u.temp_array, 2);
+    i += 2;
     
-    u.imp_val = impedance_check_data.p3_max;
-    memcpy(&vals[i], u.temp_array, 4);
-    i += 4;
+    u.imp_val = (uint16_t)impedance_check_data.p3_max;
+    memcpy(&vals[i], u.temp_array, 2);
+    i += 2;
     
-    u.imp_val = impedance_check_data.p4_avg;
-    memcpy(&vals[i], u.temp_array, 4);
-    i += 4;
+    u.imp_val = (uint16_t)impedance_check_data.p4_avg;
+    memcpy(&vals[i], u.temp_array, 2);
+    i += 2;
     
-    u.imp_val = impedance_check_data.p4_min;
-    memcpy(&vals[i], u.temp_array, 4);
-    i += 4;
+    u.imp_val = (uint16_t)impedance_check_data.p4_min;
+    memcpy(&vals[i], u.temp_array, 2);
+    i += 2;
     
-    u.imp_val = impedance_check_data.p4_max;
-    memcpy(&vals[i], u.temp_array, 4);
+    u.imp_val = (uint16_t)impedance_check_data.p4_max;
+    memcpy(&vals[i], u.temp_array, 2);
     
     printf("Sending notify\n");
     notify_master(vals);
@@ -940,19 +940,22 @@ int command_dc_burst_num(uint32_t param) {
     return 0;
 }
 
-/* Take an array of 49 bytes and throw it at software */
-void notify_master(uint8_t vals[49]) {
+/* Take an array of 25 bytes and throw it at software */
+void notify_master(uint8_t vals[25]) {
     printf("notifying master\n");
-    uint8_t othervals[2] = {53, 10};
-    (void)vals;
     cy_stc_ble_gatts_handle_value_ntf_t ntf_param;
     ntf_param.connHandle = cy_ble_connHandle[0];
     printf("Conn handle: %x\n", ntf_param.connHandle.attId);
     
+    for (int i = 0; i < 25; i++) {
+        printf("%x ", vals[i]);   
+    }
+    printf("\n");
+    
     cy_stc_ble_gatt_handle_value_pair_t val_pair;
-    val_pair.value.val = othervals;
-    val_pair.value.len = 2;
-    val_pair.value.actualLen = 2;
+    val_pair.value.val = vals;
+    val_pair.value.len = 25;
+    val_pair.value.actualLen = 25;
     val_pair.attrHandle = CY_BLE_NSTIM_NOTIF_CHAR_HANDLE;
     ntf_param.handleValPair = val_pair;
 
