@@ -28,6 +28,8 @@
 #define IMPEDANCE_CHECK_EVM_DELAY 1000
 #define IMPEDANCE_CHECK_PHASE_TIMINGS 1000
 
+#define IMPEDANCE_READING_NOTIF 1
+
 /* Converts microseconds to phase timing. We only care about phase timings in
  * code! */
 #define US_TO_PT(n) (n / 2)
@@ -110,6 +112,7 @@ uint32_t dc_pulse_done = 0;
  * stim_state[1] = stim_type (0 ac, 1 dc, 2 is impedance check) */
 uint8_t stim_state[2] = {0};
 uint8_t stim_mode_temp = 0;
+uint8_t stim_on_temp = 0;
 
 /* Indicates if ac mode is anodic or cathodic right now */
 uint8_t anodic = 0;
@@ -131,7 +134,7 @@ uint32_t impedance_check_phase_timings[4] = {IMPEDANCE_CHECK_PHASE_TIMINGS, IMPE
 float impedance_check_readings[4096] = {0};
 uint32_t impedance_check_readings_ind = 0;
 uint32_t impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
-impedance_check_t impedance_check_data = {0};
+impedance_check_t impedance_check_data;
 
 /* Counters for the dc slope */
 uint32_t dc_step_counter = 0;
@@ -165,6 +168,7 @@ int command_dc_hold_time(uint32_t param);
 int command_dc_curr_target(uint32_t param);
 int command_dc_burst_gap(uint32_t param);
 int command_dc_burst_num(uint32_t param);
+int command_impedance_check(uint32_t param);
 
 static int (*command_handlers[])(uint32_t param) = {
     NULL,                           // 0x00
@@ -186,6 +190,7 @@ static int (*command_handlers[])(uint32_t param) = {
     command_dc_curr_target,         // 0x10
     command_dc_burst_gap,           // 0x11
     command_dc_burst_num,           // 0x12
+    command_impedance_check,        // 0x13
 };
 
 /* RTOS Tasks */
@@ -204,9 +209,10 @@ void impedance_check_handler();
 void impedance_check_process_data();
 void min_max_avg(float *list, int min_ind, int max_ind, float *min, float *max, float *avg);
 void post_impedance_start();
+void notify_master(uint8_t vals[49]);
 
 void command_handler(uint8_t command, uint32_t params) {
-    if (command < 1 || command > 18) {
+    if (command < 1 || command > 19) {
         printf("Invalid command '%d'\n", command);
         err = 1;
         return;
@@ -215,7 +221,7 @@ void command_handler(uint8_t command, uint32_t params) {
     err = command_handlers[command](params);
     if (err) {
         printf("Command 0x%x failed with status %d\n", command, err);
-        error_notify(command, err);
+        //error_notify(command, err);
     }
 }
 
@@ -251,12 +257,10 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
             printf("attId: 0x%x\n", writeReqParameter->connHandle.attId);
             printf("attrHandle: 0x%x\n", writeReqParameter->handleValPair.attrHandle);
             
-            if (writeReqParameter->handleValPair.attrHandle == CY_BLE_NSTIM_ERR_CLIENT_CHARACTERISTIC_CONFIGURATION_DESC_HANDLE) {
+            if (writeReqParameter->handleValPair.attrHandle == CY_BLE_NSTIM_NOTIF_CLIENT_CHARACTERISTIC_CONFIGURATION_DESC_HANDLE) {
                 printf("Notify subscription request\n");
-                CyDelay(5000);
-                printf("Sending notify... ");
-                error_notify(10, 10);
-                printf("sent notify.\n");
+                
+                Cy_BLE_GATTS_WriteRsp(writeReqParameter->connHandle);
                 break;
             }            
             // END 
@@ -272,7 +276,6 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
             printf("Param %u\n", param);
             
             command_handler(command, param);
-            
             Cy_BLE_GATTS_WriteRsp(writeReqParameter->connHandle);
             break;
         case CY_BLE_EVT_GATTS_READ_CHAR_VAL_ACCESS_REQ:
@@ -354,14 +357,6 @@ void set_dc_slope_counter() {
     dc_this_step_counter = 0;
     dc_intr_per_step = dc_phase_timings[1] / (dc_vdac_target - dc_vdac_base);
 }
-
-/*
-void adcIsr(void) {
-    int16_t result = Cy_SAR_GetResult16(SAR,0);
-    float v = Cy_SAR_CountsTo_Volts(SAR,0,result);
-    Cy_GPIO_Write(SW_EVM_PORT, SW_EVM_NUM, 0);
-    printf("Compliance check got %f\n", v);
-}*/
 
 /* Interrupt service routine for the DAC */
 void dacIsr(void) {
@@ -454,12 +449,6 @@ void ac_handler() {
     
     VDAC_SetValueBuffered(ac_vdac_values[phase]);
     
-    /*if (phase==1 && counter == 10){
-        Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_SINGLE_SHOT);
-        int16_t result = Cy_SAR_GetResult16(SAR,0);
-        printf("Voltage result: %f\r\n",(Cy_SAR_CountsTo_Volts(SAR,0,result)));
-    }*/
-    
     // Force stim to stop as it's safe to do so
     if (stop_ac_stim == 1 && (phase == 0 || phase == 4)) {
         command_stop(1);
@@ -487,7 +476,6 @@ void ac_handler() {
                 // Finished with this burst
                 phase++;
                 ac_pulse_done = 0;
-                // SWITCHES
             }
         } else if (phase == 4) {
             if (ac_burst_done < ac_burst_num || ac_burst_num == 0) {
@@ -543,6 +531,66 @@ void impedance_check_process_data() {
             &impedance_check_data.p4_avg);
 }
 
+/* Please rewrite this */
+void send_impedance_readings() {
+    uint8_t vals[49] = {0};
+    union {
+        float imp_val;
+        uint8_t temp_array[4];
+    } u;
+    vals[0] = IMPEDANCE_READING_NOTIF;
+    int i = 1;
+    u.imp_val = impedance_check_data.p1_avg;
+    memcpy(&vals[i], u.temp_array, 4);
+    i += 4;
+    
+    u.imp_val = impedance_check_data.p1_min;
+    memcpy(&vals[i], u.temp_array, 4);
+    i += 4;
+    
+    u.imp_val = impedance_check_data.p1_max;
+    memcpy(&vals[i], u.temp_array, 4);
+    i += 4;
+    
+    u.imp_val = impedance_check_data.p2_avg;
+    memcpy(&vals[i], u.temp_array, 4);
+    i += 4;
+    
+    u.imp_val = impedance_check_data.p2_min;
+    memcpy(&vals[i], u.temp_array, 4);
+    i += 4;
+    
+    u.imp_val = impedance_check_data.p2_max;
+    memcpy(&vals[i], u.temp_array, 4);
+    i += 4;
+    
+    u.imp_val = impedance_check_data.p3_avg;
+    memcpy(&vals[i], u.temp_array, 4);
+    i += 4;
+    
+    u.imp_val = impedance_check_data.p3_min;
+    memcpy(&vals[i], u.temp_array, 4);
+    i += 4;
+    
+    u.imp_val = impedance_check_data.p3_max;
+    memcpy(&vals[i], u.temp_array, 4);
+    i += 4;
+    
+    u.imp_val = impedance_check_data.p4_avg;
+    memcpy(&vals[i], u.temp_array, 4);
+    i += 4;
+    
+    u.imp_val = impedance_check_data.p4_min;
+    memcpy(&vals[i], u.temp_array, 4);
+    i += 4;
+    
+    u.imp_val = impedance_check_data.p4_max;
+    memcpy(&vals[i], u.temp_array, 4);
+    
+    printf("Sending notify\n");
+    notify_master(vals);
+}
+
 void impedance_readings_print() {
     printf("\nImpedance check results:\n");
     printf("\tValues read: %u\n", impedance_check_readings_ind);
@@ -563,6 +611,8 @@ void impedance_readings_print() {
         impedance_check_data.p4_min, 
         impedance_check_data.p4_max, 
         impedance_check_data.p4_avg);
+    
+    send_impedance_readings();
 }
 
 void impedance_check_handler() {
@@ -629,8 +679,33 @@ void dc_print_state() {
 void post_impedance_start() {
     Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
     stim_state[1] = stim_mode_temp;
-    stim_state[0] = 1;
+    stim_state[0] = stim_on_temp;
     counter = 0;
+    if (stim_on_temp == 0) {
+        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 0);
+        Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 0);
+        Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 0);
+    }
+}
+
+int command_impedance_check(uint32_t param) {
+    printf("Inside impedance check command with param %u\n", param);
+    impedance_check_readings_ind = 0;
+    impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
+    
+    counter = 0;
+    phase = 0;
+    
+    stim_on_temp = 0;
+    stim_mode_temp = stim_state[1];
+    stim_state[1] = 2;
+    stim_state[0] = 1;
+    
+    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
+    
+    Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
+    Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
+    return 0;
 }
 
 int command_start(uint32_t param) {
@@ -651,6 +726,7 @@ int command_start(uint32_t param) {
     
     // Do an impedance check
     stim_mode_temp = stim_state[1];
+    stim_on_temp = 1;
     stim_state[1] = 2;
     stim_state[0] = 1;
     
@@ -864,17 +940,20 @@ int command_dc_burst_num(uint32_t param) {
     return 0;
 }
 
-void error_notify(uint8_t id, uint8_t val) {
-    uint8_t ret_val[] = {id, val};
-    
+/* Take an array of 49 bytes and throw it at software */
+void notify_master(uint8_t vals[49]) {
+    printf("notifying master\n");
+    uint8_t othervals[2] = {53, 10};
+    (void)vals;
     cy_stc_ble_gatts_handle_value_ntf_t ntf_param;
     ntf_param.connHandle = cy_ble_connHandle[0];
+    printf("Conn handle: %x\n", ntf_param.connHandle.attId);
     
     cy_stc_ble_gatt_handle_value_pair_t val_pair;
-    val_pair.value.val = ret_val;
+    val_pair.value.val = othervals;
     val_pair.value.len = 2;
     val_pair.value.actualLen = 2;
-    val_pair.attrHandle = CY_BLE_NSTIM_ERR_CHAR_HANDLE;
+    val_pair.attrHandle = CY_BLE_NSTIM_NOTIF_CHAR_HANDLE;
     ntf_param.handleValPair = val_pair;
 
     Cy_BLE_GATTS_Notification(&ntf_param);   

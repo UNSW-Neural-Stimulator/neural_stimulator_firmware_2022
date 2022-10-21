@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="BLE_DAC\NSTIM\TopDesign">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="BLE_DAC\NSTIM">
 <ExpandedNodeIds>
 <v>BLE_DAC</v>
 <v>BLE_DAC\BLE_DAC\TopDesign</v>
@@ -1151,7 +1151,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="867, 573" SelectedTabbedMdiWindow="9630ab90-264c-4555-8a76-97d6c8ff8555"><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\main_cm4.c" Guid="9630ab90-264c-4555-8a76-97d6c8ff8555" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cydwr" Guid="d9ebdfa7-bd45-4eb6-b0a0-571234d09b7a" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\TopDesign\TopDesign.cysch" Guid="f07aae0d-1870-4211-b476-eabc641ec5a7" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="0a47db2b-26f5-4515-a591-6ef09cef1cd7" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="885, 573" SelectedTabbedMdiWindow="f07aae0d-1870-4211-b476-eabc641ec5a7"><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\main_cm4.c" Guid="9630ab90-264c-4555-8a76-97d6c8ff8555" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\NSTIM.cydwr" Guid="d9ebdfa7-bd45-4eb6-b0a0-571234d09b7a" /><DocumentWindow Key="C:\Users\jaspe\Documents\neural_stimulator_firmware_2022\firmware\BLE_DAC\BLE_DAC\NSTIM.cydsn\TopDesign\TopDesign.cysch" Guid="f07aae0d-1870-4211-b476-eabc641ec5a7" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="0a47db2b-26f5-4515-a591-6ef09cef1cd7" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
