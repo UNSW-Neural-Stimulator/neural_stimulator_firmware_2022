@@ -30,6 +30,8 @@
 
 #define IMPEDANCE_READING_NOTIF 1
 
+#define NUM_NOTIF_BYTES 3
+
 /* Converts microseconds to phase timing. We only care about phase timings in
  * code! */
 #define US_TO_PT(n) (n / 2)
@@ -135,6 +137,8 @@ float impedance_check_readings[4096] = {0};
 uint32_t impedance_check_readings_ind = 0;
 uint32_t impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
 impedance_check_t impedance_check_data;
+
+float impedance_check_curr = 1.7;
 
 /* Counters for the dc slope */
 uint32_t dc_step_counter = 0;
@@ -533,7 +537,8 @@ void impedance_check_process_data() {
 
 /* Please rewrite this */
 void send_impedance_readings() {
-    uint8_t vals[25] = {0};
+    uint8_t vals[3] = {0};
+    /*uint8_t vals[25] = {0};
     union {
         uint16_t imp_val;
         uint8_t temp_array[2];
@@ -585,7 +590,23 @@ void send_impedance_readings() {
     i += 2;
     
     u.imp_val = (uint16_t)impedance_check_data.p4_max;
-    memcpy(&vals[i], u.temp_array, 2);
+    memcpy(&vals[i], u.temp_array, 2);*/
+    
+    // Set the command byte to impedance reading
+    vals[0] = IMPEDANCE_READING_NOTIF;
+    
+
+    float imp_float = (10*(impedance_check_data.p2_max) - 15000)/impedance_check_curr;
+    union {
+        uint16_t imp;
+        uint8_t bytes[2];
+    } u;
+    u.imp = imp_float;
+    memcpy(&vals[1], u.bytes, 2);
+    
+    
+    printf("Impedance value: %f\n", imp_float);
+    
     
     printf("Sending notify\n");
     notify_master(vals);
@@ -947,15 +968,15 @@ void notify_master(uint8_t vals[25]) {
     ntf_param.connHandle = cy_ble_connHandle[0];
     printf("Conn handle: %x\n", ntf_param.connHandle.attId);
     
-    for (int i = 0; i < 25; i++) {
+    for (int i = 0; i < NUM_NOTIF_BYTES; i++) {
         printf("%x ", vals[i]);   
     }
     printf("\n");
     
     cy_stc_ble_gatt_handle_value_pair_t val_pair;
     val_pair.value.val = vals;
-    val_pair.value.len = 25;
-    val_pair.value.actualLen = 25;
+    val_pair.value.len = NUM_NOTIF_BYTES;
+    val_pair.value.actualLen = NUM_NOTIF_BYTES;
     val_pair.attrHandle = CY_BLE_NSTIM_NOTIF_CHAR_HANDLE;
     ntf_param.handleValPair = val_pair;
 
@@ -978,9 +999,7 @@ int main(void) {
 
     VDAC_Start();
     VDAC_SetValueBuffered(V0);
-    
-    // Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
-    // Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
+
 
     //set_dc_slope();
 
