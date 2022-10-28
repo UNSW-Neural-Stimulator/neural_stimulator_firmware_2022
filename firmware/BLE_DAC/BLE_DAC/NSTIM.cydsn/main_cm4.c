@@ -122,6 +122,8 @@ uint8_t anodic = 0;
 
 /* VDAC values for each phase in ac mode */
 uint16_t ac_vdac_values[] = {V0, 4095u, V0, 0u, V0};
+/* Indicates which phase (p1 or p3) is greater in current */
+uint8_t ac_large_phase = 1;
 /* Phase timings for ac mode, interstim, p1, interphase, p2, interburst */
 uint32_t ac_phase_timings[] = {400u, 100u, 100u, 100u, 2000u};
 
@@ -461,6 +463,29 @@ void ac_handler() {
         return;
     }
     
+    /**
+    * Check if not in compliance. Do the fastest checks first:
+    * 1. In either cathodic or anodic phase (odd phase number)
+    * 2. We are in the middle of the phase
+    * 3. We are in the phase with a higher current output
+    */
+    if ((phase == ac_large_phase) && 
+        (counter == (ac_phase_timings[phase] / 2)))
+    {
+        Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_CONTINUOUS);
+        float value = Cy_SAR_GetResult16(SAR,0);
+        float mVolts = Cy_SAR_CountsTo_mVolts(SAR, 0, value);
+        mVolts = (10 * mVolts) - 15000.0;
+
+        if (mVolts > 11000 || mVolts < -11000) {
+            printf("Got mVolts of %f during stim, stopping stim\n", mVolts);
+            uint8_t vals[3] = {0};
+            notify_master(vals);
+            command_stop(1);
+            return;
+        }
+    }
+    
     if (counter >= ac_phase_timings[phase]) {
         counter = 0u;
         if (phase < 3) {
@@ -740,6 +765,14 @@ int command_impedance_check(uint32_t param) {
     return 0;
 }
 
+uint16_t diffu32(uint16_t a, uint16_t b) {
+    if (a > b) {
+        return a - b;
+    } else {
+        return b - a;
+    }
+}
+
 int command_start(uint32_t param) {
     printf("Inside start command with param %u\n", param);
     ac_burst_done = 0;
@@ -749,6 +782,8 @@ int command_start(uint32_t param) {
     ac_pulse_done = 0;
     dc_pulse_done = 0;
     stop_ac_stim = 0;
+    ac_large_phase = (diffu32(ac_vdac_values[1], V0) > diffu32(ac_vdac_values[3], V0)) ? 1 : 3;
+    printf("ac_large_phase %d\n", ac_large_phase);
     
     set_dc_slope_counter();
     dc_print_state();
