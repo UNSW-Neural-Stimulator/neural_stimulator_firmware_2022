@@ -16,6 +16,7 @@
 #include <limits.h>
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 
 #define SW_ISO P5_2_PORT
 #define SW_LOAD P5_3_PORT
@@ -138,7 +139,8 @@ uint32_t impedance_check_readings_ind = 0;
 uint32_t impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
 impedance_check_t impedance_check_data;
 
-float impedance_check_curr = 1.7;
+// float impedance_check_curr = 1.7;
+float impedance_check_p1_curr = 0;
 
 /* Counters for the dc slope */
 uint32_t dc_step_counter = 0;
@@ -595,13 +597,21 @@ void send_impedance_readings() {
     // Set the command byte to impedance reading
     vals[0] = IMPEDANCE_READING_NOTIF;
     
-
-    float imp_float = (10*(impedance_check_data.p2_max) - 15000)/impedance_check_curr;
+    float measured_voltage =  (anodic == 0) ? (10*(impedance_check_data.p2_max) - 15000) : (10*(impedance_check_data.p2_min) - 15000);
+    printf("Measured voltage: %f\n", measured_voltage);
+    
+    if (measured_voltage > 11000 || measured_voltage < -11000) {
+        vals[0] = vals[1] = vals[2] = 0;
+        notify_master(vals);
+        return;
+    }
+    
+    float imp_float = measured_voltage/impedance_check_p1_curr;
     union {
         uint16_t imp;
         uint8_t bytes[2];
     } u;
-    u.imp = imp_float;
+    u.imp = abs((int)imp_float);
     memcpy(&vals[1], u.bytes, 2);
     
     
@@ -610,6 +620,7 @@ void send_impedance_readings() {
     
     printf("Sending notify\n");
     notify_master(vals);
+
 }
 
 void impedance_readings_print() {
@@ -652,7 +663,7 @@ void impedance_check_handler() {
     }
     counter++;
     
-    VDAC_SetValueBuffered(impedance_check_vdac_values[phase]);
+    VDAC_SetValueBuffered(ac_vdac_values[phase]);
     
     Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_CONTINUOUS);
     volatile float value = Cy_SAR_GetResult16(SAR,0);
@@ -893,6 +904,8 @@ int command_ac_phase_one_curr(uint32_t param) {
     } else if (vdac_val > VDAC_MAX) {
         return 2;
     }
+    
+    impedance_check_p1_curr = curr;
 
     ac_vdac_values[1] = vdac_val;
     return 0;
@@ -962,7 +975,7 @@ int command_dc_burst_num(uint32_t param) {
 }
 
 /* Take an array of 25 bytes and throw it at software */
-void notify_master(uint8_t vals[25]) {
+void notify_master(uint8_t vals[3]) {
     printf("notifying master\n");
     cy_stc_ble_gatts_handle_value_ntf_t ntf_param;
     ntf_param.connHandle = cy_ble_connHandle[0];
