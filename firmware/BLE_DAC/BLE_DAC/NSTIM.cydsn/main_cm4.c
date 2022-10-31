@@ -427,6 +427,22 @@ void dc_handler() {
         Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, (phase) ? 1 : 0);
     }
     
+    if (phase == 2 && counter == (dc_phase_timings[2] / 2)) {
+        Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_CONTINUOUS);
+        float value = Cy_SAR_GetResult16(SAR,0);
+        float mVolts = Cy_SAR_CountsTo_mVolts(SAR, 0, value);
+        mVolts = (10 * mVolts) - 15000.0;
+
+        // Check if we are out of compliance
+        if (mVolts > 11000 || mVolts < -11000) {
+            printf("Got mVolts of %f during stim, stopping stim\n", mVolts);
+            uint8_t vals[3] = {0};
+            notify_master(vals);
+            command_stop(1);
+            return;
+        }
+    }
+    
     switch (phase) {
         case (0):
             dc_vdac_current = dc_vdac_base;
@@ -465,18 +481,20 @@ void ac_handler() {
     
     /**
     * Check if not in compliance. Do the fastest checks first:
-    * 1. In either cathodic or anodic phase (odd phase number)
-    * 2. We are in the middle of the phase
-    * 3. We are in the phase with a higher current output
+    * 1. We are in the phase with the larger current
+    * 2. We are at the end of the phase (close enough).
+    *    We want a bit of a buffer just to make sure nothing strange is 
+    *    happening with ADC/DAC.
     */
     if ((phase == ac_large_phase) && 
-        (counter == (ac_phase_timings[phase] / 2)))
+        (counter == (ac_phase_timings[phase] - 2)))
     {
         Cy_SAR_StartConvert(SAR, CY_SAR_START_CONVERT_CONTINUOUS);
         float value = Cy_SAR_GetResult16(SAR,0);
         float mVolts = Cy_SAR_CountsTo_mVolts(SAR, 0, value);
         mVolts = (10 * mVolts) - 15000.0;
 
+        // Check if we are out of compliance
         if (mVolts > 11000 || mVolts < -11000) {
             printf("Got mVolts of %f during stim, stopping stim\n", mVolts);
             uint8_t vals[3] = {0};
@@ -562,68 +580,14 @@ void impedance_check_process_data() {
             &impedance_check_data.p4_avg);
 }
 
-/* Please rewrite this */
 void send_impedance_readings() {
     uint8_t vals[3] = {0};
-    /*uint8_t vals[25] = {0};
-    union {
-        uint16_t imp_val;
-        uint8_t temp_array[2];
-    } u;
-    vals[0] = IMPEDANCE_READING_NOTIF;
-    int i = 1;
-    u.imp_val = (uint16_t)impedance_check_data.p1_avg;
-    memcpy(&vals[i], u.temp_array, 2);
-    i += 2;
-    
-    u.imp_val = (uint16_t)impedance_check_data.p1_min;
-    memcpy(&vals[i], u.temp_array, 2);
-    i += 2;
-    
-    u.imp_val = (uint16_t)impedance_check_data.p1_max;
-    memcpy(&vals[i], u.temp_array, 2);
-    i += 2;
-    
-    u.imp_val = (uint16_t)impedance_check_data.p2_avg;
-    memcpy(&vals[i], u.temp_array, 2);
-    i += 2;
-    
-    u.imp_val = (uint16_t)impedance_check_data.p2_min;
-    memcpy(&vals[i], u.temp_array, 2);
-    i += 2;
-    
-    u.imp_val = (uint16_t)impedance_check_data.p2_max;
-    memcpy(&vals[i], u.temp_array, 2);
-    i += 2;
-    
-    u.imp_val = (uint16_t)impedance_check_data.p3_avg;
-    memcpy(&vals[i], u.temp_array, 2);
-    i += 2;
-    
-    u.imp_val = (uint16_t)impedance_check_data.p3_min;
-    memcpy(&vals[i], u.temp_array, 2);
-    i += 2;
-    
-    u.imp_val = (uint16_t)impedance_check_data.p3_max;
-    memcpy(&vals[i], u.temp_array, 2);
-    i += 2;
-    
-    u.imp_val = (uint16_t)impedance_check_data.p4_avg;
-    memcpy(&vals[i], u.temp_array, 2);
-    i += 2;
-    
-    u.imp_val = (uint16_t)impedance_check_data.p4_min;
-    memcpy(&vals[i], u.temp_array, 2);
-    i += 2;
-    
-    u.imp_val = (uint16_t)impedance_check_data.p4_max;
-    memcpy(&vals[i], u.temp_array, 2);*/
     
     // Set the command byte to impedance reading
     vals[0] = IMPEDANCE_READING_NOTIF;
     
     float measured_voltage =  (anodic == 0) ? (10*(impedance_check_data.p2_max) - 15000) : (10*(impedance_check_data.p2_min) - 15000);
-    printf("Measured voltage: %f\n", measured_voltage);
+    printf("Measured voltage: %f\n", measured_voltage);        
     
     if (measured_voltage > 11000 || measured_voltage < -11000) {
         vals[0] = vals[1] = vals[2] = 0;
