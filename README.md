@@ -6,6 +6,7 @@ This is the repository for the Neural Stimulator Firmware team for 2022.
 
 All of the work of the Firmware team for this year is divided up into two folders:
 * The `/firmware` folder contains the actual firmware for the project
+  * The `NSTIM` project in the `BLE_DAC` workspace contains the actual firmware for the neural stimulator.
 * The `/other` folder contains all of the other code created by the team (i.e. weekly tasks)
 
 ## Making Changes:
