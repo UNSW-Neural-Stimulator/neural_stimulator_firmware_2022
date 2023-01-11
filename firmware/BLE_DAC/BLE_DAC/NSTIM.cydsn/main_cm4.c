@@ -594,8 +594,15 @@ void send_impedance_readings() {
         notify_master(vals);
         return;
     }
+    float imp_float;
+    if (stim_mode_temp == 1) {
+       imp_float = measured_voltage/0.05;
+       printf("DC!!\n");
+    } else {
+        imp_float = measured_voltage/impedance_check_p1_curr;
+    }
     
-    float imp_float = measured_voltage/impedance_check_p1_curr;
+    //float imp_float = measured_voltage/impedance_check_p1_curr;
     union {
         uint16_t imp;
         uint8_t bytes[2];
@@ -717,6 +724,11 @@ int command_impedance_check(uint32_t param) {
     counter = 0;
     phase = 0;
     
+    if (stim_state[1] == 1) {
+        ac_vdac_values[1] = 2084;
+        ac_vdac_values[3] = 2025;
+    }
+    
     stim_on_temp = 0;
     stim_mode_temp = stim_state[1];
     stim_state[1] = 2;
@@ -754,6 +766,11 @@ int command_start(uint32_t param) {
     ac_print_state();
     
     impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
+    
+    if (stim_state[1] == 1) {
+        ac_vdac_values[1] = 2084;
+        ac_vdac_values[3] = 2025;
+    }
     
     // Do an impedance check
     stim_mode_temp = stim_state[1];
@@ -819,7 +836,7 @@ int command_stim_type(uint32_t param) {
 int command_anodic_cathodic(uint32_t param) {
     (void)param;
     if (param == 0 || param == 1) {
-        anodic = param;
+        anodic = (stim_state[1] == 1) ? 1 : param;
         // ac_vdac_values[1] = INVERT_VDAC(ac_vdac_values[1]);
         // ac_vdac_values[3] = INVERT_VDAC(ac_vdac_values[3]);
         return 0;
