@@ -140,6 +140,7 @@ float impedance_check_readings[4096] = {0};
 uint32_t impedance_check_readings_ind = 0;
 uint32_t impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
 impedance_check_t impedance_check_data;
+float impedance_check_dc_curr = 0.05;
 
 // float impedance_check_curr = 1.7;
 float impedance_check_p1_curr = 0;
@@ -586,7 +587,7 @@ void send_impedance_readings() {
     // Set the command byte to impedance reading
     vals[0] = IMPEDANCE_READING_NOTIF;
     
-    float measured_voltage =  (anodic == 0) ? (10*(impedance_check_data.p2_max) - 15000) : (10*(impedance_check_data.p2_min) - 15000);
+    float measured_voltage = (anodic == 0) ? (10*(impedance_check_data.p2_max) - 15000) : (10*(impedance_check_data.p2_min) - 15000);
     printf("Measured voltage: %f\n", measured_voltage);        
     
     if (measured_voltage > 11000 || measured_voltage < -11000) {
@@ -596,7 +597,7 @@ void send_impedance_readings() {
     }
     float imp_float;
     if (stim_mode_temp == 1) {
-       imp_float = measured_voltage/0.05;
+       imp_float = measured_voltage/impedance_check_dc_curr;
        printf("DC!!\n");
     } else {
         imp_float = measured_voltage/impedance_check_p1_curr;
@@ -725,8 +726,10 @@ int command_impedance_check(uint32_t param) {
     phase = 0;
     
     if (stim_state[1] == 1) {
-        ac_vdac_values[1] = 2084;
-        ac_vdac_values[3] = 2025;
+       // ac_vdac_values[1] = 2084;
+        ac_vdac_values[1] = CURR_TO_VDAC(impedance_check_dc_curr);
+       // ac_vdac_values[3] = 2025;
+        ac_vdac_values[3] = CURR_TO_VDAC(-impedance_check_dc_curr);
     }
     
     stim_on_temp = 0;
@@ -768,8 +771,10 @@ int command_start(uint32_t param) {
     impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
     
     if (stim_state[1] == 1) {
-        ac_vdac_values[1] = 2084;
-        ac_vdac_values[3] = 2025;
+       // ac_vdac_values[1] = 2084;
+        ac_vdac_values[1] = CURR_TO_VDAC(impedance_check_dc_curr);
+       // ac_vdac_values[3] = 2025;
+        ac_vdac_values[3] = CURR_TO_VDAC(-impedance_check_dc_curr);
     }
     
     // Do an impedance check
