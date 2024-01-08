@@ -226,7 +226,7 @@ void command_handler(uint8_t command, uint32_t params) {
         err = 1;
         return;
     }
-    printf("Command 0x%x with param 0x%x\n", command, params);
+    //printf("Command 0x%x with param 0x%x\n", command, params);
     err = command_handlers[command](params);
     if (err) {
         printf("Command 0x%x failed with status %d\n", command, err);
@@ -237,7 +237,7 @@ void command_handler(uint8_t command, uint32_t params) {
 // BLE event handler
 void genericEventHandler(uint32_t event, void *eventParameter) {
     cy_stc_ble_gatts_write_cmd_req_param_t *writeReqParameter;
-    printf("\nBLE Event handler, event 0x%x\n", event);
+    //printf("\nBLE Event handler, event 0x%x\n", event);
     // Take an action based on current event
     switch (event) {
         case CY_BLE_EVT_STACK_ON:
@@ -263,8 +263,8 @@ void genericEventHandler(uint32_t event, void *eventParameter) {
             (cy_stc_ble_gatts_write_cmd_req_param_t *)eventParameter;
             
             // START REMOVE WHEN DONE WITH NOTIFY TESTING
-            printf("attId: 0x%x\n", writeReqParameter->connHandle.attId);
-            printf("attrHandle: 0x%x\n", writeReqParameter->handleValPair.attrHandle);
+            //printf("attId: 0x%x\n", writeReqParameter->connHandle.attId);
+            //printf("attrHandle: 0x%x\n", writeReqParameter->handleValPair.attrHandle);
             
             if (writeReqParameter->handleValPair.attrHandle == CY_BLE_NSTIM_NOTIF_CLIENT_CHARACTERISTIC_CONFIGURATION_DESC_HANDLE) {
                 printf("Notify subscription request\n");
@@ -364,7 +364,10 @@ void bleTask(void *arg) {
 void set_dc_slope_counter() {
     dc_step_counter = 0;
     dc_this_step_counter = 0;
-    dc_intr_per_step = dc_phase_timings[1] / (dc_vdac_target - dc_vdac_base);
+    int base = ((int)dc_vdac_target - (int)dc_vdac_base) * ((anodic) ? -1 : 1);
+    dc_intr_per_step = dc_phase_timings[1] / (uint32_t)base;
+    printf("DC INTR PER STEP is: %d\n", dc_intr_per_step);
+    
 }
 
 /* Interrupt service routine for the DAC */
@@ -452,7 +455,7 @@ void dc_handler() {
             dc_this_step_counter++;
             if (dc_this_step_counter >= dc_intr_per_step) {
                 dc_this_step_counter = 0u;
-                dc_vdac_current++;
+                dc_vdac_current+= (anodic) ? -1 : 1;
             }
             break;
         case (2):
@@ -462,7 +465,7 @@ void dc_handler() {
             dc_this_step_counter++;
             if (dc_this_step_counter >= dc_intr_per_step) {
                 dc_this_step_counter = 0u;
-                dc_vdac_current--;
+                dc_vdac_current+= (anodic) ? 1 : -1;
             }
             break;
     }
@@ -554,28 +557,28 @@ void min_max_avg(float *list, int min_ind, int max_ind, float *min, float *max, 
 void impedance_check_process_data() {
     min_max_avg(impedance_check_readings, 
             10, 
-            IMPEDANCE_CHECK_PHASE_TIMINGS - 10, 
+            ac_phase_timings[0] - 10, 
             &impedance_check_data.p1_min, 
             &impedance_check_data.p1_max, 
             &impedance_check_data.p1_avg);
     
     min_max_avg(impedance_check_readings, 
-            IMPEDANCE_CHECK_PHASE_TIMINGS + 10, 
-            IMPEDANCE_CHECK_PHASE_TIMINGS * 2 - 10, 
+            ac_phase_timings[0] + 10, 
+            ac_phase_timings[0] + ac_phase_timings[1] - 10, 
             &impedance_check_data.p2_min, 
             &impedance_check_data.p2_max, 
             &impedance_check_data.p2_avg);
     
     min_max_avg(impedance_check_readings, 
-            IMPEDANCE_CHECK_PHASE_TIMINGS * 2 + 10, 
-            IMPEDANCE_CHECK_PHASE_TIMINGS * 3 - 10, 
+            ac_phase_timings[0] + ac_phase_timings[1] + 10, 
+            ac_phase_timings[0] + ac_phase_timings[1] + ac_phase_timings[2] - 10, 
             &impedance_check_data.p3_min, 
             &impedance_check_data.p3_max, 
             &impedance_check_data.p3_avg);
     
     min_max_avg(impedance_check_readings, 
-            IMPEDANCE_CHECK_PHASE_TIMINGS * 3 + 10, 
-            IMPEDANCE_CHECK_PHASE_TIMINGS * 4 - 10, 
+            ac_phase_timings[0] + ac_phase_timings[1] + ac_phase_timings[2] + 10, 
+            ac_phase_timings[0] + ac_phase_timings[1] + ac_phase_timings[2] + ac_phase_timings[3] - 10, 
             &impedance_check_data.p4_min, 
             &impedance_check_data.p4_max, 
             &impedance_check_data.p4_avg);
@@ -587,7 +590,7 @@ void send_impedance_readings() {
     // Set the command byte to impedance reading
     vals[0] = IMPEDANCE_READING_NOTIF;
     
-    float measured_voltage = (anodic == 0) ? (10*(impedance_check_data.p2_max) - 15000) : (10*(impedance_check_data.p2_min) - 15000);
+    float measured_voltage = (anodic == 0) ? (9.375*(impedance_check_data.p2_max) - 15159.375) : (9.375*(impedance_check_data.p2_min) - 15159.375);
     printf("Measured voltage: %f\n", measured_voltage);        
     
     if (measured_voltage > 11000 || measured_voltage < -11000) {
@@ -597,7 +600,7 @@ void send_impedance_readings() {
     }
     float imp_float;
     if (stim_mode_temp == 1) {
-       imp_float = measured_voltage/impedance_check_dc_curr;
+       imp_float = measured_voltage/impedance_check_p1_curr;
        printf("DC!!\n");
     } else {
         imp_float = measured_voltage/impedance_check_p1_curr;
@@ -676,7 +679,8 @@ void impedance_check_handler() {
         return;
     }
     
-    if (counter >= impedance_check_phase_timings[phase]) {
+    if (counter >= ac_phase_timings[phase]/2) {
+        printf("Count finished at %d\n", ac_phase_timings[phase]);
         counter = 0u;
         if (phase < 3) {
             phase++;
@@ -725,12 +729,12 @@ int command_impedance_check(uint32_t param) {
     counter = 0;
     phase = 0;
     
-    if (stim_state[1] == 1) {
+    /*if (stim_state[1] == 1) {
        // ac_vdac_values[1] = 2084;
         ac_vdac_values[1] = CURR_TO_VDAC(impedance_check_dc_curr);
        // ac_vdac_values[3] = 2025;
         ac_vdac_values[3] = CURR_TO_VDAC(-impedance_check_dc_curr);
-    }
+    }*/
     
     stim_on_temp = 0;
     stim_mode_temp = stim_state[1];
@@ -768,22 +772,25 @@ int command_start(uint32_t param) {
     dc_print_state();
     ac_print_state();
     
-    impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
+    if (stim_state[1] != 1) {
     
-    if (stim_state[1] == 1) {
-       // ac_vdac_values[1] = 2084;
-        ac_vdac_values[1] = CURR_TO_VDAC(impedance_check_dc_curr);
-       // ac_vdac_values[3] = 2025;
-        ac_vdac_values[3] = CURR_TO_VDAC(-impedance_check_dc_curr);
+        impedance_check_evm_pin_delay = IMPEDANCE_CHECK_EVM_DELAY;
+        
+        //if (stim_state[1] == 1) {
+        //   // ac_vdac_values[1] = 2084;
+        //    ac_vdac_values[1] = CURR_TO_VDAC(impedance_check_dc_curr);
+        //   // ac_vdac_values[3] = 2025;
+        //    ac_vdac_values[3] = CURR_TO_VDAC(-impedance_check_dc_curr);
+        //}
+        
+        // Do an impedance check
+        stim_mode_temp = stim_state[1];
+        stim_on_temp = 1;
+        stim_state[1] = 2;
+        stim_state[0] = 1;
+        
+        Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
     }
-    
-    // Do an impedance check
-    stim_mode_temp = stim_state[1];
-    stim_on_temp = 1;
-    stim_state[1] = 2;
-    stim_state[0] = 1;
-    
-    Cy_GPIO_Write(SW_EVM, SW_EVM_NUM, 1);
     
     Cy_GPIO_Write(HOWLAND_NEG_EN_0_PORT, HOWLAND_NEG_EN_0_NUM, 1);
     Cy_GPIO_Write(HOWLAND_POS_EN_0_PORT, HOWLAND_POS_EN_0_NUM, 1);
@@ -839,9 +846,10 @@ int command_stim_type(uint32_t param) {
 }
 
 int command_anodic_cathodic(uint32_t param) {
-    (void)param;
+    printf("Received anodic value %d\n", param);
     if (param == 0 || param == 1) {
-        anodic = (stim_state[1] == 1) ? 1 : param;
+        anodic = (uint8_t)param;
+        printf("Anodic is now %d\n", anodic);
         // ac_vdac_values[1] = INVERT_VDAC(ac_vdac_values[1]);
         // ac_vdac_values[3] = INVERT_VDAC(ac_vdac_values[3]);
         return 0;
@@ -969,15 +977,23 @@ int command_dc_hold_time(uint32_t param) {
 int command_dc_curr_target(uint32_t param) {
     int curr_uamps = uint_to_int(param);
     float curr = ((float) curr_uamps) / 1000;
+    printf("Current target is %f\n", curr);
+    
     //float curr = uint32_to_float(param);
     if (curr == NAN || curr < -3.48 || curr > 3.48) {
         printf("Invalid current\n");
     }
     
+    printf("Anodic equals %d\n", anodic);
+    if (anodic == 1) {
+        printf("Flipping sign\n");
+        curr = curr * -1;
+    }
+    printf("Current target is now %f\n", curr);
     uint32_t vdac_val = (curr == 0) ? V0 : CURR_TO_VDAC(curr);
     printf("Curr: %f, vdac: %u\n", curr, vdac_val);
     
-    if (vdac_val > VDAC_MAX || vdac_val < V0) {
+    if (vdac_val > VDAC_MAX) {
         return 1;
     }
     dc_vdac_target = vdac_val;
